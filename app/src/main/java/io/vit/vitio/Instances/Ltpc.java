@@ -37,6 +37,8 @@ public class Ltpc {
 
     public Ltpc(String s){
         if(s!=null) {
+            s=s.replace(" ","");
+            ltpcString=s;
 
             if (s.length() == 4) {
                 ltpcString=s;
@@ -44,6 +46,13 @@ public class Ltpc {
                 this.TUTORIALS = Integer.parseInt(String.valueOf(s.charAt(1)));
                 this.PRACTICAL = Integer.parseInt(String.valueOf(s.charAt(2)));
                 this.CREDITS = Integer.parseInt(String.valueOf(s.charAt(3)));
+            }
+            else if (s.length() == 5) {
+                ltpcString=s;
+                this.LECTURE = Integer.parseInt(String.valueOf(s.charAt(0)));
+                this.TUTORIALS = Integer.parseInt(String.valueOf(s.charAt(1)));
+                this.PRACTICAL = Integer.parseInt(String.valueOf(s.charAt(2)));
+                this.CREDITS = Integer.parseInt(String.valueOf(s.charAt(4)));
             }
             else
             {

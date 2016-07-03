@@ -16,7 +16,9 @@
 
 package io.vit.vitio.Fragments.TimeTable;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,19 +32,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
 
-import io.vit.vitio.Fragments.Courses.CoursesFragment;
-import io.vit.vitio.Fragments.SubjectViewFragment;
-import io.vit.vitio.Instances.Course;
-import io.vit.vitio.Managers.DataHandler;
-import io.vit.vitio.Managers.Parsers.ParseTimeTable;
+import io.vit.vitio.Extras.Themes.MyTheme;
+import io.vit.vitio.Fragments.SubjectView.SubjectViewFragmentTrial;
 import io.vit.vitio.R;
+import io.vit.vitio.SubjectViewActivity;
 
 /**
  * Created by shalini on 28-06-2015.
@@ -51,9 +51,10 @@ public class PagerFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private Typeface typeface;
+    private MyTheme myTheme;
     private SwipeRefreshLayout swipeRefreshLayout;
     private TimeTableListAdapter adapter;
-    private int MODE=0;
+    private int MODE = 0;
     private List<TimeTableListInfo> myCourses;
     private TextView noClassView;
 
@@ -69,10 +70,11 @@ public class PagerFragment extends Fragment {
 
 
     private void init(ViewGroup rootView) {
-        recyclerView=(RecyclerView)rootView.findViewById(R.id.timetable_recycler_view);
-        typeface = Typeface.createFromAsset(getResources().getAssets(), "fonts/Montserrat-Regular.ttf");
-        noClassView= (TextView) rootView.findViewById(R.id.no_classes_view);
-        swipeRefreshLayout=(SwipeRefreshLayout)rootView.findViewById(R.id.swipe_refresh_layout);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.timetable_recycler_view);
+        myTheme = new MyTheme(getActivity());
+        typeface = myTheme.getMyThemeTypeface();
+        noClassView = (TextView) rootView.findViewById(R.id.no_classes_view);
+        swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout);
     }
 
 
@@ -89,14 +91,15 @@ public class PagerFragment extends Fragment {
             public void onRefresh() {
 
                 new Handler().postDelayed(new Runnable() {
-                    @Override public void run() {
+                    @Override
+                    public void run() {
                         swipeRefreshLayout.setRefreshing(false);//this should be false for roatation
                     }
                 }, 5000);
 
 
                 swipeRefreshLayout.setEnabled(true);
-                ((TimeTableFragment)getParentFragment()).setTimeTableFromAPI();
+                ((TimeTableFragment) getParentFragment()).setTimeTableFromAPI();
             }
 
 
@@ -104,16 +107,15 @@ public class PagerFragment extends Fragment {
     }
 
     private void setData() {
-        if(getArguments().containsKey("mode")) {
+        if (getArguments().containsKey("mode")) {
             MODE = getArguments().getInt("mode");
         }
-        myCourses=TimeTableFragment.TIME_TABLE_LIST.get(MODE);
-        if(myCourses.size()!=0) {
+        myCourses = TimeTableFragment.TIME_TABLE_LIST.get(MODE);
+        if (myCourses.size() != 0) {
             noClassView.setVisibility(TextView.GONE);
             adapter = new TimeTableListAdapter(getActivity(), myCourses);
             recyclerView.setAdapter(adapter);
-        }
-        else{
+        } else {
             noClassView.setVisibility(TextView.VISIBLE);
         }
     }
@@ -121,9 +123,10 @@ public class PagerFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        myTheme.refreshTheme();
+        typeface = myTheme.getMyThemeTypeface();
         setData();
     }
-
 
 
     private class TimeTableListAdapter extends RecyclerView.Adapter<TimeTableListAdapter.TimeTableViewHolder> {
@@ -148,17 +151,39 @@ public class PagerFragment extends Fragment {
         @Override
         public void onBindViewHolder(TimeTableViewHolder holder, int position) {
             TimeTableListInfo info = data.get(position);
-            holder.subName.setText(info.name);
-            holder.subTime.setText(info.time);
-            holder.subVenue.setText(info.venue);
-            int p = Integer.parseInt((info.per.split(" ")[0]));
-            if (p < 75)
-                holder.subPer.setTextColor(c.getResources().getColor(R.color.fadered));
-            else if (p == 75)
-                holder.subPer.setTextColor(c.getResources().getColor(R.color.fadeyellow));
-            holder.subPer.setText(info.per);
-            holder.subTypeShort.setText(info.typeShort);
-            Log.d("typet", info.typeShort);
+            if (info.clsnbr != 0) {
+                holder.subName.setText(info.name);
+                holder.subTime.setText(info.time12);
+                holder.subVenue.setText(info.venue);
+                int p = Integer.parseInt((info.per.split(" ")[0]));
+                if (p < 75)
+                    holder.subPer.setTextColor(c.getResources().getColor(R.color.fadered));
+                else
+                    holder.subPer.setTextColor(c.getResources().getColor(R.color.new_gray));
+                holder.subPer.setText(info.per);
+                if(info.typeShort.equalsIgnoreCase("t"))
+                    holder.subTypeShort.setText("theory");
+                else if(info.typeShort.equalsIgnoreCase("l"))
+                    holder.subTypeShort.setText("lab");
+                else
+                    holder.subTypeShort.setVisibility(View.GONE);
+                Log.d("typet", info.typeShort);
+
+            } else {
+                holder.subName.setText(info.name);
+                holder.subTime.setText(info.time12);
+                holder.subVenue.setText("");
+                holder.subPer.setText("");
+                holder.subTypeShort.setText("");
+            }
+            animateList(holder);
+        }
+
+        private void animateList(TimeTableViewHolder holder) {
+            ObjectAnimator animator = ObjectAnimator.ofFloat(holder.layout, "translationY", 600, 0);
+            animator.setDuration(500);
+            animator.setInterpolator(new AccelerateInterpolator());
+            animator.start();
         }
 
         @Override
@@ -171,6 +196,7 @@ public class PagerFragment extends Fragment {
 
             TextView subName, subTime, subPer, subVenue, subTypeShort;
             LinearLayout layout;
+            LinearLayout innerLayout;
 
             public TimeTableViewHolder(View itemView) {
                 super(itemView);
@@ -178,28 +204,36 @@ public class PagerFragment extends Fragment {
                 subTime = (TextView) itemView.findViewById(R.id.subject_time);
                 subPer = (TextView) itemView.findViewById(R.id.subject_per);
                 subVenue = (TextView) itemView.findViewById(R.id.subject_venue);
-                subTypeShort = (TextView) itemView.findViewById(R.id.subject_type_short);
+                subTypeShort = (TextView) itemView.findViewById(R.id.subject_type);
                 subName.setTypeface(typeface);
                 subTime.setTypeface(typeface);
                 subPer.setTypeface(typeface);
                 subVenue.setTypeface(typeface);
                 subTypeShort.setTypeface(typeface);
                 layout = (LinearLayout) itemView.findViewById(R.id.row_holder);
+                //innerLayout = (LinearLayout) itemView.findViewById(R.id.inner_row_holder);
                 layout.setOnClickListener(this);
             }
 
             @Override
             public void onClick(View v) {
-                Log.d("click","click");
-                FragmentTransaction ft =getActivity().getSupportFragmentManager().beginTransaction();
-                Fragment subject = new SubjectViewFragment();
-                Bundle arguments=new Bundle();
-                arguments.putString("class_number", String.valueOf(data.get(getAdapterPosition()).clsnbr));
-                subject.setArguments(arguments);
-                ft.replace(R.id.main_fragment_holder, subject);
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                ft.addToBackStack(null);
-                ft.commit();
+                Log.d("click", "click");
+                if (data.get(getAdapterPosition()).clsnbr != 0) {
+                    /*FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    Fragment subject = new SubjectViewFragmentTrial();
+                    Bundle arguments = new Bundle();
+                    arguments.putString("class_number", String.valueOf(data.get(getAdapterPosition()).clsnbr));
+                    subject.setArguments(arguments);
+                    ft.replace(R.id.main_fragment_holder, subject);
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                    ft.addToBackStack(null);
+                    ft.commit();
+                    */
+
+                    Intent goToSubjectView = new Intent(getActivity(), SubjectViewActivity.class);
+                    goToSubjectView.putExtra("class_number", String.valueOf(data.get(getAdapterPosition()).clsnbr));
+                    startActivity(goToSubjectView);
+                }
             }
         }
     }

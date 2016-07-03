@@ -16,7 +16,7 @@
   -->
 
 <resources>
-    <dimen name="drawer_textsize_bold">18sp</dimen>
+    <dimen name="drawer_textsize_bold">20sp</dimen>
     <dimen name="drawer_textsize">14sp</dimen>
     <dimen name="drawer_textsize_small">14sp</dimen>
     <dimen name="general_big_thin">19sp</dimen>

@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\fab_bg_mini.png",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.getbase\\floatingactionbutton\\1.10.0\\res\\drawable-xxxhdpi-v4\\fab_bg_mini.png"
+    },
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\fab_bg_normal.png",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.getbase\\floatingactionbutton\\1.10.0\\res\\drawable-xxxhdpi-v4\\fab_bg_normal.png"
+    },
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\shadow_mini.png",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.melnykov\\floatingactionbutton\\1.2.0\\res\\drawable-xxxhdpi-v4\\shadow_mini.png"
+    },
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4\\shadow.png",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.melnykov\\floatingactionbutton\\1.2.0\\res\\drawable-xxxhdpi-v4\\shadow.png"
+    }
+]

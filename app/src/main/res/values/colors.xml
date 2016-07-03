@@ -25,23 +25,28 @@
     <color name="lightgray">#e9e9e9</color>
     <color name="darkgray">#434343</color>
     <color name="gray2">#d2d2d2</color>
+    <color name="grayaccent">#abaaaa</color>
     <color name="darkergray">#303030</color>
     <color name="darkestgray">#1b1b1b</color>
+
+    <color name="bgfadewhite">#f7f9ff</color>
 
     <color name="alphawhite">#22FFFFFF</color>
     <color name="textcolorhint">#616161</color>
     <color name="errorcolor">#ff0300</color>
     <color name="brightgreen">#3cff00</color>
-    <color name="violet">#c74fde</color>
+    <color name="violet">#8e86eb</color>
     <color name="fadeviolet">#b061ff</color>
     <color name="darkviolet">#7B1FA2</color>
-    <color name="violet_pd">#a745bd</color>
+    <color name="violet_pd">#7369ed</color>
+    <color name="violet_pd_translucent">#ba4d42db</color>
     <color name="fadered">#ff8b74</color>
     <color name="fadegreen">#69ec8c</color>
     <color name="fadeyellow">#ffd84e</color>
     <color name="lightviolet">#dbd1e9</color>
     <color name="mediumviolet">#bfa2e2</color>
     <color name="lightblack">#6f6f6f</color>
+    <color name="black_semi_transparent">#B2000000</color>
     <color name="school">#8500ff</color>
     <color name="tabsScrollColor">#FFFFFF</color>
     <color name="darkgreen">#49b294</color>
@@ -67,6 +72,22 @@
     <color name="red_p">#f44336</color>
     <color name="red_pd">#d32f2f</color>
     <color name="alphablack">#23000000</color>
+
+    <color name="translucent_black">#B9000000</color>
+
+    <color name="yellow_p">#ffda30</color>
+    <color name="yellow_pd">#eab90e</color>
+
+    <color name="new_gray">#acadac</color>
+    <color name="windowBg">#fcfcfc</color>
+
+    <color name="violet_translucent">#d48e86eb</color>
+    <color name="gray_translucent">#d45e5e5e</color>
+    <color name="mono_translucent" >#d4000000</color>
+    <color name="indigo_translucent" >#d43F51B5</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="windowBgDark">#f3f3f3</color>
 
 
 </resources>

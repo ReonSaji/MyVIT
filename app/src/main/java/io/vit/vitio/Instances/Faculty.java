@@ -23,6 +23,12 @@ public class Faculty {
     private String NAME;
     private String SCHOOL;
     private String facultyString;
+    private String NUMBER;
+    private String DESIGNATION;
+    private String EMAIL;
+    private String INTERCOM;
+    private String MOBILE;
+    private String ROOM;
 
     public Faculty(String NAME, String SCHOOL) {
         this.NAME = NAME;
@@ -77,8 +83,66 @@ public class Faculty {
         SCHOOL=value;
     }
 
+    public String getNUMBER() {
+        return NUMBER;
+    }
+
+    public void setNUMBER(String NUMBER) {
+        this.NUMBER = NUMBER;
+    }
+
+    public String getFacultyString() {
+        return facultyString;
+    }
+
+    public void setFacultyString(String facultyString) {
+        this.facultyString = facultyString;
+    }
+
+    public String getDESIGNATION() {
+        return DESIGNATION;
+    }
+
+    public void setDESIGNATION(String DESIGNATION) {
+        this.DESIGNATION = DESIGNATION;
+    }
+
+    public String getEMAIL() {
+        return EMAIL;
+    }
+
+    public void setEMAIL(String EMAIL) {
+        this.EMAIL = EMAIL;
+    }
+
+    public String getINTERCOM() {
+        return INTERCOM;
+    }
+
+    public void setINTERCOM(String INTERCOM) {
+        this.INTERCOM = INTERCOM;
+    }
+
+    public String getMOBILE() {
+        return MOBILE;
+    }
+
+    public void setMOBILE(String MOBILE) {
+        this.MOBILE = MOBILE;
+    }
+
+    public String getROOM() {
+        return ROOM;
+    }
+
+    public void setROOM(String ROOM) {
+        this.ROOM = ROOM;
+    }
+
     @Override
     public String toString() {
         return facultyString;
     }
+
+
 }

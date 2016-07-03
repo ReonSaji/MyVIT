@@ -20,9 +20,9 @@
     <string name="login_screen_head">LOGIN</string>
     <string name="sample_regno">13BITXXXX</string>
     <string name="sample_schoolname">SITE</string>
-    <string name="nav_subhead1">ATTENDANCE AVERAGE</string>
+    <string name="nav_subhead1">Attendance Average</string>
     <string name="nav_subhead2_sample">85%</string>
-    <string name="nav_footer1">GUEST USER</string>
+    <string name="nav_footer1">FEEDBACK</string>
     <string name="draweropen">open</string>
     <string name="drawerclose">close</string>
     <string name="sample_subcode">MMA 201</string>
@@ -40,8 +40,10 @@
     <string name="marks_qoute_author">--A.A Milne</string>
     <string name="goToUrl">GO TO URL</string>
     <string name="error_message">Data unavailable due to some unreliable sources.</string>
-    <string name="end_of_day_qoute">\"Learn something new everyday, dust up old talents\"</string>
-    <string name="weekend_qoute">\"weekends are special even if your schedule is all over place\"</string>
+    <string name="marks_error_message">Marks not available</string>
+    <string name="end_of_day_qoute">Your classes are over\nSit and relax</string>
+    <string name="weekend_qoute">Come again next week</string>
+    <string name="select_course">SELECT COURSE</string>
     <string name="licenses">**com.mcxiaoke.volley\n\n
 
 Copyright (C) 2014 Xiaoke Zhang\n
@@ -99,6 +101,12 @@ GNU GENERAL PUBLIC LICENSE\n
 
 </string>
     <string name="sample_subfaculty">G Puviarasi</string>
+    <string name="sub_name_transition">subjectNameTransition</string>
+    <string name="image_transition">imageTransition</string>
+    <string name="filter_slot">Filter Slot</string>
+    <string name="filter_faculty">Filter Faculty</string>
+    <string name="later_today">Later Today</string>
+    <string name="attendance">attendance</string>
     <string-array name="startheads">
         <item>TODAY</item>
         <item>COURSES</item>
@@ -116,13 +124,15 @@ GNU GENERAL PUBLIC LICENSE\n
         <item>VIT Vellore campus map to know where-to\'s.</item>
     </string-array>
     <string-array name="drawer_list_titles">
-        <item>TODAY</item>
-        <item>COURSES</item>
-        <item>TIMETABLE</item>
-        <item>FRIENDS</item>
-        <item>REMINDERS</item>
-        <item>CAMPUS MAP</item>
-        <item>SPOTLIGHT</item>
+        <item>Today</item>
+        <item>Courses</item>
+        <item>Timetable</item>
+        <item>Campus Map</item>
+        <item>Spotlight</item>
+        <item>Course Page</item>
+        <item>Exam</item>
+        <item>Exam</item>
+        <item>Exam</item>
     </string-array>
 
     <string-array name="tabs_name_courses">

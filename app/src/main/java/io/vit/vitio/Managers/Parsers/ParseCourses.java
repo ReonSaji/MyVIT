@@ -16,6 +16,8 @@
 
 package io.vit.vitio.Managers.Parsers;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,6 +36,8 @@ import io.vit.vitio.Instances.Timing;
  * Created by shalini on 21-06-2015.
  */
 public class ParseCourses extends ParseResponse {
+    private static final String TAG = ParseCourses.class.getSimpleName();
+
     public ParseCourses(JSONObject json) {
         super(json);
     }
@@ -62,8 +66,10 @@ public class ParseCourses extends ParseResponse {
                     JSONObject c = coursesArray.getJSONObject(i);
 
                     Course course = getCourse(c);
-                    courseList.add(course);
-
+                    if (course != null)
+                        courseList.add(course);
+                    else
+                        continue;
                 }
                 return courseList;
             } else
@@ -77,27 +83,29 @@ public class ParseCourses extends ParseResponse {
     public static Course getCourse(JSONObject c) {
         Course course = new Course(c);
         try {
-            course.setCLASS_NUMBER(c.getString("class_number"));
-            course.setCOURSE_TITLE(c.getString("course_title"));
-            course.setCOURSE_TYPE(c.getString("subject_type"));
-            course.setCOURSE_CODE(c.getString("course_code"));
-            course.setCOURSE_LTPC(c.getString("ltpc"));
-            course.setCOURSE_MODE(c.getString("course_mode"));
-            course.setCOURSE_OPTION(c.getString("course_option"));
-            course.setCOURSE_SLOT(c.getString("slot"));
-            course.setCOURSE_VENUE(c.getString("venue"));
-            course.setCOURSE_FACULTY(c.getString("faculty"));
-            course.setCOURSE_REGISTRATIONSTATUS(c.getString("registration_status"));
-            course.setCOURSE_BILL_DATE(c.getString("bill_date"));
-            course.setCOURSE_BILL_NUMBER(c.getString("bill_number"));
-            course.setCOURSE_PROJECT_TITLE(c.getString("project_title"));
-
-
-            course.setCOURSE_ATTENDANCE(getAttendance(c.getJSONObject("attendance")));
-            course.setCOURSE_TIMING(getTimings(c.getJSONArray("timings")));
-            course.setCOURSE_MARKS(getCouseMarks(c.getJSONObject("marks")));
-            course.setCOURSE_TYPE_SHORT(getCourseTypeShort(course));
-            return course;
+            if (c.getString("course_mode").equals(Course.COURSE_MODE_PBC)) {
+                return null;
+            } else {
+                course.setCLASS_NUMBER(c.getString("class_number"));
+                course.setCOURSE_TITLE(c.getString("course_title"));
+                course.setCOURSE_TYPE(c.getString("subject_type"));
+                course.setCOURSE_CODE(c.getString("course_code"));
+                course.setCOURSE_LTPC(c.getString("ltpc"));
+                course.setCOURSE_MODE(c.getString("course_mode"));
+                course.setCOURSE_OPTION(c.getString("course_option"));
+                course.setCOURSE_SLOT(c.getString("slot"));
+                course.setCOURSE_VENUE(c.getString("venue"));
+                course.setCOURSE_FACULTY(c.getString("faculty"));
+                course.setCOURSE_REGISTRATIONSTATUS(c.getString("registration_status"));
+                course.setCOURSE_BILL_DATE(c.getString("bill_date"));
+                course.setCOURSE_BILL_NUMBER(c.getString("bill_number"));
+                course.setCOURSE_PROJECT_TITLE(c.getString("project_title"));
+                course.setCOURSE_ATTENDANCE(getAttendance(c.getJSONObject("attendance")));
+                course.setCOURSE_TIMING(getTimings(c.getJSONArray("timings")));
+                course.setCOURSE_MARKS(getCouseMarks(c.getJSONObject("marks")));
+                course.setCOURSE_TYPE_SHORT(getCourseTypeShort(course));
+                return course;
+            }
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -127,6 +135,12 @@ public class ParseCourses extends ParseResponse {
             Mark mark4 = new Mark(Mark.MARKS_QUIZ2, ass.getJSONObject(3).getString("scored_marks"), ass.getJSONObject(3).getString(Mark.MARKS_STATUS));
             Mark mark5 = new Mark(Mark.MARKS_QUIZ3, ass.getJSONObject(4).getString("scored_marks"), ass.getJSONObject(4).getString(Mark.MARKS_STATUS));
             Mark mark6 = new Mark(Mark.MARKS_ASSIGNMENT, ass.getJSONObject(5).getString("scored_marks"), ass.getJSONObject(5).getString(Mark.MARKS_STATUS));
+            Log.i(TAG, "getCouseMarks: "+mark1.getMARK());
+            Log.i(TAG, "getCouseMarks: "+mark2.getMARK());
+            Log.i(TAG, "getCouseMarks: "+mark3.getMARK());
+            Log.i(TAG, "getCouseMarks: "+mark4.getMARK());
+            Log.i(TAG, "getCouseMarks: "+mark5.getMARK());
+            Log.i(TAG, "getCouseMarks: "+mark6.getMARK());
             marks.add(mark1);
             marks.add(mark2);
             marks.add(mark3);
@@ -136,7 +150,7 @@ public class ParseCourses extends ParseResponse {
             return marks;
 
         } catch (JSONException e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
 
         return null;

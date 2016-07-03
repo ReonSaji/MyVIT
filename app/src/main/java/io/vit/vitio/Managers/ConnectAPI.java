@@ -21,6 +21,7 @@ import android.util.Log;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -34,6 +35,7 @@ import java.util.Map;
 
 import io.vit.vitio.Extras.ErrorDefinitions;
 import io.vit.vitio.Extras.ReturnParcel;
+import io.vit.vitio.Managers.Parsers.ParseCoursePage;
 import io.vit.vitio.Managers.Parsers.ParseGeneral;
 import io.vit.vitio.Managers.Parsers.ParseResponse;
 import io.vit.vitio.Managers.Parsers.ParseCourses;
@@ -45,17 +47,30 @@ import io.vit.vitio.Managers.Parsers.ParseSpotlight;
 public class ConnectAPI {
 
     //Constants
-    public static final int SERVERTEST_CODE=0;
-    public static final int LOGIN_CODE=1;
-    public static final int REFRESH_CODE=2;
-    public static final int GENERIC_CODE=-1;
+    public static final int SERVERTEST_CODE = 0;
+    public static final int LOGIN_CODE = 1;
+    public static final int REFRESH_CODE = 2;
+    public static final int GENERIC_CODE = -1;
     //Initialize HTTP URLs
-    private final String VELLORE_LOGIN_URL="http://vitacademics-rel.herokuapp.com/api/v2/vellore/login";
-    private final String CHENNAI_LOGIN_URL="http://vitacademics-rel.herokuapp.com/api/v2/chennai/login";
-    private final String VELLORE_REFRESH_URL="http://vitacademics-rel.herokuapp.com/api/v2/vellore/refresh";
-    private final String CHENNAI_REFRESH_URL="http://vitacademics-rel.herokuapp.com/api/v2/chennai/refresh";
-    private final String SERVERTEST_URL="http://vitacademics-rel.herokuapp.com/api/v2/system";
-    private final String SPOTLIGHT_URL="http://facademics-test.appspot.com/spotlight";
+    /*private final String VELLORE_LOGIN_URL = "http://vitacademics-rel.herokuapp.com/api/v2/vellore/login";
+    private final String CHENNAI_LOGIN_URL = "http://vitacademics-rel.herokuapp.com/api/v2/chennai/login";
+    private final String VELLORE_REFRESH_URL = "http://vitacademics-rel.herokuapp.com/api/v2/vellore/refresh";
+    private final String CHENNAI_REFRESH_URL = "http://vitacademics-rel.herokuapp.com/api/v2/chennai/refresh";
+    private final String SERVERTEST_URL = "http://vitacademics-rel.herokuapp.com/api/v2/system";
+    private final String SPOTLIGHT_URL = "http://facademics-test.appspot.com/spotlight";
+    private final String COURSE_PAGE_SLOTS_URL = "http://academics.azurewebsites.com/coursepage/slots";
+    private final String COURSE_PAGE_FACULTIES_URL = "http://academics.azurewebsites.com/coursepage/faculties";
+    private final String COURSE_PAGE_UPLOADS_URL = "http://academics.azurewebsites.com/coursepage/data";
+    */
+    private final String VELLORE_LOGIN_URL = "http://207.46.139.218:8080/campus/vellore/login";
+    private final String CHENNAI_LOGIN_URL = "http://207.46.139.218:8080/campus/chennai/login";
+    private final String VELLORE_REFRESH_URL = "http://207.46.139.218:8080/campus/vellore/refresh";
+    private final String CHENNAI_REFRESH_URL = "http://207.46.139.218:8080/campus/chennai/refresh";
+    private final String SERVERTEST_URL = "http://vitacademics-rel.herokuapp.com/api/v2/system";
+    private final String SPOTLIGHT_URL = "http://facademics-test.appspot.com/spotlight";
+    private final String COURSE_PAGE_SLOTS_URL = "http://academics.azurewebsites.com/coursepage/slots";
+    private final String COURSE_PAGE_FACULTIES_URL = "http://academics.azurewebsites.com/coursepage/faculties";
+    private final String COURSE_PAGE_UPLOADS_URL = "http://academics.azurewebsites.com/coursepage/data";
 
 
     private DataHandler dataHandler;
@@ -63,28 +78,33 @@ public class ConnectAPI {
     private AppController appController;
     private RequestListener mListener;
 
-    public ConnectAPI(Context context){
-        mContext=context;
-        dataHandler=DataHandler.getInstance(mContext);
-        appController=AppController.getInstance();
+    public ConnectAPI(Context context) {
+        mContext = context;
+        dataHandler = DataHandler.getInstance(mContext);
+        appController = AppController.getInstance();
     }
 
-    public void serverTest(){
-        if(mListener!=null) {
+    public void serverTest() {
+        if (mListener != null) {
             mListener.onRequestInitiated(SERVERTEST_CODE);
 
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
+            //Skipping testing
+            ParseResponse parseResponse = new ParseResponse("");
+            ReturnParcel parcel = new ReturnParcel(ErrorDefinitions.CODE_SUCCESS);
+            mListener.onRequestCompleted(parcel, SERVERTEST_CODE);
+
+            /*JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                     SERVERTEST_URL.trim(), new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    Log.d("response","recieved");
+                    Log.d("response", "recieved");
                     if (response != null) {
                         ParseResponse parseResponse = new ParseResponse(response);
                         ReturnParcel parcel = new ReturnParcel(parseResponse.getResponseStatusCode());
-                        mListener.onRequestCompleted(parcel,SERVERTEST_CODE);
+                        mListener.onRequestCompleted(parcel, SERVERTEST_CODE);
                     } else {
                         ReturnParcel parcel = new ReturnParcel(ErrorDefinitions.CODE_NODATA);
-                        mListener.onErrorRequest(parcel,SERVERTEST_CODE);
+                        mListener.onErrorRequest(parcel, SERVERTEST_CODE);
                     }
                 }
             }, new Response.ErrorListener() {
@@ -92,21 +112,26 @@ public class ConnectAPI {
                 public void onErrorResponse(VolleyError error) {
                     error.printStackTrace();
                     ReturnParcel parcel = new ReturnParcel(ErrorDefinitions.CODE_NETWORK);
-                    mListener.onErrorRequest(parcel,SERVERTEST_CODE);
+                    mListener.onErrorRequest(parcel, SERVERTEST_CODE);
                 }
-            });
+            }) {
+                @Override
+                protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
+                    Log.d("pnresponse", response.toString());
+                    return super.parseNetworkResponse(response);
+                }
+            };
             jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(8000,
                     2,
                     DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-            appController.addToRequestQueue(jsonObjectRequest, "servertest");
-        }
-        else{
+            appController.addToRequestQueue(jsonObjectRequest, "servertest");*/
+        } else {
             return;
         }
     }
 
-    public void login(){
-        if(mListener!=null) {
+    public void login() {
+        if (mListener != null) {
 
 
             mListener.onRequestInitiated(LOGIN_CODE);
@@ -121,21 +146,20 @@ public class ConnectAPI {
                     url.trim(), new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    Log.d("loginresponse",response);
+                    Log.d("loginresponse", response);
                     if (response != null) {
                         ParseGeneral parseGeneral = new ParseGeneral(response);
                         ReturnParcel parcel = new ReturnParcel(parseGeneral.getResponseStatusCode());
                         parcel.setRETURN_PARCEL_OBJECT(parseGeneral);
-                        if(parseGeneral.validateLogin()){
-                            mListener.onRequestCompleted(parcel,LOGIN_CODE);
-                        }
-                        else{
-                            mListener.onErrorRequest(parcel,LOGIN_CODE);
+                        if (parseGeneral.validateLogin()) {
+                            mListener.onRequestCompleted(parcel, LOGIN_CODE);
+                        } else {
+                            mListener.onErrorRequest(parcel, LOGIN_CODE);
                         }
 
                     } else {
                         ReturnParcel parcel = new ReturnParcel(ErrorDefinitions.CODE_NODATA);
-                        mListener.onErrorRequest(parcel,LOGIN_CODE);
+                        mListener.onErrorRequest(parcel, LOGIN_CODE);
                     }
                 }
             }, new Response.ErrorListener() {
@@ -143,20 +167,19 @@ public class ConnectAPI {
                 public void onErrorResponse(VolleyError error) {
                     error.printStackTrace();
                     ReturnParcel parcel = new ReturnParcel(ErrorDefinitions.CODE_NETWORK);
-                    mListener.onErrorRequest(parcel,LOGIN_CODE);
+                    mListener.onErrorRequest(parcel, LOGIN_CODE);
                 }
-            })
-            {
-
+            }) {
 
 
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Log.d("getParams", "called");
-                    Map<String ,String> postMap=new HashMap<>();
-                    postMap.put("regno",dataHandler.getRegNo());
-                    postMap.put("dob",dataHandler.getDOB());
-                    postMap.put("mobile",dataHandler.getPhoneNo());
+                    Map<String, String> postMap = new HashMap<>();
+                    postMap.put("regNo", dataHandler.getRegNo());
+                    //postMap.put("dob", dataHandler.getDOB());
+                    //postMap.put("mobile", dataHandler.getPhoneNo());
+                    postMap.put("psswd", dataHandler.getPhoneNo());
 
                     return postMap;
                 }
@@ -166,14 +189,13 @@ public class ConnectAPI {
                     2,
                     DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             appController.addToRequestQueue(stringRequest, "loginrequest");
-        }
-        else{
+        } else {
             return;
         }
     }
 
-       public void refresh(){
-        if(mListener!=null) {
+    public void refresh() {
+        if (mListener != null) {
             mListener.onRequestInitiated(REFRESH_CODE);
             String url;
             if (dataHandler.getCampus().equals("vellore")) {
@@ -187,18 +209,20 @@ public class ConnectAPI {
                 public void onResponse(String response) {
                     if (response != null) {
 
-                        Log.d("refresh","response");
+                        Log.d("refresh", "response");
                         ParseCourses parseCourses = new ParseCourses(response);
                         ReturnParcel parcel = new ReturnParcel(parseCourses.getResponseStatusCode());
                         parcel.setRETURN_PARCEL_OBJECT(parseCourses);
-                        if(parseCourses.getResponseStatusCode()==ErrorDefinitions.CODE_SUCCESS) {
+                        if (parseCourses.getResponseStatusCode() == ErrorDefinitions.CODE_SUCCESS || parseCourses.getResponseStatusCode() == ErrorDefinitions.CODE_MONGODOWM) {
                             dataHandler.saveCourseList(parseCourses.getCoursesList());
                             dataHandler.saveSemester(parseCourses.getSemester());
+                            dataHandler.saveSchool(parseCourses.getSchool());
+                            dataHandler.saveName(parseCourses.getName());
                         }
                         mListener.onRequestCompleted(parcel, REFRESH_CODE);
                     } else {
                         ReturnParcel parcel = new ReturnParcel(ErrorDefinitions.CODE_NODATA);
-                        mListener.onErrorRequest(parcel,REFRESH_CODE);
+                        mListener.onErrorRequest(parcel, REFRESH_CODE);
                     }
                 }
             }, new Response.ErrorListener() {
@@ -206,22 +230,25 @@ public class ConnectAPI {
                 public void onErrorResponse(VolleyError error) {
                     error.printStackTrace();
                     ReturnParcel parcel = new ReturnParcel(ErrorDefinitions.CODE_NETWORK);
-                    mListener.onErrorRequest(parcel,REFRESH_CODE);
+                    mListener.onErrorRequest(parcel, REFRESH_CODE);
                 }
-            }){
+            }) {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String ,String> postMap=new HashMap<>();
-                    postMap.put("regno",dataHandler.getRegNo());
-                    postMap.put("dob",dataHandler.getDOB());
-                    postMap.put("mobile",dataHandler.getPhoneNo());
+                    Map<String, String> postMap = new HashMap<>();
+                    postMap.put("regNo", dataHandler.getRegNo());
+                    //postMap.put("dob", dataHandler.getDOB());
+                    //postMap.put("mobile", dataHandler.getPhoneNo());
+                    postMap.put("psswd", dataHandler.getPhoneNo());
+
 
                     return postMap;
                 }
+
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
-                    Map<String,String> params = new HashMap<String, String>();
-                    params.put("Content-Type","application/x-www-form-urlencoded");
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("Content-Type", "application/x-www-form-urlencoded");
                     return params;
                 }
             };
@@ -229,29 +256,28 @@ public class ConnectAPI {
                     2,
                     DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             appController.addToRequestQueue(stringRequest, "refreshrequest");
-        }
-        else{
+        } else {
             return;
         }
     }
 
-    public void fetchSpotlight(){
-        if(mListener!=null) {
+    public void fetchSpotlight() {
+        if (mListener != null) {
             mListener.onRequestInitiated(GENERIC_CODE);
             StringRequest stringRequest = new StringRequest(Request.Method.GET,
                     SPOTLIGHT_URL, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    Log.d("sres",response);
+                    Log.d("sres", response);
                     if (response != null) {
-                        ParseSpotlight parseSpotlight= new ParseSpotlight(response);
+                        ParseSpotlight parseSpotlight = new ParseSpotlight(response);
                         parseSpotlight.parse();
                         ReturnParcel parcel = new ReturnParcel(ErrorDefinitions.CODE_SUCCESS);
                         parcel.setRETURN_PARCEL_OBJECT(parseSpotlight);
                         mListener.onRequestCompleted(parcel, GENERIC_CODE);
                     } else {
                         ReturnParcel parcel = new ReturnParcel(ErrorDefinitions.CODE_NODATA);
-                        mListener.onErrorRequest(parcel,GENERIC_CODE);
+                        mListener.onErrorRequest(parcel, GENERIC_CODE);
                     }
                 }
             }, new Response.ErrorListener() {
@@ -259,29 +285,144 @@ public class ConnectAPI {
                 public void onErrorResponse(VolleyError error) {
                     error.printStackTrace();
                     ReturnParcel parcel = new ReturnParcel(ErrorDefinitions.CODE_NETWORK);
-                    mListener.onErrorRequest(parcel,GENERIC_CODE);
+                    mListener.onErrorRequest(parcel, GENERIC_CODE);
                 }
             });
             stringRequest.setRetryPolicy(new DefaultRetryPolicy(10000,
                     DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                     DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             appController.addToRequestQueue(stringRequest, "spotlightrequest");
+        } else {
+            return;
         }
-        else{
+    }
+
+    public void getCoursePageSlots(String courseId) {
+        if (mListener != null) {
+            mListener.onRequestInitiated(GENERIC_CODE);
+            //TODO Define getPassword function in Data Handler after new api
+            String url = COURSE_PAGE_SLOTS_URL + "?regno=" + dataHandler.getRegNo() + "&psswd=" + dataHandler.getPassword() + "&crs=" + courseId;
+            StringRequest stringRequest = new StringRequest(Request.Method.GET,
+                    url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.d("crs_slots", response);
+                    if (response != null) {
+                        ParseCoursePage parseCoursePage = new ParseCoursePage(response, ParseCoursePage.IS_SLOTS);
+                        parseCoursePage.parse();
+                        ReturnParcel parcel = new ReturnParcel(ErrorDefinitions.CODE_SUCCESS);
+                        parcel.setRETURN_PARCEL_OBJECT(parseCoursePage);
+                        mListener.onRequestCompleted(parcel, GENERIC_CODE);
+                    } else {
+                        ReturnParcel parcel = new ReturnParcel(ErrorDefinitions.CODE_NODATA);
+                        mListener.onErrorRequest(parcel, GENERIC_CODE);
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                    ReturnParcel parcel = new ReturnParcel(ErrorDefinitions.CODE_NETWORK);
+                    mListener.onErrorRequest(parcel, GENERIC_CODE);
+                }
+            });
+            stringRequest.setRetryPolicy(new DefaultRetryPolicy(10000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            appController.addToRequestQueue(stringRequest, "coursePageSlotRequest");
+        } else {
+            return;
+        }
+    }
+
+    public void getCoursePageFaculties(String courseId, String slotId) {
+        if (mListener != null) {
+            mListener.onRequestInitiated(GENERIC_CODE);
+            //TODO Define getPassword function in Data Handler after new api
+            String url = COURSE_PAGE_FACULTIES_URL + "?regno=" + dataHandler.getRegNo() + "&psswd=" + dataHandler.getPassword()
+                    + "&crs=" + courseId + "&slt=" + slotId;
+            StringRequest stringRequest = new StringRequest(Request.Method.GET,
+                    url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.d("crs_faculties", response);
+                    if (response != null) {
+                        ParseCoursePage parseCoursePage = new ParseCoursePage(response, ParseCoursePage.IS_FACULTIES);
+                        parseCoursePage.parse();
+                        ReturnParcel parcel = new ReturnParcel(ErrorDefinitions.CODE_SUCCESS);
+                        parcel.setRETURN_PARCEL_OBJECT(parseCoursePage);
+                        mListener.onRequestCompleted(parcel, GENERIC_CODE);
+                    } else {
+                        ReturnParcel parcel = new ReturnParcel(ErrorDefinitions.CODE_NODATA);
+                        mListener.onErrorRequest(parcel, GENERIC_CODE);
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                    ReturnParcel parcel = new ReturnParcel(ErrorDefinitions.CODE_NETWORK);
+                    mListener.onErrorRequest(parcel, GENERIC_CODE);
+                }
+            });
+            stringRequest.setRetryPolicy(new DefaultRetryPolicy(10000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            appController.addToRequestQueue(stringRequest, "coursePageFacultiesRequest");
+        } else {
+            return;
+        }
+    }
+
+    public void getCoursePageUploads(String courseId,String slotId, String facId) {
+        if (mListener != null) {
+            mListener.onRequestInitiated(GENERIC_CODE);
+            //TODO Define getPassword function in Data Handler after new api
+            String url = COURSE_PAGE_FACULTIES_URL + "?regno=" + dataHandler.getRegNo() + "&psswd=" + dataHandler.getPassword()
+                    + "&crs=" + courseId + "&slt=" + slotId+"&fac="+facId;
+            StringRequest stringRequest = new StringRequest(Request.Method.GET,
+                    url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.d("crs_uploads", response);
+                    if (response != null) {
+                        ParseCoursePage parseCoursePage = new ParseCoursePage(response, ParseCoursePage.IS_UPLOADS);
+                        parseCoursePage.parse();
+                        ReturnParcel parcel = new ReturnParcel(ErrorDefinitions.CODE_SUCCESS);
+                        parcel.setRETURN_PARCEL_OBJECT(parseCoursePage);
+                        mListener.onRequestCompleted(parcel, GENERIC_CODE);
+                    } else {
+                        ReturnParcel parcel = new ReturnParcel(ErrorDefinitions.CODE_NODATA);
+                        mListener.onErrorRequest(parcel, GENERIC_CODE);
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                    ReturnParcel parcel = new ReturnParcel(ErrorDefinitions.CODE_NETWORK);
+                    mListener.onErrorRequest(parcel, GENERIC_CODE);
+                }
+            });
+            stringRequest.setRetryPolicy(new DefaultRetryPolicy(10000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            appController.addToRequestQueue(stringRequest, "coursePageUploadsRequest");
+        } else {
             return;
         }
     }
 
 
-    public void setOnRequestListener(RequestListener listener){
-        this.mListener=listener;
+    public void setOnRequestListener(RequestListener listener) {
+        this.mListener = listener;
     }
 
-    public void changeOnRequestListener(RequestListener listener){
-        this.mListener=listener;
+    public void changeOnRequestListener(RequestListener listener) {
+        this.mListener = listener;
     }
 
-    public interface RequestListener{
+    public interface RequestListener {
 
         public void onRequestInitiated(int code);
 

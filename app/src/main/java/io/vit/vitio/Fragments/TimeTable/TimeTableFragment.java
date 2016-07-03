@@ -20,28 +20,23 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -49,18 +44,15 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import io.vit.vitio.Extras.ErrorDefinitions;
 import io.vit.vitio.Extras.ReturnParcel;
-import io.vit.vitio.Fragments.Courses.*;
-import io.vit.vitio.Fragments.SubjectViewFragment;
+import io.vit.vitio.Extras.Themes.MyTheme;
 import io.vit.vitio.HomeActivity;
 import io.vit.vitio.Instances.Course;
 import io.vit.vitio.Managers.ConnectAPI;
 import io.vit.vitio.Managers.DataHandler;
-import io.vit.vitio.Managers.Parsers.ParseCourses;
 import io.vit.vitio.Managers.Parsers.ParseTimeTable;
 import io.vit.vitio.R;
 
@@ -76,7 +68,9 @@ public class TimeTableFragment extends Fragment implements View.OnClickListener,
     private TextView mDate, tuDate, wDate, thDate, fDate, sDate, mDay, tuDay, wDay, thDay, fDay, sDay;
     private ImageView mImage, tuImage, wImage, thImage, fImage, sImage;
     private LinearLayout mBox, tuBox, wBox, thBox, fBox, sBox, calIcon;
-    private ArrayList<ImageView> arrayImages;
+    private FrameLayout mBoxBg, tuBoxBg, wBoxBg, thBoxBg, fBoxBg, sBoxBg;
+    private ArrayList<FrameLayout> arrayImages;
+    private ArrayList<TextView> arrayTexts;
     protected ViewPager myTimeTablePager;
     private SliderAdapter adapter;
     public static List<List<TimeTableListInfo>> TIME_TABLE_LIST;
@@ -85,6 +79,7 @@ public class TimeTableFragment extends Fragment implements View.OnClickListener,
     private List<Course> courseList;
     Typeface typeface;
     private int NUM_PAGES=6;
+    private MyTheme myTheme;
 
     public TimeTableFragment() {
     }
@@ -96,6 +91,7 @@ public class TimeTableFragment extends Fragment implements View.OnClickListener,
         init(rootView);
         setFonts();
         setListeners();
+        setTransitions();
         dialog.setCancelable(false);
         changeImageBackground(0);
         if (dataHandler.isDatabaseBuild()) {
@@ -122,6 +118,13 @@ public class TimeTableFragment extends Fragment implements View.OnClickListener,
 
     }
 
+    private void setTransitions() {
+        if(Build.VERSION.SDK_INT>=21) {
+            setExitTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.explode));
+            setReenterTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.fade));
+        }
+    }
+
     private void init(ViewGroup rootView) {
         mDate = (TextView) rootView.findViewById(R.id.monday_date);
         tuDate = (TextView) rootView.findViewById(R.id.tuesday_date);
@@ -137,12 +140,13 @@ public class TimeTableFragment extends Fragment implements View.OnClickListener,
         fDay = (TextView) rootView.findViewById(R.id.friday_letter);
         sDay = (TextView) rootView.findViewById(R.id.saturday_letter);
 
-        mImage = (ImageView) rootView.findViewById(R.id.mImage);
-        tuImage = (ImageView) rootView.findViewById(R.id.tuImage);
-        wImage = (ImageView) rootView.findViewById(R.id.wImage);
-        thImage = (ImageView) rootView.findViewById(R.id.thImage);
-        fImage = (ImageView) rootView.findViewById(R.id.fImage);
-        sImage = (ImageView) rootView.findViewById(R.id.sImage);
+        mBoxBg = (FrameLayout) rootView.findViewById(R.id.mon_bg);
+        tuBoxBg = (FrameLayout) rootView.findViewById(R.id.tue_bg);
+        wBoxBg = (FrameLayout) rootView.findViewById(R.id.wed_bg);
+        thBoxBg = (FrameLayout) rootView.findViewById(R.id.thu_bg);
+        fBoxBg = (FrameLayout) rootView.findViewById(R.id.fri_bg);
+        sBoxBg = (FrameLayout) rootView.findViewById(R.id.sat_bg);
+
 
         mBox = (LinearLayout) rootView.findViewById(R.id.monday_box);
         tuBox = (LinearLayout) rootView.findViewById(R.id.tuesday_box);
@@ -154,22 +158,32 @@ public class TimeTableFragment extends Fragment implements View.OnClickListener,
 
         myTimeTablePager= (ViewPager) rootView.findViewById(R.id.pager);
         arrayImages = new ArrayList<>();
-        arrayImages.add(mImage);
-        arrayImages.add(tuImage);
-        arrayImages.add(wImage);
-        arrayImages.add(thImage);
-        arrayImages.add(fImage);
-        arrayImages.add(sImage);
+        arrayImages.add(mBoxBg);
+        arrayImages.add(tuBoxBg);
+        arrayImages.add(wBoxBg);
+        arrayImages.add(thBoxBg);
+        arrayImages.add(fBoxBg);
+        arrayImages.add(sBoxBg);
+
+        arrayTexts=new ArrayList<>();
+        arrayTexts.add(mDay);
+        arrayTexts.add(tuDay);
+        arrayTexts.add(wDay);
+        arrayTexts.add(thDay);
+        arrayTexts.add(fDay);
+        arrayTexts.add(sDay);
 
         connectAPI = new ConnectAPI(getActivity());
         dataHandler = new DataHandler(getActivity());
 
         dialog = new ProgressDialog(getActivity());
 
+        myTheme=new MyTheme(getActivity());
     }
 
     private void setFonts() {
-        typeface = Typeface.createFromAsset(getResources().getAssets(), "fonts/Montserrat-Regular.ttf");
+        myTheme.refreshTheme();
+        typeface = myTheme.getMyThemeTypeface();
         mDate.setTypeface(typeface);
         tuDate.setTypeface(typeface);
         wDate.setTypeface(typeface);
@@ -272,14 +286,18 @@ public class TimeTableFragment extends Fragment implements View.OnClickListener,
         super.onResume();
         ((HomeActivity) getActivity()).setToolbarFormat(2);
         ((HomeActivity) getActivity()).changeStatusBarColor(2);
+        setFonts();
+        changeImageBackground(myTimeTablePager.getCurrentItem());
     }
 
     public void changeImageBackground(int i) {
         for (int j = 0; j < arrayImages.size(); j++) {
             if (j == i) {
-                arrayImages.get(i).setActivated(true);
+                arrayImages.get(i).setBackgroundResource(myTheme.getTodayHeaderColor());
+                arrayTexts.get(i).setSelected(true);
             } else {
-                arrayImages.get(j).setActivated(false);
+                arrayImages.get(j).setBackgroundResource(R.color.transparent);
+                arrayTexts.get(j).setSelected(false);
             }
         }
     }
@@ -336,7 +354,7 @@ public class TimeTableFragment extends Fragment implements View.OnClickListener,
                 if (dialog.isShowing()) {
                     dialog.hide();
                 }
-                if (parcel.getRETURN_CODE() == ErrorDefinitions.CODE_SUCCESS) {
+                if (parcel.getRETURN_CODE() == ErrorDefinitions.CODE_SUCCESS||parcel.getRETURN_CODE()==ErrorDefinitions.CODE_MONGODOWM) {
                     setTimetableFromDatabase();
                 } else {
                     showToast(parcel.getRETURN_MESSAGE());

@@ -80,4 +80,22 @@ public class ParseResponse {
         }
     }
 
+    public String getName(){
+        try {
+            return mResponseObject.getString("name");
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public String getSchool(){
+        try {
+            return mResponseObject.getString("school");
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }

@@ -20,51 +20,48 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.res.TypedArray;
+import android.content.Intent;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
-import android.graphics.drawable.shapes.Shape;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PowerManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.TransitionInflater;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AnimationSet;
-import android.view.animation.AnticipateInterpolator;
-import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import io.vit.vitio.Extras.ErrorDefinitions;
 import io.vit.vitio.Extras.ReturnParcel;
-import io.vit.vitio.Fragments.SubjectViewFragment;
+import io.vit.vitio.Extras.Themes.MyTheme;
+import io.vit.vitio.Fragments.SubjectView.SubjectViewFragmentTrial;
 import io.vit.vitio.Fragments.TimeTable.TimeTableListInfo;
 import io.vit.vitio.HomeActivity;
 import io.vit.vitio.Instances.Course;
 import io.vit.vitio.Managers.ConnectAPI;
 import io.vit.vitio.Managers.DataHandler;
-import io.vit.vitio.Managers.Parsers.ParseCourses;
 import io.vit.vitio.Managers.Parsers.ParseTimeTable;
 import io.vit.vitio.R;
+import io.vit.vitio.SubjectViewActivity;
 
 /**
  * Created by shalini on 16-06-2015.
@@ -75,19 +72,19 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
     private DataHandler dataHandler;
 
     //Declare Views
-    private TextView subjectCode, subjectName, subjectTime, subjectPer, subjectVenue, ifmissedPer, ocassionQoute;
+    private TextView subjectCode, subjectName, subjectTime, subjectPer, subjectVenue, ifmissedPer, ocassionQoute, laterToday,alternateText;
     private RecyclerView recyclerView;
-    private LinearLayout attendanceBar, bottomHalf, ocassionContainer, ocassionContainerInner;
-    private ImageView ocassionImage;
-
+    private LinearLayout  bottomHalf, ocassionContainer, ocassionContainerInner,topHalf,headerLayout, aboveBottomHalf,alternateLayout;
+    private ImageView ocassionImage,attIndicator,buildingImage;
+    private FrameLayout mainLayout;
     private TodayListAdapter adapter;
     private List<TimeTableListInfo> todaytimeTable;
     private ParseTimeTable parseTimeTable;
     private ProgressDialog dialog;
     private List<Course> courseList;
     private Typeface typeface;
-
-    private SwipeRefreshLayout swipeRefreshLayout;
+    private MyTheme theme;
+    private GeneralSwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -97,9 +94,17 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
         setFonts();
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         setListeners();
+        setTransitions();
         dialog.setCancelable(false);
         setData();
         return rootView;
+    }
+
+    private void setTransitions() {
+        if(Build.VERSION.SDK_INT>=21) {
+            setExitTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.explode));
+            setReenterTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.fade));
+        }
     }
 
 
@@ -110,14 +115,23 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
         subjectPer = (TextView) rootView.findViewById(R.id.subject_per);
         subjectVenue = (TextView) rootView.findViewById(R.id.subject_venue);
         ifmissedPer = (TextView) rootView.findViewById(R.id.ifmissed_per);
+        alternateText = (TextView) rootView.findViewById(R.id.header_alternate_text);
         ocassionQoute = (TextView) rootView.findViewById(R.id.ocassion_qoute);
+        laterToday= (TextView) rootView.findViewById(R.id.later_today);
         recyclerView = (RecyclerView) rootView.findViewById(R.id.today_recycler_view);
-        attendanceBar = (LinearLayout) rootView.findViewById(R.id.attendance_bar);
         bottomHalf = (LinearLayout) rootView.findViewById(R.id.bottom_half_content);
+        topHalf = (LinearLayout) rootView.findViewById(R.id.top_half_content);
+        alternateLayout = (LinearLayout) rootView.findViewById(R.id.alternade_layout);
+        aboveBottomHalf = (LinearLayout) rootView.findViewById(R.id.above_bottom_half);
         ocassionContainer = (LinearLayout) rootView.findViewById(R.id.ocassion_container);
         ocassionContainerInner = (LinearLayout) rootView.findViewById(R.id.ocassion_container_inner);
+        headerLayout= (LinearLayout) rootView.findViewById(R.id.header_layout);
+
+        mainLayout=(FrameLayout)rootView.findViewById(R.id.main_layout);
 
         ocassionImage = (ImageView) rootView.findViewById(R.id.ocassion_image);
+        attIndicator = (ImageView) rootView.findViewById(R.id.att_indicator);
+        buildingImage = (ImageView) rootView.findViewById(R.id.building_image);
 
        /* weekendMusicImage=(ImageView)rootView.findViewById(R.id.weekend_music_image);
         weekendGlassesImage=(ImageView)rootView.findViewById(R.id.weekend_glasses_image);
@@ -130,11 +144,14 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
 
         dialog = new ProgressDialog(getActivity());
 
-        swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout = (GeneralSwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout.setRecyclerView(recyclerView);
+
+        theme=new MyTheme(getActivity());
     }
 
     private void setFonts() {
-        typeface = Typeface.createFromAsset(getResources().getAssets(), "fonts/Montserrat-Regular.ttf");
+        typeface = theme.getMyThemeTypeface();
         subjectCode.setTypeface(typeface);
         subjectName.setTypeface(typeface);
         subjectTime.setTypeface(typeface);
@@ -142,6 +159,8 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
         subjectVenue.setTypeface(typeface);
         ifmissedPer.setTypeface(typeface);
         ocassionQoute.setTypeface(typeface);
+        laterToday.setTypeface(typeface);
+        alternateText.setTypeface(typeface);
     }
 
     private void setListeners() {
@@ -151,7 +170,6 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-
 
             @Override
             public void onRefresh() {
@@ -224,15 +242,24 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
     }
 
     private void setWeekendFormat() {
+        /*buildingImage.setImageResource(R.color.transparent);
         bottomHalf.setVisibility(LinearLayout.GONE);
+        aboveBottomHalf.setVisibility(View.GONE);
+        //topHalf.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0,100));
         subjectCode.setVisibility(LinearLayout.GONE);
         //subjectName.setVisibility(TextView.GONE);
-        subjectName.setText("it's a");
-        subjectTime.setText("weekend!");
-        subjectTime.setTextSize(TypedValue.COMPLEX_UNIT_SP, 46);
-        subjectName.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28);
+        subjectName.setText("it's a weekend");
+        //subjectTime.setText("weekend!");
+        //subjectTime.setTextSize(TypedValue.COMPLEX_UNIT_SP, 46);
+        //subjectName.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28);
+        */
+
+        mainLayout.setVisibility(View.GONE);
+        alternateLayout.setVisibility(View.VISIBLE);
+        laterToday.setVisibility(View.GONE);
+        alternateText.setText("Have a great weekend");
         ocassionContainer.setVisibility(LinearLayout.VISIBLE);
-        ocassionImage.setImageResource(R.drawable.weekend_vector);
+        ocassionImage.setImageResource(R.drawable.weekend);
         ocassionQoute.setText(getString(R.string.weekend_qoute));
         animateView();
         recyclerView.setAdapter(new TodayListAdapter(getActivity(), new ArrayList<TimeTableListInfo>()));
@@ -265,6 +292,10 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
     }
 
     private void animateView() {
+        PowerManager powerManager=(PowerManager)getActivity().getSystemService(Context.POWER_SERVICE);
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP&&powerManager.isPowerSaveMode()){
+            return;
+        }
         //float dimension = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, getResources().getDisplayMetrics());
         ObjectAnimator objectAnimatorX = ObjectAnimator.ofFloat(ocassionImage, "scaleX", 1f, 0.8f);
         ObjectAnimator objectAnimatorY = ObjectAnimator.ofFloat(ocassionImage, "scaleY", 1f, 0.8f);
@@ -283,69 +314,37 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
 
     private void setNowHeader(List<TimeTableListInfo> todaytimeTable) {
 
-        subjectTime.setTextSize(TypedValue.COMPLEX_UNIT_SP, 19);
+        subjectTime.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         subjectName.setTextSize(TypedValue.COMPLEX_UNIT_SP, 21);
+        laterToday.setVisibility(View.VISIBLE);
+        //topHalf.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0,50));
         Course currentClass = parseTimeTable.getCurrentClass(todaytimeTable);
 
         if (currentClass != null) {
-            subjectCode.setVisibility(TextView.VISIBLE);
-            subjectName.setVisibility(TextView.VISIBLE);
-            bottomHalf.setVisibility(LinearLayout.VISIBLE);
-            subjectCode.setText(currentClass.getCOURSE_CODE());
-            subjectName.setText(currentClass.getCOURSE_TITLE());
-            subjectVenue.setText(currentClass.getCOURSE_VENUE());
-            attendanceBar.setLayoutParams(new LinearLayout.LayoutParams(0, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics()), currentClass.getCOURSE_ATTENDANCE().getPERCENTAGE()));
-            int per = currentClass.getCOURSE_ATTENDANCE().getPERCENTAGE();
-            if (per < 75) {
-                subjectPer.setTextColor(getActivity().getResources().getColor(R.color.fadered));
-                ((GradientDrawable) attendanceBar.getBackground()).setColor(getActivity().getResources().getColor(R.color.fadered));
-            } else {
-                subjectPer.setTextColor(getActivity().getResources().getColor(R.color.fadegreen));
-                ((GradientDrawable) attendanceBar.getBackground()).setColor(getActivity().getResources().getColor(R.color.fadegreen));
-            }
-            subjectPer.setText(per + "%");
 
-            int ifmissed = 0;
+            mainLayout.setVisibility(View.VISIBLE);
+            alternateLayout.setVisibility(View.GONE);
 
-            int mulFactor = 1;
-
-            Log.d("L", String.valueOf(currentClass.getCOURSE_TYPE_SHORT()));
-            if (currentClass.getCOURSE_TYPE_SHORT().equals("L")) {
-                mulFactor = currentClass.getCOURSE_LTPC().getPRACTICAL();
-                Log.d("L", String.valueOf(currentClass.getCOURSE_LTPC().getPRACTICAL()));
-            }
-            if (dataHandler.getSemester().equals("SS")) {
-                ifmissed = currentClass.getCOURSE_ATTENDANCE().getModifiedPercentage(currentClass.getCOURSE_ATTENDANCE().getATTENDED_CLASSES(),currentClass.getCOURSE_ATTENDANCE().getTOTAL_CLASSES()+2*mulFactor);
-
-            } else {
-                ifmissed = currentClass.getCOURSE_ATTENDANCE().getModifiedPercentage(currentClass.getCOURSE_ATTENDANCE().getATTENDED_CLASSES(),currentClass.getCOURSE_ATTENDANCE().getTOTAL_CLASSES()+mulFactor);
-            }
-
-            if (ifmissed < 75)
-                ifmissedPer.setTextColor(getActivity().getResources().getColor(R.color.fadered));
-            else
-                ifmissedPer.setTextColor(getActivity().getResources().getColor(R.color.fadegreen));
-            ifmissedPer.setText(ifmissed + "%");
-            subjectTime.setText("Right Now");
-
-        } else {
-            TodayHeader header = parseTimeTable.getNextClass(todaytimeTable);
-            Course nextClass = header.getCourse();
-            if (nextClass != null) {
+            aboveBottomHalf.setVisibility(View.VISIBLE);
+            if(!currentClass.isSeminar) {
+                buildingImage.setImageResource(currentClass.getBuildingImageId());
+                subjectPer.setVisibility(View.VISIBLE);
                 subjectCode.setVisibility(TextView.VISIBLE);
                 subjectName.setVisibility(TextView.VISIBLE);
                 bottomHalf.setVisibility(LinearLayout.VISIBLE);
-                subjectCode.setText(nextClass.getCOURSE_CODE());
-                subjectName.setText(nextClass.getCOURSE_TITLE());
-                subjectVenue.setText(nextClass.getCOURSE_VENUE());
-                attendanceBar.setLayoutParams(new LinearLayout.LayoutParams(0, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics()), nextClass.getCOURSE_ATTENDANCE().getPERCENTAGE()));
-                int per = nextClass.getCOURSE_ATTENDANCE().getPERCENTAGE();
+                subjectCode.setText(currentClass.getCOURSE_CODE());
+                subjectName.setText(currentClass.getCOURSE_TITLE());
+                subjectVenue.setText(currentClass.getCOURSE_VENUE());
+                //attendanceBar.setLayoutParams(new LinearLayout.LayoutParams(0, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics()), currentClass.getCOURSE_ATTENDANCE().getPERCENTAGE()));
+                int per = currentClass.getCOURSE_ATTENDANCE().getPERCENTAGE();
                 if (per < 75) {
                     subjectPer.setTextColor(getActivity().getResources().getColor(R.color.fadered));
-                    ((GradientDrawable) attendanceBar.getBackground()).setColor(getActivity().getResources().getColor(R.color.fadered));
+                    attIndicator.setImageResource(R.drawable.ic_att_short);
+                    //((GradientDrawable) attendanceBar.getBackground()).setColor(getActivity().getResources().getColor(R.color.fadered));
                 } else {
                     subjectPer.setTextColor(getActivity().getResources().getColor(R.color.fadegreen));
-                    ((GradientDrawable) attendanceBar.getBackground()).setColor(getActivity().getResources().getColor(R.color.fadegreen));
+                    attIndicator.setImageResource(R.drawable.ic_att_above);
+                    //((GradientDrawable) attendanceBar.getBackground()).setColor(getActivity().getResources().getColor(R.color.fadegreen));
                 }
                 subjectPer.setText(per + "%");
 
@@ -353,16 +352,16 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
 
                 int mulFactor = 1;
 
-                Log.d("L", String.valueOf(nextClass.getCOURSE_TYPE_SHORT()));
-                if (nextClass.getCOURSE_TYPE_SHORT().equals("L")) {
-                    mulFactor = nextClass.getCOURSE_LTPC().getPRACTICAL();
-                    Log.d("L", String.valueOf(nextClass.getCOURSE_LTPC().getPRACTICAL()));
+                Log.d("L", String.valueOf(currentClass.getCOURSE_TYPE_SHORT()));
+                if (currentClass.getCOURSE_TYPE_SHORT().equals("L")) {
+                    mulFactor = currentClass.getCOURSE_LTPC().getPRACTICAL();
+                    Log.d("L", String.valueOf(currentClass.getCOURSE_LTPC().getPRACTICAL()));
                 }
                 if (dataHandler.getSemester().equals("SS")) {
-                    ifmissed = nextClass.getCOURSE_ATTENDANCE().getModifiedPercentage(nextClass.getCOURSE_ATTENDANCE().getATTENDED_CLASSES(),nextClass.getCOURSE_ATTENDANCE().getTOTAL_CLASSES()+2*mulFactor);
+                    ifmissed = currentClass.getCOURSE_ATTENDANCE().getModifiedPercentage(currentClass.getCOURSE_ATTENDANCE().getATTENDED_CLASSES(), currentClass.getCOURSE_ATTENDANCE().getTOTAL_CLASSES() + 2 * mulFactor);
 
                 } else {
-                    ifmissed = nextClass.getCOURSE_ATTENDANCE().getModifiedPercentage(nextClass.getCOURSE_ATTENDANCE().getATTENDED_CLASSES(),nextClass.getCOURSE_ATTENDANCE().getTOTAL_CLASSES()+mulFactor);
+                    ifmissed = currentClass.getCOURSE_ATTENDANCE().getModifiedPercentage(currentClass.getCOURSE_ATTENDANCE().getATTENDED_CLASSES(), currentClass.getCOURSE_ATTENDANCE().getTOTAL_CLASSES() + mulFactor);
                 }
 
                 if (ifmissed < 75)
@@ -370,18 +369,106 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
                 else
                     ifmissedPer.setTextColor(getActivity().getResources().getColor(R.color.fadegreen));
                 ifmissedPer.setText(ifmissed + "%");
-                subjectTime.setText(header.getStatus());
-            } else {
+                subjectTime.setText("Right Now");
+            }else{
+                //topHalf.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0,100));
                 bottomHalf.setVisibility(LinearLayout.GONE);
                 subjectCode.setVisibility(LinearLayout.GONE);
+                subjectName.setText("Seminar/Meeting");
+                subjectTime.setText("Right Now");
+                subjectPer.setVisibility(View.GONE);
+                attIndicator.setImageResource(R.drawable.ic_att_above);
+                buildingImage.setImageResource(R.color.transparent);
+                //subjectTime.setTextSize(TypedValue.COMPLEX_UNIT_SP, 46);
+                //subjectName.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28);
+            }
+
+        } else {
+            TodayHeader header = parseTimeTable.getNextClass(todaytimeTable);
+            Course nextClass = header.getCourse();
+            if (nextClass != null) {
+
+                mainLayout.setVisibility(View.VISIBLE);
+                alternateLayout.setVisibility(View.GONE);
+
+                aboveBottomHalf.setVisibility(View.VISIBLE);
+                if(!nextClass.isSeminar) {
+
+                    buildingImage.setImageResource(nextClass.getBuildingImageId());
+                    subjectPer.setVisibility(View.VISIBLE);
+                    subjectCode.setVisibility(TextView.VISIBLE);
+                    subjectName.setVisibility(TextView.VISIBLE);
+                    bottomHalf.setVisibility(LinearLayout.VISIBLE);
+                    subjectCode.setText(nextClass.getCOURSE_CODE());
+                    subjectName.setText(nextClass.getCOURSE_TITLE());
+                    subjectVenue.setText(nextClass.getCOURSE_VENUE());
+                    //attendanceBar.setLayoutParams(new LinearLayout.LayoutParams(0, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics()), nextClass.getCOURSE_ATTENDANCE().getPERCENTAGE()));
+                    int per = nextClass.getCOURSE_ATTENDANCE().getPERCENTAGE();
+                    if (per < 75) {
+                        subjectPer.setTextColor(getActivity().getResources().getColor(R.color.fadered));
+                        attIndicator.setImageResource(R.drawable.ic_att_short);
+                        //((GradientDrawable) attendanceBar.getBackground()).setColor(getActivity().getResources().getColor(R.color.fadered));
+                    } else {
+                        subjectPer.setTextColor(getActivity().getResources().getColor(R.color.fadegreen));
+                        attIndicator.setImageResource(R.drawable.ic_att_above);
+                        //((GradientDrawable) attendanceBar.getBackground()).setColor(getActivity().getResources().getColor(R.color.fadegreen));
+                    }
+                    subjectPer.setText(per + "%");
+
+                    int ifmissed = 0;
+
+                    int mulFactor = 1;
+
+                    Log.d("L", String.valueOf(nextClass.getCOURSE_TYPE_SHORT()));
+                    if (nextClass.getCOURSE_TYPE_SHORT().equals("L")) {
+                        mulFactor = nextClass.getCOURSE_LTPC().getPRACTICAL();
+                        Log.d("L", String.valueOf(nextClass.getCOURSE_LTPC().getPRACTICAL()));
+                    }
+                    if (dataHandler.getSemester().equals("SS")) {
+                        ifmissed = nextClass.getCOURSE_ATTENDANCE().getModifiedPercentage(nextClass.getCOURSE_ATTENDANCE().getATTENDED_CLASSES(), nextClass.getCOURSE_ATTENDANCE().getTOTAL_CLASSES() + 2 * mulFactor);
+
+                    } else {
+                        ifmissed = nextClass.getCOURSE_ATTENDANCE().getModifiedPercentage(nextClass.getCOURSE_ATTENDANCE().getATTENDED_CLASSES(), nextClass.getCOURSE_ATTENDANCE().getTOTAL_CLASSES() + mulFactor);
+                    }
+
+                    if (ifmissed < 75)
+                        ifmissedPer.setTextColor(getActivity().getResources().getColor(R.color.fadered));
+                    else
+                        ifmissedPer.setTextColor(getActivity().getResources().getColor(R.color.fadegreen));
+                    ifmissedPer.setText(ifmissed + "%");
+                    subjectTime.setText(header.getStatus());
+                }else{
+                    //topHalf.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0,100));
+                    bottomHalf.setVisibility(LinearLayout.GONE);
+                    subjectCode.setVisibility(LinearLayout.GONE);
+                    subjectName.setText("Session/Meeting");
+                    subjectTime.setText(header.getStatus());
+                    subjectPer.setVisibility(View.GONE);
+                    attIndicator.setImageResource(R.drawable.ic_att_above);
+                    buildingImage.setImageResource(R.color.transparent);
+                    //subjectName.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28);
+                }
+            } else {
+
+
+                //buildingImage.setImageResource(R.color.transparent);
+                //aboveBottomHalf.setVisibility(View.GONE);
+                //topHalf.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0,100));
+                //bottomHalf.setVisibility(LinearLayout.GONE);
+                //subjectCode.setVisibility(LinearLayout.GONE);
                 recyclerView.setAdapter(new TodayListAdapter(getActivity(), new ArrayList<TimeTableListInfo>()));
                 //subjectName.setVisibility(TextView.GONE);
                 ocassionContainer.setVisibility(LinearLayout.VISIBLE);
-                subjectName.setText("done for the");
-                subjectTime.setText("day!");
-                subjectTime.setTextSize(TypedValue.COMPLEX_UNIT_SP, 46);
-                subjectName.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28);
-                ocassionImage.setImageResource(R.drawable.end_of_day_vector);
+                //subjectName.setText("done for the day");
+                //subjectTime.setText("day!");
+                //subjectTime.setTextSize(TypedValue.COMPLEX_UNIT_SP, 46);
+                //subjectName.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28);
+
+                laterToday.setVisibility(View.GONE);
+                mainLayout.setVisibility(View.GONE);
+                alternateLayout.setVisibility(View.VISIBLE);
+                alternateText.setText("Done for the day");
+                ocassionImage.setImageResource(R.drawable.done_for_day);
                 ocassionQoute.setText(getString(R.string.end_of_day_qoute));
                 animateView();
                 /*bottomHalf.setVisibility(LinearLayout.GONE);
@@ -448,7 +535,7 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
                 if (dialog.isShowing()) {
                     dialog.hide();
                 }
-                if (parcel.getRETURN_CODE() == ErrorDefinitions.CODE_SUCCESS) {
+                if (parcel.getRETURN_CODE() == ErrorDefinitions.CODE_SUCCESS||parcel.getRETURN_CODE()==ErrorDefinitions.CODE_MONGODOWM) {
                     setTimetableFromDatabase();
                 } else {
                     showToast(parcel.getRETURN_MESSAGE());
@@ -488,7 +575,13 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
         ((HomeActivity) getActivity()).setToolbarFormat(0);
         ((HomeActivity) getActivity()).changeStatusBarColor(0);
         setData();
+        theme.refreshTheme();
+        headerLayout.setBackgroundResource(theme.getTodayHeaderColor());
+        alternateLayout.setBackgroundResource(theme.getTodayHeaderColor());
+        setFonts();
     }
+
+
 
     @Override
     public void onClick(View v) {
@@ -527,32 +620,58 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
         public void onBindViewHolder(TodayViewHolder holder, int position) {
             if (dataT != null) {
                 float d = getResources().getDisplayMetrics().density;
-                holder.layout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (75 * d)));
-                holder.middleContentImage.setVisibility(ImageView.GONE);
+               // holder.middleContentImage.setVisibility(ImageView.GONE);
                 holder.middleContentInfo.setVisibility(LinearLayout.VISIBLE);
                 holder.rightContentInfo.setVisibility(LinearLayout.VISIBLE);
                 TimeTableListInfo info = dataT.get(position);
-                holder.subName.setText(info.name);
-                holder.subTime.setText(info.time);
-                holder.subVenue.setText(info.venue);
-                holder.subTypeShort.setText(info.typeShort);
-                int p = Integer.parseInt((info.per.split(" ")[0]));
-                if (p < 75)
-                    holder.subPer.setTextColor(c.getResources().getColor(R.color.fadered));
-                else
-                    holder.subPer.setTextColor(c.getResources().getColor(R.color.fadegreen));
-                holder.subPer.setText(info.per);
-                if (position == dataT.size() - 1) {
-                    holder.contLine.setVisibility(LinearLayout.INVISIBLE);
+                if(info.clsnbr!=0) {
+                    holder.subVenue.setVisibility(View.VISIBLE);
+                    holder.subTypeShort.setVisibility(View.VISIBLE);
+                    holder.contLine.setVisibility(LinearLayout.VISIBLE);
+                    holder.subName.setText(info.name);
+                    holder.subTime.setText(info.time12);
+                    holder.subVenue.setText(info.venue);
+                    if(info.typeShort.equalsIgnoreCase("t"))
+                        holder.subTypeShort.setText("theory");
+                    else if(info.typeShort.equalsIgnoreCase("l"))
+                        holder.subTypeShort.setText("lab");
+                    else
+                        holder.subTypeShort.setVisibility(View.GONE);
+                    int p = Integer.parseInt((info.per.split(" ")[0]));
+                    if (p < 75) {
+                        holder.subPer.setTextColor(c.getResources().getColor(R.color.fadered));
+                        holder.subAttIndicator.setImageResource(R.drawable.ic_att_short_red);
+                    }
+                    else {
+                        holder.subPer.setTextColor(c.getResources().getColor(R.color.new_gray));
+                        holder.subAttIndicator.setImageResource(R.drawable.ic_att_above_gray);
+                    }
+                    holder.subPer.setText(info.per);
+                    if (position == dataT.size() - 1) {
+                        holder.contLine.setVisibility(LinearLayout.GONE);
+                    }
+                }else{
+                    holder.subName.setText(info.name);
+                    holder.subTime.setText(info.time12);
+                    holder.subVenue.setVisibility(View.GONE);
+                    holder.subTypeShort.setVisibility(View.GONE);
+                    holder.subAttIndicator.setImageResource(R.drawable.ic_att_above_gray);
+                    holder.subPer.setText("");
+                    if (position == dataT.size() - 1) {
+                        Log.d("contLIne", String.valueOf(position));
+                        holder.contLine.setVisibility(LinearLayout.GONE);
+                    }
                 }
             } else if (dataI != null) {
-                holder.middleContentImage.setVisibility(ImageView.VISIBLE);
+               // holder.middleContentImage.setVisibility(ImageView.VISIBLE);
                 holder.middleContentInfo.setVisibility(LinearLayout.GONE);
                 holder.rightContentInfo.setVisibility(LinearLayout.GONE);
                 holder.layout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                 Integer id = dataI.get(position);
-                holder.middleContentImage.setImageResource(id.intValue());
+                //holder.middleContentImage.setImageResource(id.intValue());
                 if (position == dataI.size() - 1) {
+
+                    Log.d("contLIneElse", String.valueOf(position));
                     holder.contLine.setVisibility(LinearLayout.INVISIBLE);
                 }
             }
@@ -567,11 +686,13 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
             else return 0;
         }
 
+
+
         class TodayViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
             TextView subName, subTime, subPer, subVenue, subTypeShort;
             LinearLayout layout, contLine, middleContentInfo, rightContentInfo;
-            ImageView middleContentImage;
+            ImageView subAttIndicator;
 
 
             public TodayViewHolder(View itemView) {
@@ -580,32 +701,52 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
                 subTime = (TextView) itemView.findViewById(R.id.subject_time);
                 subPer = (TextView) itemView.findViewById(R.id.subject_per);
                 subVenue = (TextView) itemView.findViewById(R.id.subject_venue);
-                subTypeShort = (TextView) itemView.findViewById(R.id.subject_type_short);
+                subTypeShort = (TextView) itemView.findViewById(R.id.subject_type);
                 contLine = (LinearLayout) itemView.findViewById(R.id.cont_line);
                 middleContentInfo = (LinearLayout) itemView.findViewById(R.id.middle_content_info);
                 rightContentInfo = (LinearLayout) itemView.findViewById(R.id.right_content_info);
+                subAttIndicator = (ImageView) itemView.findViewById(R.id.subject_att_indicator);
 
-                middleContentImage = (ImageView) itemView.findViewById(R.id.middle_content_image);
+                //middleContentImage = (ImageView) itemView.findViewById(R.id.middle_content_image);
                 subName.setTypeface(typeface);
                 subTime.setTypeface(typeface);
                 subPer.setTypeface(typeface);
                 subVenue.setTypeface(typeface);
+                subTypeShort.setTypeface(typeface);
                 layout = (LinearLayout) itemView.findViewById(R.id.row_holder);
                 if (dataT != null)
                     itemView.setOnClickListener(this);
             }
 
             @Override
-            public void onClick(View v) {
-                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                Fragment subject = new SubjectViewFragment();
-                Bundle arguments = new Bundle();
-                arguments.putString("class_number", String.valueOf(dataT.get(getAdapterPosition()).clsnbr));
-                subject.setArguments(arguments);
-                ft.replace(R.id.main_fragment_holder, subject);
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                ft.addToBackStack(null);
-                ft.commit();
+            public void onClick(View view) {
+                if(dataT.get(getAdapterPosition()).clsnbr!=0) {
+                    /*
+                    SubjectViewFragmentTrial subject = new SubjectViewFragmentTrial();
+                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    Bundle arguments = new Bundle();
+                    arguments.putString("class_number", String.valueOf(dataT.get(getAdapterPosition()).clsnbr));
+                    subject.setArguments(arguments);
+                    ft.replace(R.id.main_fragment_holder, subject);
+                    //ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                    if (Build.VERSION.SDK_INT >= 21) {
+                        setSharedElementReturnTransition(TransitionInflater.from(getActivity()).inflateTransition(R.transition.trans_move));
+                        setExitTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.explode));
+                        subject.setSharedElementEnterTransition(TransitionInflater.from(getActivity()).inflateTransition(R.transition.trans_move));
+                        subject.setEnterTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.explode));
+                        subject.setSubNameId(subName.getTransitionName());
+                        subject.setImageNameId(headerLayout.getTransitionName());
+                        ft.addSharedElement(subName, subName.getTransitionName());
+                        ft.addSharedElement(headerLayout, headerLayout.getTransitionName());
+                    }
+
+                    ft.addToBackStack(null);
+                    ft.commit();
+                    */
+                    Intent goToSubjectView=new Intent(getActivity(), SubjectViewActivity.class);
+                    goToSubjectView.putExtra("class_number",String.valueOf(dataT.get(getAdapterPosition()).clsnbr));
+                    startActivity(goToSubjectView);
+                }
             }
 
         }

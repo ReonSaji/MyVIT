@@ -17,7 +17,9 @@
 package io.vit.vitio.Navigation;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Typeface;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +31,7 @@ import android.widget.TextView;
 import java.util.Collections;
 import java.util.List;
 
+import io.vit.vitio.Extras.Themes.MyTheme;
 import io.vit.vitio.R;
 
 /**
@@ -38,10 +41,14 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
     private LayoutInflater inflater;
     private List<NavigationDrawerInfo> recyclerList = Collections.emptyList();
     private Context c;
+    private MyTheme myTheme;
+    private Typeface typeface;
     private ClickListener clickListener;
     public NavigationDrawerAdapter(Context context,List<NavigationDrawerInfo> list)
     {
         c=context;
+        myTheme=new MyTheme(c);
+        typeface=myTheme.getMyThemeTypeface();
         inflater= LayoutInflater.from(context);
         recyclerList=list;
     }
@@ -56,7 +63,11 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
     public void onBindViewHolder(NavigationViewHolder holder, int position) {
         NavigationDrawerInfo info=recyclerList.get(position);
         holder.title.setText(info.name);
-        holder.imageView.setImageResource(info.iconId);
+        MyTheme theme=new MyTheme(c) ;
+        theme.refreshTheme();
+        holder.title.setTextColor(ContextCompat.getColor(c,theme.getMyThemeMainColor()));
+        TypedArray iconsArray=c.getResources().obtainTypedArray(theme.getMyThemeDrawerIconsTypedArray());
+        holder.imageView.setImageResource(iconsArray.getResourceId(position,-1));
     }
 
     @Override
@@ -77,11 +88,12 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
         public NavigationViewHolder(View itemView)
         {
             super(itemView);
-            Typeface tf=Typeface.createFromAsset(c.getAssets(),"fonts/Montserrat-Regular.ttf");
             title=(TextView)itemView.findViewById(R.id.navigation_row_text);
             imageView=(ImageView)itemView.findViewById(R.id.navigation_row_image);
             rowframe=(RelativeLayout)itemView.findViewById(R.id.row_holder);
-            title.setTypeface(tf);
+            myTheme.refreshTheme();
+            typeface=myTheme.getMyThemeTypeface();
+            title.setTypeface(typeface);
             itemView.setOnClickListener(this);
         }
 

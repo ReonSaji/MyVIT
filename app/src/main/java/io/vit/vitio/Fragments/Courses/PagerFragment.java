@@ -17,6 +17,7 @@
 package io.vit.vitio.Fragments.Courses;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -33,13 +34,13 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import io.vit.vitio.Fragments.SubjectViewFragment;
-import io.vit.vitio.Fragments.TimeTable.TimeTableListInfo;
-import io.vit.vitio.HomeActivity;
+import io.vit.vitio.Extras.Themes.MyTheme;
+import io.vit.vitio.Fragments.SubjectView.SubjectViewFragmentTrial;
 import io.vit.vitio.Instances.Course;
 import io.vit.vitio.Managers.DataHandler;
 import io.vit.vitio.Managers.Parsers.ParseTimeTable;
 import io.vit.vitio.R;
+import io.vit.vitio.SubjectViewActivity;
 
 /**
  * Created by shalini on 28-06-2015.
@@ -53,6 +54,7 @@ public class PagerFragment extends Fragment {
     private List<Course> myCourses;
     private ParseTimeTable parseTimeTable;
     private ImageView noClassView;
+    private MyTheme myTheme;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -67,7 +69,8 @@ public class PagerFragment extends Fragment {
 
     private void init(ViewGroup rootView) {
         recyclerView=(RecyclerView)rootView.findViewById(R.id.courses_recycler_view);
-        typeface = Typeface.createFromAsset(getResources().getAssets(), "fonts/Montserrat-Regular.ttf");
+        myTheme=new MyTheme(getActivity());
+        typeface = myTheme.getMyThemeTypeface();
         parseTimeTable=new ParseTimeTable(CoursesFragment.allCoursesList,DataHandler.getInstance(getActivity()));
         noClassView= (ImageView) rootView.findViewById(R.id.noclass_image);
     }
@@ -95,6 +98,8 @@ public class PagerFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        myTheme.refreshTheme();
+        typeface=myTheme.getMyThemeTypeface();
         setData();
     }
 
@@ -122,6 +127,18 @@ public class PagerFragment extends Fragment {
             Course info = data.get(position);
             holder.subName.setText(info.getCOURSE_TITLE());
             holder.subCode.setText(info.getCOURSE_CODE());
+            holder.subPer.setText(info.getCOURSE_ATTENDANCE().getPERCENTAGE()+" %");
+            if (info.getCOURSE_ATTENDANCE().getPERCENTAGE() < 75) {
+                holder.subPer.setTextColor(c.getResources().getColor(R.color.fadered));
+            }
+            else {
+                holder.subPer.setTextColor(c.getResources().getColor(R.color.new_gray));
+            }
+            if(position==data.size()-1) {
+                holder.contLine.setVisibility(LinearLayout.GONE);
+            }else{
+                holder.contLine.setVisibility(LinearLayout.VISIBLE);
+            }
         }
 
         @Override
@@ -132,23 +149,26 @@ public class PagerFragment extends Fragment {
 
         class CourseViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-            TextView subName, subCode;
-            LinearLayout layout;
+            TextView subName, subCode,subPer;
+            LinearLayout layout,contLine;
 
             public CourseViewHolder(View itemView) {
                 super(itemView);
                 subName = (TextView) itemView.findViewById(R.id.subject_name);
                 subCode = (TextView) itemView.findViewById(R.id.subject_code);
+                subPer = (TextView) itemView.findViewById(R.id.subject_per);
                 subName.setTypeface(typeface);
                 subCode.setTypeface(typeface);
+                subPer.setTypeface(typeface);
                 layout = (LinearLayout) itemView.findViewById(R.id.row_holder);
+                contLine = (LinearLayout) itemView.findViewById(R.id.cont_line);
                 itemView.setOnClickListener(this);
             }
 
             @Override
             public void onClick(View v) {
-                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                Fragment subject = new SubjectViewFragment();
+                /*FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                Fragment subject = new SubjectViewFragmentTrial();
                 Bundle arguments = new Bundle();
                 arguments.putString("class_number", String.valueOf(data.get(getAdapterPosition()).getCLASS_NUMBER()));
                 subject.setArguments(arguments);
@@ -156,6 +176,10 @@ public class PagerFragment extends Fragment {
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 ft.addToBackStack(null);
                 ft.commit();
+                */
+                Intent goToSubjectView=new Intent(getActivity(), SubjectViewActivity.class);
+                goToSubjectView.putExtra("class_number",String.valueOf(data.get(getAdapterPosition()).getCLASS_NUMBER()));
+                startActivity(goToSubjectView);
 
             }
 

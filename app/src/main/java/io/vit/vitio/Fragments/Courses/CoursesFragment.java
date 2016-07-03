@@ -17,22 +17,28 @@
 package io.vit.vitio.Fragments.Courses;
 
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.List;
 
 import io.vit.vitio.Extras.SlidingTabLayout;
+import io.vit.vitio.Extras.Themes.MyTheme;
 import io.vit.vitio.HomeActivity;
 import io.vit.vitio.Instances.Course;
+import io.vit.vitio.Instances.Grade;
 import io.vit.vitio.Managers.DataHandler;
 import io.vit.vitio.R;
 
@@ -44,9 +50,11 @@ public class CoursesFragment extends Fragment {
     private DataHandler dataHandler;
     private static final int NUM_PAGES = 8;
     private ViewPager pager;
+    private TextView currentHeader,earnedHeader,totalHeader,currentContent,earnedContent,totalContent;
     private SliderAdapter adapter;
     private SlidingTabLayout tabs;
     private Typeface typeface;
+    private MyTheme theme;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -55,6 +63,7 @@ public class CoursesFragment extends Fragment {
         Log.d("oncreate", "oncrate");
         init(rootView);
         setInit();
+        setTransitions();
         return rootView;
     }
 
@@ -66,6 +75,15 @@ public class CoursesFragment extends Fragment {
         tabs = (SlidingTabLayout) rootView.findViewById(R.id.tabs);
         dataHandler=DataHandler.getInstance(getActivity());
         allCoursesList=dataHandler.getCoursesList();
+        theme=new MyTheme(getActivity());
+
+        currentHeader=(TextView)rootView.findViewById(R.id.current_head);
+        earnedHeader=(TextView)rootView.findViewById(R.id.earned_head);
+        totalHeader=(TextView)rootView.findViewById(R.id.total_head);
+
+        currentContent=(TextView)rootView.findViewById(R.id.current_content);
+        earnedContent=(TextView)rootView.findViewById(R.id.left_content);
+        totalContent=(TextView)rootView.findViewById(R.id.total_content);
     }
 
     private void setInit() {
@@ -76,12 +94,20 @@ public class CoursesFragment extends Fragment {
         tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override
             public int getIndicatorColor(int position) {
-                return getResources().getColor(R.color.tabsScrollColor);
+                return getResources().getColor(R.color.transparent);
             }
         });
 
         // Setting the ViewPager For the SlidingTabsLayout
         tabs.setViewPager(pager);
+        setFonts();
+    }
+
+    private void setTransitions() {
+        if(Build.VERSION.SDK_INT>=21) {
+            setExitTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.explode));
+            setReenterTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.fade));
+        }
     }
 
     @Override
@@ -90,6 +116,25 @@ public class CoursesFragment extends Fragment {
         Log.d("onresume", "onresume");
         ((HomeActivity) getActivity()).setToolbarFormat(1);
         ((HomeActivity) getActivity()).changeStatusBarColor(1);
+        String s="a";
+        Grade d=new Grade(s);
+        theme.refreshTheme();
+        tabs.setViewPager(pager);
+        currentContent.setTextColor(ContextCompat.getColor(getContext(),theme.getMyThemeMainColor()));
+        earnedContent.setTextColor(ContextCompat.getColor(getContext(),theme.getMyThemeMainColor()));
+        totalContent.setTextColor(ContextCompat.getColor(getContext(),theme.getMyThemeMainColor()));
+        //tabs.setBackgroundColor(theme.getToolbarColorTypedArray().getColor(1,-1));
+        setFonts();
+    }
+
+    private void setFonts() {
+        typeface = theme.getMyThemeTypeface();
+        currentHeader.setTypeface(typeface);
+        earnedHeader.setTypeface(typeface);
+        totalHeader.setTypeface(typeface);
+        currentContent.setTypeface(typeface);
+        earnedContent.setTypeface(typeface);
+        totalContent.setTypeface(typeface);
     }
 
     private class SliderAdapter extends FragmentStatePagerAdapter {

@@ -16,47 +16,135 @@
   -->
 
 <resources>
-    <array name="drawer_icons">
-        <item>@drawable/ic_clock</item>
-        <item>@drawable/ic_marks</item>
-        <item>@drawable/ic_calendar_nav</item>
-        <item>@drawable/ic_person</item>
-        <item>@drawable/ic_drawer</item>
-        <item>@drawable/ic_action_place</item>
-        <item>@drawable/ic_spotlight</item>
+    <array name="drawer_icons_stand">
+        <item>@drawable/ic_nav_today_stand</item>
+        <item>@drawable/ic_nav_course_stand</item>
+        <item>@drawable/ic_nav_tt_stand</item>
+        <item>@drawable/ic_nav_map_stand</item>
+        <item>@drawable/ic_nav_spotlight_stand</item>
+        <item>@drawable/ic_nav_materials_stand</item>
+        <item>@drawable/ic_nav_exam_stand</item>
+        <item>@drawable/ic_nav_exam_stand</item>
+        <item>@drawable/ic_nav_exam_stand</item>
+    </array>
+
+
+    <array name="drawer_icons_classic">
+        <item>@drawable/ic_nav_today_classic</item>
+        <item>@drawable/ic_nav_course_classic</item>
+        <item>@drawable/ic_nav_tt_classic</item>
+        <item>@drawable/ic_nav_map_classic</item>
+        <item>@drawable/ic_nav_spotlight_classic</item>
+        <item>@drawable/ic_nav_materials_classic</item>
+        <item>@drawable/ic_nav_exam_classic</item>
+        <item>@drawable/ic_nav_exam_classic</item>
+        <item>@drawable/ic_nav_exam_classic</item>
+    </array>
+
+    <array name="drawer_icons_indigo">
+        <item>@drawable/ic_nav_today_indigo</item>
+        <item>@drawable/ic_nav_course_indigo</item>
+        <item>@drawable/ic_nav_tt_indigo</item>
+        <item>@drawable/ic_nav_map_indigo</item>
+        <item>@drawable/ic_nav_spotlight_indigo</item>
+        <item>@drawable/ic_nav_materials_indigo</item>
+        <item>@drawable/ic_nav_exam_indigo</item>
+        <item>@drawable/ic_nav_exam_indigo</item>
+        <item>@drawable/ic_nav_exam_indigo</item>
+    </array>
+
+    <array name="drawer_icons_mono">
+        <item>@drawable/ic_nav_today_mono</item>
+        <item>@drawable/ic_nav_course_mono</item>
+        <item>@drawable/ic_nav_tt_mono</item>
+        <item>@drawable/ic_nav_map_mono</item>
+        <item>@drawable/ic_nav_spotlight_mono</item>
+        <item>@drawable/ic_nav_materials_mono</item>
+        <item>@drawable/ic_nav_exam_mono</item>
+        <item>@drawable/ic_nav_exam_mono</item>
+        <item>@drawable/ic_nav_exam_mono</item>
     </array>
 
     <array name="onboarding_icons">
-        <item>@drawable/ic_onboading_today</item>
-        <item>@drawable/ic_onboading_courses</item>
-        <item>@drawable/ic_onboading_timetable</item>
-        <item>@drawable/ic_onboading_marks</item>
-        <item>@drawable/ic_onboading_attendance</item>
-        <item>@drawable/ic_onboading_map</item>
+        <item>@drawable/onboarding_one</item>
+        <item>@drawable/onboarding_two</item>
+        <item>@drawable/onboarding_three</item>
+        <item>@drawable/onboarding_four</item>
+        <item>@drawable/onboarding_four</item>
+        <item>@drawable/onboarding_four</item>
     </array>
 
-    <array name="endofday_images">
-        <item>@drawable/meal</item>
-        <item>@drawable/books</item>
-        <item>@drawable/bed</item>
-    </array>
 
-    <array name="toolbar_colors">
+    <array name="toolbar_colors_standard">
         <item>@color/violet</item>
         <item>@color/light_blue_p</item>
         <item>@color/teal_p</item>
-        <item>@color/gray</item>
-        <item>@color/gray</item>
         <item>@color/indigo_p</item>
         <item>@color/red_p</item>
     </array>
-    <array name="statusbar_colors">
-        <item>@color/violet_pd</item>
-        <item>@color/light_blue_pd</item>
-        <item>@color/teal_pd</item>
-        <item>@color/darkgray</item>
-        <item>@color/darkgray</item>
-        <item>@color/indigo_pd</item>
-        <item>@color/red_pd</item>
+
+    <array name="today_header_bg">
+        <item>@drawable/today_head_bg_standard</item>
+        <item>@drawable/today_head_bg_classic</item>
+        <item>@drawable/today_head_bg_indigo</item>
+        <item>@drawable/today_head_bg_mono</item>
     </array>
+
+    <array name="statusbar_colors_standard">
+        <item>@color/violet</item>
+        <item>@color/violet</item>
+        <item>@color/violet</item>
+        <item>@color/violet</item>
+        <item>@color/violet</item>
+    </array>
+
+
+
+
+     <array name="toolbar_colors_classic">
+         <item>@color/gray</item>
+         <item>@color/gray</item>
+         <item>@color/gray</item>
+         <item>@color/gray</item>
+         <item>@color/gray</item>
+    </array>
+    <array name="statusbar_colors_classic">
+        <item>@color/gray</item>
+        <item>@color/gray</item>
+        <item>@color/gray</item>
+        <item>@color/gray</item>
+        <item>@color/gray</item>
+    </array>
+
+
+     <array name="toolbar_colors_glass">
+         <item>@color/indigo_p</item>
+         <item>@color/indigo_p</item>
+         <item>@color/indigo_p</item>
+         <item>@color/indigo_p</item>
+         <item>@color/indigo_p</item>
+     </array>
+    <array name="statusbar_colors_glass">
+        <item>@color/indigo_p</item>
+        <item>@color/indigo_p</item>
+        <item>@color/indigo_p</item>
+        <item>@color/indigo_p</item>
+        <item>@color/indigo_p</item>
+    </array>
+    <array name="toolbar_colors_mono">
+        <item>@color/black</item>
+        <item>@color/black</item>
+        <item>@color/black</item>
+        <item>@color/black</item>
+        <item>@color/black</item>
+    </array>
+    <array name="statusbar_colors_mono">
+        <item>@color/translucent_black</item>
+        <item>@color/translucent_black</item>
+        <item>@color/translucent_black</item>
+        <item>@color/translucent_black</item>
+        <item>@color/translucent_black</item>
+    </array>
+
+
 </resources>
