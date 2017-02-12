@@ -27,9 +27,6 @@ import java.util.List;
 
 import io.vit.vitio.Instances.Message;
 
-/**
- * Created by shalini on 21-06-2015.
- */
 public class ParseSpotlight {
 
     private JSONArray myJsonArray;

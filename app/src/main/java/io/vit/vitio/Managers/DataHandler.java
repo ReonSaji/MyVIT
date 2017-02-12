@@ -16,12 +16,15 @@
 
 package io.vit.vitio.Managers;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.text.format.DateUtils;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -47,11 +50,9 @@ import io.vit.vitio.Instances.Day;
 import io.vit.vitio.Instances.Slot;
 import io.vit.vitio.Instances.Timing;
 
-/**
- * Created by shalini on 17-06-2015.
- */
 public class DataHandler {
 
+    private static final String TAG = DataHandler.class.getSimpleName();
     public static List<List<Slot>> NS_THEORY_SLOTS;
     public static List<List<Slot>> NS_LAB_SLOTS;
     public static List<List<Slot>> SS_THEORY_SLOTS;
@@ -63,16 +64,16 @@ public class DataHandler {
         SS_THEORY_SLOTS = new ArrayList<>();
         SS_LAB_SLOTS = new ArrayList<>();
         String ntslots[][] = {
-                {"A1", "F1", "C1", "E1", "TD1", "X", "A2", "F2", "C2", "E2", "TD2", "X", "H1", "K1"},
-                {"B1", "G1", "D1", "TA1", "TF1", "X", "B2", "G2", "D2", "TA2", "TF2", "X", "H2", "K2"},
-                {"C1", "F1", "E1", "TB1", "TG1", "X", "C2", "F2", "E2", "TB2", "TG2", "X", "H3", "K3"},
-                {"D1", "A1", "F1", "C1", "TE1", "X", "D2", "A2", "F2", "C2", "TE2", "X", "H4", "K4"},
-                {"E1", "B1", "G1", "D1", "TC1", "X", "E2", "B2", "G2", "D2", "TC2", "X", "H5", "K5"},
+                {"A1", "F1", "D1", "TB1", "TG1", "X", "A2", "F2", "D2", "TB2", "TG2", "X", "H1", "K1"},
+                {"B1", "G1", "E1", "TC1", "TAA1", "X", "B2", "G2", "E2", "TC2", "TAA2", "X", "H2", "K2"},
+                {"C1", "A1", "F1", "S", "S", "X", "C2", "A2", "F2", "TD2", "TBB2", "X", "H3", "K3"},
+                {"D1", "B1", "G1", "TE1", "TCC1", "X", "D2", "B2", "G2", "TE2", "TCC2", "X", "H4", "K4"},
+                {"E1", "C1", "TA1", "TF1", "TD1", "X", "E2", "C2", "TA2", "TF2", "TDD2", "X", "H5", "K5"},
                 {"X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"}};
         String nlslots[][] = {
                 {"L1", "L2", "L3", "L4", "L5", "L6", "L31", "L32", "L33", "L34", "L35", "L36", "L61", "L62"},
                 {"L7", "L8", "L9", "L10", "L11", "L12", "L37", "L38", "L39", "L40", "L41", "L42", "L63", "L64"},
-                {"L13", "L14", "L15", "S", "S", "S", "L43", "L44", "L45", "L46", "L47", "L48", "L65", "L66"},
+                {"L13", "L14", "X", "S", "S", "S", "L43", "L44", "L45", "L46", "L47", "L48", "L65", "L66"},
                 {"L19", "L20", "L21", "L22", "L23", "L24", "L49", "L50", "L51", "L52", "L53", "L54", "L67", "L68"},
                 {"L25", "L26", "L27", "L28", "L29", "L30", "L55", "L56", "L57", "L58", "L59", "L60", "L69", "L70"},
                 {"L71", "L72", "L73", "L74", "L75", "L76", "L77", "L78", "L79", "L80", "L81", "L82", "X", "X"}};
@@ -94,7 +95,7 @@ public class DataHandler {
         String ntstime[] = {"8:00", "9:00", "10:00", "11:00", "12:00", "12:40", "14:00", "15:00", "16:00", "17:00", "18:00", "18:40", "19:00", "20:00"};
         String nlstime[] = {"8:00", "9:00", "10:00", "11:00", "11:50", "12:40", "14:00", "15:00", "16:00", "17:00", "17:50", "18:40", "19:30", "20:20"};
         String ntetime[] = {"8:50", "9:50", "10:50", "11:50", "12:50", "13:30", "14:50", "15:50", "16:50", "17:50", "18:50", "19:30", "19:50", "20:50"};
-        String nletime[] = {"8:50", "9:50", "10:50", "11:50", "12:40", "13:30", "14:50", "15:50", "16:50", "17:50", "18:40", "19:30", "20:20", "21:10"};
+        String nletime[] = {"8:50", "9:50", "10:50", "11:40", "12:40", "13:30", "14:50", "15:50", "16:50", "17:40", "18:40", "19:30", "20:20", "21:10"};
 
         String ststime[] = {"8:30", "9:20", "10:30", "11:20", "14:00", "14:50", "16:00", "16:50"};
         String slstime[] = {"8:30", "9:20", "10:30", "11:20", "14:00", "14:50", "16:00", "16:50"};
@@ -212,6 +213,11 @@ public class DataHandler {
         saveString("phoneno", s);
     }
 
+    public void savePassword(String s) {
+        saveString("password", s);
+    }
+
+
     public String getPhoneNo() {
 
         return getString("phoneno", "XXXXXXXXXX");
@@ -220,6 +226,7 @@ public class DataHandler {
     public void saveSemester(String s) {
         saveString("semester", s);
     }
+
     public void saveName(String s) {
         saveString("name", s);
     }
@@ -233,28 +240,96 @@ public class DataHandler {
         return getString("semester", "XX");
     }
 
-    public void saveCourseList(List<Course> courses) {
+   /* public void saveCourseList(List<Course> courses) {
 
         if (database != null) {
             database.saveCourses(courses);
         }
+    }*/
+
+    public void saveCourseList(ArrayList<Course> courseArrayList) {
+
+        try {
+            if (courseArrayList == null) {
+                Log.i(TAG, "performRequest: coursesList is null");
+                courseArrayList = new ArrayList<Course>();
+            }
+
+            if (courseArrayList.size() == 0) {
+                Log.d("coursesList", TAG + "> No server changes to update local database");
+            } else {
+                Log.d("coursesList", TAG + "> Updating local database with remote changes");
+
+                // Updating local courses
+                int i = 0;
+                ContentValues coursesToLocalValues[] = new ContentValues[courseArrayList.size()];
+                for (Course localCourse : courseArrayList) {
+                    Log.d("coursesList", TAG + "> Remote -> Local [" + localCourse.getCOURSE_CODE() + "]");
+                    coursesToLocalValues[i++] = localCourse.getContentValues();
+                }
+                context.getContentResolver().bulkInsert(DatabaseContract.CONTENT_URI_COURSE, coursesToLocalValues);
+            }
+
+            Log.d("courseList", TAG + "> Finished.");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public List<Course> getCoursesList() {
+        try {
+            Cursor cursor = context.getContentResolver().query(DatabaseContract.CONTENT_URI_COURSE, null, null, null, null);
+            List<Course> list = new ArrayList<>();
+            while (cursor.moveToNext()) {
+                list.add(Course.fromCursor(cursor));
+            }
+            cursor.close();
+            return list != null ? list : new ArrayList<Course>();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+        return new ArrayList<>();
+    }
+
+    /*public List<Course> getCoursesList() {
 
         return database.getCoursesList();
     }
+*/
 
     public Course getCourse(String cn) {
-        return database.getCourse(cn);
+        try {
+            Course course;
+            Cursor cursor = context.getContentResolver().query(DatabaseContract.CONTENT_URI_COURSE, null, ConnectDatabase.KEY_CLASNBR + "=?"
+                    , new String[]{cn}, null);
+
+            if (cursor != null && cursor.moveToFirst()) {
+
+                course = Course.fromCursor(cursor);
+                cursor.close();
+                return course;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    public int getCourseCount() {
+    /*public Course getCourse(String cn) {
+        return database.getCourse(cn);
+    }*/
+
+
+    /*public int getCourseCount() {
         return database.getCoursesCount();
-    }
+    }*/
 
     public boolean isDatabaseBuild() {
-        Boolean bool = database.check();
+
+        Cursor cursor=context.getContentResolver().query(DatabaseContract.CONTENT_URI_COURSE,null,null,null,null);
+        boolean bool = cursor!=null&&cursor.getCount()>0;
         return bool;
     }
 
@@ -275,22 +350,49 @@ public class DataHandler {
     }
 
     public void clearAllData() {
-        database.clear();
+        context.getContentResolver().delete(DatabaseContract.CONTENT_URI_COURSE,null,null);
         saveFirstTimeUser("true");
+        saveProfileImageEncoded(null);
+        saveFacultyAdvisor(null);
     }
 
     public String getPassword() {
-
-
         return getString("password", "XX");
-
-
     }
 
     public String getSchool() {
         return getString("school", "Unknown");
     }
+
     public String getName() {
         return getString("name", "NAME");
+    }
+
+    public String getProfileImageEncoded() {
+        return getString("profileImage", null);
+    }
+
+    public void saveProfileImageEncoded(String encodedString) {
+        saveString("profileImage", encodedString);
+    }
+
+    public void saveFacultyAdvisor(String facultyAdvisor) {
+        saveString("faculty_advisor", facultyAdvisor);
+    }
+
+    public String getFacultyAdvisor() {
+        return getString("faculty_advisor", null);
+    }
+
+    public void saveAcademicHistory(String academicHistory) {
+        saveString("academic_history", academicHistory);
+    }
+
+    public void saveProfileImagePath(String picturePath) {
+        saveString("profileImagePath",picturePath);
+    }
+
+    public String getProfileImagePath(){
+        return getString("profileImagePath",null);
     }
 }

@@ -8,16 +8,28 @@
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_chevron_right_black.png"
     },
     {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\about_new_image.png",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\about_new_image.png"
+    },
+    {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_expand_less_white.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_expand_less_white.png"
     },
     {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_light.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_item_background_holo_light.xml"
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\round_rec_translucent.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\round_rec_translucent.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\today_head_bg_mono.xml",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\today_head_bg_mono.xml"
+    },
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\header_bg.png",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\header_bg.png"
+    },
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_light.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_item_background_holo_light.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\violet_rec_select.xml",
@@ -37,47 +49,59 @@
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_borderless_material.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_btn_borderless_material.xml"
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_btn_borderless_material.xml"
+    },
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_small_material.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_ratingbar_small_material.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_today_classic.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_nav_today_classic.png"
     },
     {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_course_stand.png",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_nav_course_stand.png"
+    },
+    {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\sjt_vectory.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\sjt_vectory.png"
     },
     {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_course_stand.png",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_nav_course_stand.png"
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_vector_test.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_vector_test.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_tt_mono.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_nav_tt_mono.png"
     },
     {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background_dark.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_dialog_material_background_dark.xml"
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_go_search_api_material.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_ic_go_search_api_material.xml"
+    },
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_dark.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.2.0\\res\\drawable\\common_google_signin_btn_text_dark.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_cancel_white.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_cancel_white.png"
     },
     {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\coming_soon.png",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\coming_soon.png"
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\navigation_empty_icon.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\drawable\\navigation_empty_icon.xml"
     },
     {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_back.png",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_nav_back.png"
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_voice_search_api_material.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_ic_voice_search_api_material.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_tt_indigo.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_nav_tt_indigo.png"
     },
     {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\end_of_day_vector.png",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\end_of_day_vector.png"
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_back.png",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_nav_back.png"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\weekend.png",
@@ -101,7 +125,11 @@
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_light.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
+    },
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_notiicon_24.png",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_notiicon_24.png"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\rounded_btn.xml",
@@ -113,27 +141,31 @@
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_colored_material.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_btn_colored_material.xml"
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_btn_colored_material.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_spotlight_indigo.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_nav_spotlight_indigo.png"
     },
     {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_bg.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\notification_bg.xml"
+    },
+    {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\round_black.xml",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\round_black.xml"
     },
     {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_dark.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_list_selector_holo_dark.xml"
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_icon_background.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\notification_icon_background.xml"
     },
     {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_att_above.png",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_att_above.png"
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_dark.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_list_selector_holo_dark.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_thumb_material.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_seekbar_thumb_material.xml"
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_seekbar_thumb_material.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\rectangle_stroke.xml",
@@ -141,7 +173,11 @@
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_check_material.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_btn_check_material.xml"
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_btn_check_material.xml"
+    },
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_text_light.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.2.0\\res\\drawable\\common_plus_signin_btn_text_light.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\done_for_day.png",
@@ -152,12 +188,16 @@
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_bar_dr.xml"
     },
     {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\round_10dp.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\round_10dp.xml"
+    },
+    {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\onboarding_two.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\onboarding_two.png"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_internal_bg.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_cab_background_internal_bg.xml"
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_cab_background_internal_bg.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\tty.jpg",
@@ -168,20 +208,32 @@
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_clock_new.png"
     },
     {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_exam_mono.png",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_nav_exam_mono.png"
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_download.png",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_download.png"
     },
     {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\pre_load_watermark.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\pre_load_watermark.xml"
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_exam_mono.png",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_nav_exam_mono.png"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_onboading_today.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_onboading_today.png"
     },
     {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_search_api_material.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_ic_search_api_material.xml"
+    },
+    {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_onboading_marks.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_onboading_marks.png"
+    },
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\design_ic_visibility.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\drawable\\design_ic_visibility.xml"
+    },
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_ab_back_material.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_ic_ab_back_material.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_close_white.png",
@@ -196,8 +248,12 @@
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\gdny.png"
     },
     {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_bg_low.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\notification_bg_low.xml"
+    },
+    {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_sync_white.png",
@@ -212,8 +268,8 @@
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\round_gray.xml"
     },
     {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\coming_soon_reminders.png",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\coming_soon_reminders.png"
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_material.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_ratingbar_material.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_calendar_new.png",
@@ -232,20 +288,24 @@
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_nav_spotlight_mono.png"
     },
     {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\school_circle.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\school_circle.xml"
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_course_indigo.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_nav_course_indigo.png"
     },
     {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\design_fab_background.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\drawable\\design_fab_background.xml"
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_icon_light.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.2.0\\res\\drawable\\common_google_signin_btn_icon_light.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_onboading_courses.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_onboading_courses.png"
+    },
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\design_fab_background.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\drawable\\design_fab_background.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\full_view_white_gradient.xml",
@@ -253,19 +313,11 @@
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_tab_indicator_material.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_tab_indicator_material.xml"
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_tab_indicator_material.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_today_mono.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_nav_today_mono.png"
-    },
-    {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_full_material.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_ratingbar_full_material.xml"
-    },
-    {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\sample_faculty.png",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\sample_faculty.png"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\today_head_bg_indigo.xml",
@@ -273,7 +325,11 @@
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_radio_material.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_btn_radio_material.xml"
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_ratingbar_indicator_material.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\onboarding_three.png",
@@ -285,15 +341,15 @@
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_top_material.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_cab_background_top_material.xml"
-    },
-    {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\selectablewhite.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\selectablewhite.xml"
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_cab_background_top_material.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_tt_stand.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_nav_tt_stand.png"
+    },
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\selectablewhite.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\selectablewhite.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_course_mono.png",
@@ -309,7 +365,7 @@
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_default_mtrl_shape.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_plus.png",
@@ -318,6 +374,10 @@
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\login_box_bg_both.xml",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\login_box_bg_both.xml"
+    },
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_onboading_map.png",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_onboading_map.png"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_circleplus.png",
@@ -330,10 +390,6 @@
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\round_violet.xml",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\round_violet.xml"
-    },
-    {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_onboading_map.png",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_onboading_map.png"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\stroke_rec_classic.xml",
@@ -353,7 +409,7 @@
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_edit_text_material.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_edit_text_material.xml"
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_edit_text_material.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\drawer_row_bg.xml",
@@ -369,7 +425,7 @@
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_light.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_list_selector_holo_light.xml"
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_list_selector_holo_light.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_tt_classic.png",
@@ -378,10 +434,6 @@
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\round_indigo.xml",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\round_indigo.xml"
-    },
-    {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_att_short.png",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_att_short.png"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\start_rounded_corner_page.xml",
@@ -396,12 +448,16 @@
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\solidcircleviolet.xml"
     },
     {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\coming_soon_friends.png",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\coming_soon_friends.png"
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_tick_mark_material.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_seekbar_tick_mark_material.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_textfield_search_material.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_textfield_search_material.xml"
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_textfield_search_material.xml"
+    },
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_dialog_material_background.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_exam_stand.png",
@@ -413,7 +469,7 @@
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_text_cursor_material.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_text_cursor_material.xml"
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_text_cursor_material.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\today_head_bg_standard.xml",
@@ -428,6 +484,10 @@
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\fadevioletround.xml"
     },
     {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\design_bottom_navigation_item_background.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\drawable\\design_bottom_navigation_item_background.xml"
+    },
+    {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bar.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\bar.png"
     },
@@ -440,12 +500,28 @@
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\calendar.png"
     },
     {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_clear_material.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_ic_clear_material.xml"
+    },
+    {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_map_mono.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_nav_map_mono.png"
     },
     {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_tile_bg.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\notification_tile_bg.xml"
+    },
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_icon_dark.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.2.0\\res\\drawable\\common_google_signin_btn_icon_dark.xml"
+    },
+    {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_circleminus.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_circleminus.png"
+    },
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_text_dark.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.2.0\\res\\drawable\\common_plus_signin_btn_text_dark.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_marks_dr.xml",
@@ -456,6 +532,10 @@
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_close_black.png"
     },
     {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\violet_stroke.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\violet_stroke.xml"
+    },
+    {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\no_buildings.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\no_buildings.png"
     },
@@ -464,12 +544,16 @@
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\nav_icon.png"
     },
     {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_exam_indigo.png",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_nav_exam_indigo.png"
+    },
+    {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_list.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_list.png"
     },
     {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_exam_indigo.png",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_nav_exam_indigo.png"
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_icon_dark.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.2.0\\res\\drawable\\common_plus_signin_btn_icon_dark.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\weekend_vector.png",
@@ -484,12 +568,8 @@
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_arrow_back_white_24dp.png"
     },
     {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_att_short_red.png",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_att_short_red.png"
-    },
-    {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_track_material.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_seekbar_track_material.xml"
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_seekbar_track_material.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_materials_stand.png",
@@ -500,6 +580,10 @@
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_action_place.png"
     },
     {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_light.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.2.0\\res\\drawable\\common_google_signin_btn_text_light.xml"
+    },
+    {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_calendar_gray.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_calendar_gray.png"
     },
@@ -508,12 +592,12 @@
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\stroke_rec_indigo.xml"
     },
     {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\circle.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\circle.xml"
-    },
-    {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\plus.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\plus.png"
+    },
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\circle.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\circle.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\stroke_circle.xml",
@@ -524,32 +608,28 @@
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\stroke_rec_standard.xml"
     },
     {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_dark.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_item_background_holo_dark.xml"
+    },
+    {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\rectangle.xml",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\rectangle.xml"
     },
     {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_dark.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_item_background_holo_dark.xml"
-    },
-    {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\pre_load_screen_new.jpg",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\pre_load_screen_new.jpg"
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_icon_light.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.2.0\\res\\drawable\\common_plus_signin_btn_icon_light.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\gradient_tint.xml",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\gradient_tint.xml"
     },
     {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background_light.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_dialog_material_background_light.xml"
-    },
-    {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_spinner_textfield_background_material.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_spinner_textfield_background_material.xml"
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_spinner_textfield_background_material.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\design_snackbar_background.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\drawable\\design_snackbar_background.xml"
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\drawable\\design_snackbar_background.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_info_outline_white_24dp.png",
@@ -560,16 +640,16 @@
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\fade_att_bar.xml"
     },
     {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_menu_overflow_material.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_ic_menu_overflow_material.xml"
+    },
+    {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable\\abc_switch_thumb_material.xml"
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable\\abc_switch_thumb_material.xml"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_nav_spotlight_classic.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_nav_spotlight_classic.png"
-    },
-    {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_att_above_gray.png",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\drawable\\ic_att_above_gray.png"
     },
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_cock_gray.png",

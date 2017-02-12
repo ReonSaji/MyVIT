@@ -49,7 +49,7 @@ import java.util.List;
 import io.vit.vitio.Extras.ErrorDefinitions;
 import io.vit.vitio.Extras.ReturnParcel;
 import io.vit.vitio.Extras.Themes.MyTheme;
-import io.vit.vitio.HomeActivity;
+import io.vit.vitio.Activities.HomeActivity;
 import io.vit.vitio.Instances.Course;
 import io.vit.vitio.Managers.ConnectAPI;
 import io.vit.vitio.Managers.DataHandler;

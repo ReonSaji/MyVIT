@@ -36,7 +36,7 @@ import java.util.List;
 
 import io.vit.vitio.Extras.SlidingTabLayout;
 import io.vit.vitio.Extras.Themes.MyTheme;
-import io.vit.vitio.HomeActivity;
+import io.vit.vitio.Activities.HomeActivity;
 import io.vit.vitio.Instances.Course;
 import io.vit.vitio.Instances.Grade;
 import io.vit.vitio.Managers.DataHandler;
@@ -64,9 +64,9 @@ public class CoursesFragment extends Fragment {
         init(rootView);
         setInit();
         setTransitions();
+        setData();
         return rootView;
     }
-
 
     private void init(ViewGroup rootView) {
         Log.d("initcf", "initcf");
@@ -86,9 +86,10 @@ public class CoursesFragment extends Fragment {
         totalContent=(TextView)rootView.findViewById(R.id.total_content);
     }
 
+
     private void setInit() {
         Log.d("setinitcf", "setinitcf");
-        pager.setAdapter(adapter);
+
         //tabs.setDistributeEvenly(true); // To make the Tabs Fixed set this true, This makes the tabs Space Evenly in Available width
         // Setting Custom Color for the Scroll bar indicator of the Tab View
         tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
@@ -99,9 +100,24 @@ public class CoursesFragment extends Fragment {
         });
 
         // Setting the ViewPager For the SlidingTabsLayout
-        tabs.setViewPager(pager);
+
         setFonts();
     }
+
+    private void setData() {
+        pager.setAdapter(adapter);
+        tabs.setViewPager(pager);
+        setCredits();
+    }
+
+    private void setCredits() {
+        int sum=0;
+        for(Course c:allCoursesList){
+            sum+=c.getCOURSE_LTPC().getCREDITS();
+        }
+        currentContent.setText(String.valueOf(sum));
+    }
+
 
     private void setTransitions() {
         if(Build.VERSION.SDK_INT>=21) {

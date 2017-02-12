@@ -305,13 +305,58 @@
                     android:textSize="17sp"
                     android:textStyle="bold" />
             </FrameLayout>
+
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/lightgray"
             android:orientation="vertical" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/fa_indicator"
+                    android:layout_width="7dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/fadeyellow"
+                    android:clickable="true"
+                    android:orientation="vertical"
+                    android:visibility="gone" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:id="@+id/fa_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:text="Final Assessment"
+                        android:textColor="@color/lightblack"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/fa_marks"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|right"
+                        android:text="-/100"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+                </FrameLayout>
+
+            </LinearLayout>
 
         <!--<LinearLayout
             android:layout_width="match_parent"

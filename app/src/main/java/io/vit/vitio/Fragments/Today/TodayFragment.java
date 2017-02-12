@@ -22,15 +22,12 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -53,15 +50,15 @@ import java.util.List;
 import io.vit.vitio.Extras.ErrorDefinitions;
 import io.vit.vitio.Extras.ReturnParcel;
 import io.vit.vitio.Extras.Themes.MyTheme;
-import io.vit.vitio.Fragments.SubjectView.SubjectViewFragmentTrial;
 import io.vit.vitio.Fragments.TimeTable.TimeTableListInfo;
-import io.vit.vitio.HomeActivity;
+import io.vit.vitio.Activities.HomeActivity;
+import io.vit.vitio.Instances.Attendance;
 import io.vit.vitio.Instances.Course;
 import io.vit.vitio.Managers.ConnectAPI;
 import io.vit.vitio.Managers.DataHandler;
 import io.vit.vitio.Managers.Parsers.ParseTimeTable;
 import io.vit.vitio.R;
-import io.vit.vitio.SubjectViewActivity;
+import io.vit.vitio.Activities.SubjectViewActivity;
 
 /**
  * Created by shalini on 16-06-2015.
@@ -208,6 +205,7 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
         } else {
             setWeekendFormat();
         }
+
     }
 
     private void setTimetableFromDatabase() {
@@ -327,6 +325,7 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
 
             aboveBottomHalf.setVisibility(View.VISIBLE);
             if(!currentClass.isSeminar) {
+                attIndicator.setVisibility(View.VISIBLE);
                 buildingImage.setImageResource(currentClass.getBuildingImageId());
                 subjectPer.setVisibility(View.VISIBLE);
                 subjectCode.setVisibility(TextView.VISIBLE);
@@ -339,13 +338,12 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
                 int per = currentClass.getCOURSE_ATTENDANCE().getPERCENTAGE();
                 if (per < 75) {
                     subjectPer.setTextColor(getActivity().getResources().getColor(R.color.fadered));
-                    attIndicator.setImageResource(R.drawable.ic_att_short);
                     //((GradientDrawable) attendanceBar.getBackground()).setColor(getActivity().getResources().getColor(R.color.fadered));
                 } else {
                     subjectPer.setTextColor(getActivity().getResources().getColor(R.color.fadegreen));
-                    attIndicator.setImageResource(R.drawable.ic_att_above);
                     //((GradientDrawable) attendanceBar.getBackground()).setColor(getActivity().getResources().getColor(R.color.fadegreen));
                 }
+                attIndicator.setImageResource(Attendance.getAttendanceDrawable(per));
                 subjectPer.setText(per + "%");
 
                 int ifmissed = 0;
@@ -377,8 +375,8 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
                 subjectName.setText("Seminar/Meeting");
                 subjectTime.setText("Right Now");
                 subjectPer.setVisibility(View.GONE);
-                attIndicator.setImageResource(R.drawable.ic_att_above);
                 buildingImage.setImageResource(R.color.transparent);
+                attIndicator.setVisibility(View.GONE);
                 //subjectTime.setTextSize(TypedValue.COMPLEX_UNIT_SP, 46);
                 //subjectName.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28);
             }
@@ -394,6 +392,8 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
                 aboveBottomHalf.setVisibility(View.VISIBLE);
                 if(!nextClass.isSeminar) {
 
+                    attIndicator.setVisibility(View.VISIBLE);
+
                     buildingImage.setImageResource(nextClass.getBuildingImageId());
                     subjectPer.setVisibility(View.VISIBLE);
                     subjectCode.setVisibility(TextView.VISIBLE);
@@ -406,13 +406,13 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
                     int per = nextClass.getCOURSE_ATTENDANCE().getPERCENTAGE();
                     if (per < 75) {
                         subjectPer.setTextColor(getActivity().getResources().getColor(R.color.fadered));
-                        attIndicator.setImageResource(R.drawable.ic_att_short);
+
                         //((GradientDrawable) attendanceBar.getBackground()).setColor(getActivity().getResources().getColor(R.color.fadered));
                     } else {
                         subjectPer.setTextColor(getActivity().getResources().getColor(R.color.fadegreen));
-                        attIndicator.setImageResource(R.drawable.ic_att_above);
                         //((GradientDrawable) attendanceBar.getBackground()).setColor(getActivity().getResources().getColor(R.color.fadegreen));
                     }
+                    attIndicator.setImageResource(Attendance.getAttendanceDrawable(per));
                     subjectPer.setText(per + "%");
 
                     int ifmissed = 0;
@@ -439,12 +439,13 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
                     subjectTime.setText(header.getStatus());
                 }else{
                     //topHalf.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0,100));
+
                     bottomHalf.setVisibility(LinearLayout.GONE);
                     subjectCode.setVisibility(LinearLayout.GONE);
                     subjectName.setText("Session/Meeting");
                     subjectTime.setText(header.getStatus());
                     subjectPer.setVisibility(View.GONE);
-                    attIndicator.setImageResource(R.drawable.ic_att_above);
+                    attIndicator.setVisibility(View.GONE);
                     buildingImage.setImageResource(R.color.transparent);
                     //subjectName.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28);
                 }
@@ -640,12 +641,12 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
                     int p = Integer.parseInt((info.per.split(" ")[0]));
                     if (p < 75) {
                         holder.subPer.setTextColor(c.getResources().getColor(R.color.fadered));
-                        holder.subAttIndicator.setImageResource(R.drawable.ic_att_short_red);
                     }
                     else {
                         holder.subPer.setTextColor(c.getResources().getColor(R.color.new_gray));
-                        holder.subAttIndicator.setImageResource(R.drawable.ic_att_above_gray);
                     }
+
+                    holder.subAttIndicator.setImageResource(Attendance.getAttendanceDrawable(p));
                     holder.subPer.setText(info.per);
                     if (position == dataT.size() - 1) {
                         holder.contLine.setVisibility(LinearLayout.GONE);
@@ -655,7 +656,7 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
                     holder.subTime.setText(info.time12);
                     holder.subVenue.setVisibility(View.GONE);
                     holder.subTypeShort.setVisibility(View.GONE);
-                    holder.subAttIndicator.setImageResource(R.drawable.ic_att_above_gray);
+                    //holder.subAttIndicator.setImageResource(R.drawable.ic_att_above_gray);
                     holder.subPer.setText("");
                     if (position == dataT.size() - 1) {
                         Log.d("contLIne", String.valueOf(position));
@@ -708,6 +709,7 @@ public class TodayFragment extends Fragment implements View.OnClickListener, Con
                 subAttIndicator = (ImageView) itemView.findViewById(R.id.subject_att_indicator);
 
                 //middleContentImage = (ImageView) itemView.findViewById(R.id.middle_content_image);
+                subVenue.setSelected(true);
                 subName.setTypeface(typeface);
                 subTime.setTypeface(typeface);
                 subPer.setTypeface(typeface);

@@ -18,8 +18,6 @@ package io.vit.vitio.Settings;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.content.Intent;
-import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -31,10 +29,7 @@ import android.util.TypedValue;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import io.vit.vitio.HomeActivity;
 import io.vit.vitio.R;
-import io.vit.vitio.StartScreens.DetailFragment;
-import io.vit.vitio.StartScreens.LoginFragment;
 
 /**
  * Created by shalini on 25-08-2015.
@@ -117,13 +112,13 @@ public class ComingSoonActivity extends AppCompatActivity {
                     if(position==0) {
                         lfragment = new ComingSoonFragment();
                         lfragment.setId(0);
-                        lfragment.setDisplayImage(R.drawable.coming_soon_friends);
+                        //lfragment.setDisplayImage(R.drawable.coming_soon_friends);
                         return lfragment;
                     }
                 else{
                         lfragment = new ComingSoonFragment();
                         lfragment.setId(1);
-                        lfragment.setDisplayImage(R.drawable.coming_soon_reminders);
+                        //lfragment.setDisplayImage(R.drawable.coming_soon_reminders);
                         return lfragment;
                     }
 

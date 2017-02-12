@@ -73,6 +73,15 @@ public class MyTheme {
         }
     }
 
+    public int getMyThemeBackgroundColor(){
+        if (appContext != null) {
+            TypedArray array = appContext.getResources().obtainTypedArray(R.array.theme_bg);
+            return array.getResourceId(getMyThemeCode(), 0);
+        } else {
+            return R.color.violet_translucent;
+        }
+    }
+
     public int getTodayHeaderColor() {
         if (appContext != null) {
             TypedArray array = appContext.getResources().obtainTypedArray(R.array.today_header_bg);

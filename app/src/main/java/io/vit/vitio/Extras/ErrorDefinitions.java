@@ -35,7 +35,7 @@ public class ErrorDefinitions {
     public static final int CODE_UNKNOWN = 99;
     public static final int CODE_NETWORK=152;
 
-    public static final String getMessage(int code){
+    public static String getMessage(int code){
         String mes="" ;
         switch(code){
             case 0:

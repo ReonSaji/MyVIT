@@ -27,7 +27,7 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import io.vit.vitio.HomeActivity;
+import io.vit.vitio.Activities.HomeActivity;
 import io.vit.vitio.R;
 
 /**

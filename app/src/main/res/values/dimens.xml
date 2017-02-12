@@ -24,4 +24,6 @@
     <dimen name="general_more_big_bold">21sp</dimen>
     <dimen name="general_medium2_thin">16sp</dimen>
     <dimen name="timetablehead">16sp</dimen>
+    <dimen name="general_small_thin">10dp</dimen>
+    <dimen name="drawer_width">180dp</dimen>
 </resources>

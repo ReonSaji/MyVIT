@@ -36,7 +36,7 @@ import io.vit.vitio.R;
  */
 public class ComingSoonFragment extends Fragment {
     private int FRAGMENTID=0;
-    private int DISPLAYIMAGERESOURCE=R.mipmap.ic_appicon;
+    private int DISPLAYIMAGERESOURCE=R.mipmap.ic_launcher;
     private ImageView displayImage;
 
     //private Button nextButton;
@@ -49,7 +49,7 @@ public class ComingSoonFragment extends Fragment {
        /* nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((FragmentHolder)getActivity()).changePage(FRAGMENTID);
+                ((OnboardingActivity)getActivity()).changePage(FRAGMENTID);
             }
         });*/
         setData();

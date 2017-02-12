@@ -23,7 +23,6 @@
         android:layout_width="150dp"
         android:layout_height="300dp"
         android:id="@+id/noclass_image"
-        android:layout_gravity="center"
-        android:src="@drawable/coming_soon"/>
+        android:layout_gravity="center"/>
 
 </FrameLayout>

@@ -29,6 +29,7 @@ public class Faculty {
     private String INTERCOM;
     private String MOBILE;
     private String ROOM;
+    private String PHOTO;
 
     public Faculty(String NAME, String SCHOOL) {
         this.NAME = NAME;
@@ -139,10 +140,19 @@ public class Faculty {
         this.ROOM = ROOM;
     }
 
+    public String getPHOTO() {
+        return PHOTO;
+    }
+
+    public void setPHOTO(String photo) {
+        this.PHOTO = photo;
+    }
+
     @Override
     public String toString() {
         return facultyString;
     }
+
 
 
 }

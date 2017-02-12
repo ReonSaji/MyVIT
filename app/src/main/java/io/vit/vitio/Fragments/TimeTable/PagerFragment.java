@@ -24,7 +24,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -33,16 +32,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
 
 import io.vit.vitio.Extras.Themes.MyTheme;
-import io.vit.vitio.Fragments.SubjectView.SubjectViewFragmentTrial;
 import io.vit.vitio.R;
-import io.vit.vitio.SubjectViewActivity;
+import io.vit.vitio.Activities.SubjectViewActivity;
 
 /**
  * Created by shalini on 28-06-2015.

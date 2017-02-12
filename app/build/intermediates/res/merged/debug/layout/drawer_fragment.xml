@@ -15,145 +15,148 @@
   ~     You should have received a copy of the GNU General Public License
   ~     along with this program.  If not, see <http://www.gnu.org/licenses/>.
   -->
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_marginRight="68dp"
-    android:layout_height="match_parent">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_frame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical"
-    tools:context="io.vit.vitio.Navigation.NavigationDrawerFragment">
+    android:layout_marginRight="68dp">
 
-    <LinearLayout
-        android:id="@+id/header"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawer_frame"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:clickable="true"
-        android:orientation="vertical">
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/profile_image"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_marginLeft="15dp"
-            app:civ_border_width="2dp"
-            android:layout_marginBottom="5dp"
-            android:layout_gravity="left"
-            app:civ_border_color="#FF000000"/>
-
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context="io.vit.vitio.Navigation.NavigationDrawerFragment">
 
         <LinearLayout
+            android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="100">
+            android:layout_height="180dp"
+            android:background="@drawable/header_bg"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_gravity="left"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="15dp"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width="2dp" />
+
+
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="65"
-                android:paddingLeft="15dp">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:padding="10dp"
+                android:weightSum="100">
 
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="Name"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/general_medium2_thin"
-                android:textStyle="bold" />
-                <TextView
-                    android:id="@+id/header_reg_no"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="@string/sample_regno"
-                    android:textColor="@color/new_gray"
-                    android:paddingTop="5dp"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:layout_weight="65"
+                    android:orientation="vertical"
+                    android:paddingLeft="15dp">
 
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:maxLines="2"
+                        android:text="Name"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/general_medium2_thin"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/header_reg_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:paddingTop="5dp"
+                        android:text="@string/sample_regno"
+                        android:textColor="@color/new_gray"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/header_school"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="35"
+                    android:gravity="right|center_vertical"
+                    android:paddingRight="15dp"
+                    android:textColor="@color/new_gray"
+                    android:textSize="@dimen/general_medium2_thin"
+                    android:textStyle="bold" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/header_school"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="35"
-                android:gravity="right|center_vertical"
-                android:paddingRight="15dp"
-                android:text="@string/sample_schoolname"
-                android:textColor="@color/new_gray"
-                android:textSize="@dimen/general_medium2_thin"
-                android:textStyle="bold" />
         </LinearLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/subheader"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="15dp"
-        android:orientation="vertical"
-        android:weightSum="100">
-
-
-        <TextView
-            android:id="@+id/subheader_per"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="15dp"
-            android:text="@string/nav_subhead2_sample"
-            android:textColor="@color/new_gray"
-            android:textStyle="bold"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/subheader_head_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:layout_marginTop="6dp"
-            android:text="@string/nav_subhead1"
-            android:textColor="@color/new_gray"
-            android:textSize="@dimen/drawer_textsize" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/body"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/drawer_recycler_view"
+        <LinearLayout
+            android:id="@+id/subheader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="55dp">
+            android:clickable="true"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="10dp"
+            android:weightSum="100">
 
-        </android.support.v7.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/subheader_per"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="15dp"
+                android:textColor="@color/new_gray"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/subheader_head_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center_vertical"
+                android:text="@string/nav_subhead1"
+                android:textColor="@color/new_gray"
+                android:textSize="@dimen/drawer_textsize" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/drawer_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="55dp">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
 
     </LinearLayout>
-
-
-
-
-</LinearLayout>
 
     <LinearLayout
         android:id="@+id/footer"
@@ -201,4 +204,4 @@
 
     </LinearLayout>
 
-    </FrameLayout>
+</FrameLayout>

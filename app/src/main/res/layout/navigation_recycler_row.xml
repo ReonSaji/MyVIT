@@ -20,7 +20,7 @@
     android:layout_height="48dp"
     android:id="@+id/row_holder"
     android:clickable="true"
-    android:background="@drawable/drawer_row_bg"
+    android:background="?attr/selectableItemBackground"
 
     >
     <ImageView

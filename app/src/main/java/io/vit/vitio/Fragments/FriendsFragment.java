@@ -23,7 +23,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import io.vit.vitio.HomeActivity;
+import io.vit.vitio.Activities.HomeActivity;
 import io.vit.vitio.R;
 
 /**

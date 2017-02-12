@@ -16,10 +16,11 @@
 
 package io.vit.vitio.Instances;
 
-/**
- * Created by shalini on 22-06-2015.
- */
+
 public class Mark {
+    public static final String STATUS_PRESENT="Present";
+    public static final String STATUS_ABSENT="Absent";
+
     public static String MARKS_CAT1="cat1";
     public static String MARKS_CAT2="cat2";
     public static String MARKS_STATUS="status";
@@ -27,6 +28,8 @@ public class Mark {
     public static String MARKS_QUIZ2="quiz2";
     public static String MARKS_QUIZ3="quiz3";
     public static String MARKS_ASSIGNMENT="assignment";
+    public static String MARKS_LAB="Lab_cam";
+    public static String MARKS_FINAL_ASSESSMENT="Final Assessment";
 
     private String MARK;
     private String STATUS;

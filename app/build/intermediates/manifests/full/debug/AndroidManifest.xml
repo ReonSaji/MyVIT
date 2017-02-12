@@ -16,12 +16,12 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.vit.vitio"
-    android:versionCode="5"
-    android:versionName="1.2.1" >
+    android:versionCode="16"
+    android:versionName="2.0.0" >
 
     <uses-sdk
         android:minSdkVersion="15"
-        android:targetSdkVersion="23" />
+        android:targetSdkVersion="25" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -31,15 +31,26 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <permission
+        android:name="io.vit.vitio.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="io.vit.vitio.permission.C2D_MESSAGE" />
+
+    <!-- This app has permission to register and receive data message. -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
     <application
         android:name="io.vit.vitio.Managers.AppController"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_appicon"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="io.vit.vitio.HomeActivity"
+            android:name="io.vit.vitio.Activities.HomeActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -49,7 +60,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="io.vit.vitio.StartScreens.FragmentHolder"
+            android:name="io.vit.vitio.Activities.OnboardingActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -59,7 +70,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="io.vit.vitio.MarksActivity"
+            android:name="io.vit.vitio.Activities.MarksActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -69,7 +80,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="io.vit.vitio.AttendanceActivity"
+            android:name="io.vit.vitio.Activities.AttendanceActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -81,7 +92,7 @@
         <activity
             android:name="io.vit.vitio.Settings.SettingsActivity"
             android:label="@string/app_name"
-            android:parentActivityName="io.vit.vitio.HomeActivity"
+            android:parentActivityName="io.vit.vitio.Activities.HomeActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="io.vit.vitio.SETTINGSACTIVITY" />
@@ -121,7 +132,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="io.vit.vitio.SampleActivity"
+            android:name="io.vit.vitio.Activities.SampleActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -142,7 +153,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="io.vit.vitio.CoursePageActivity"
+            android:name="io.vit.vitio.Activities.CoursePageActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -152,7 +163,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="io.vit.vitio.SubjectViewActivity"
+            android:name="io.vit.vitio.Activities.SubjectViewActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -162,7 +173,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="io.vit.vitio.FacultyActivity"
+            android:name="io.vit.vitio.Activities.FacultyActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="io.vit.vitio.FACULTYACTIVITY" />
@@ -170,6 +181,55 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <service android:name="io.vit.vitio.Managers.CoursePageDownloadService" />
+
+        <provider
+            android:name="io.vit.vitio.Managers.ConnectContentProvider"
+            android:authorities="io.vit.vitio.provider"
+            android:exported="false" />
+
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="io.vit.vitio" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="io.vit.vitio.Managers.MyGcmListenerService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="io.vit.vitio.Managers.RegistrationIntentService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name="io.vit.vitio.Widget.MainWidget" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget" />
+        </receiver>
+
+        <service
+            android:name="io.vit.vitio.Managers.StackWidgetService"
+            android:exported="false"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
         <!--
          <receiver
              android:name="com.google.android.gcm.GCMBroadcastReceiver"
@@ -188,6 +248,65 @@
         </receiver>
         -->
 
+        <service android:name="io.vit.vitio.Managers.SendDataToWearableService" />
+
+        <activity
+            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.google.android.gms.measurement.UPLOAD" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="io.vit.vitio.firebaseinitprovider"
+            android:exported="false"
+            android:initOrder="100" />
+
+        <receiver
+            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="io.vit.vitio" />
+            </intent-filter>
+        </receiver>
+        <!--
+ Internal (not exported) receiver used by the app to start its own exported services
+             without risk of being spoofed.
+        -->
+        <receiver
+            android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver"
+            android:exported="false" />
+        <!--
+ FirebaseInstanceIdService performs security checks at runtime,
+             no need for explicit permissions despite exported="true"
+        -->
+        <service
+            android:name="com.google.firebase.iid.FirebaseInstanceIdService"
+            android:exported="true" >
+            <intent-filter android:priority="-500" >
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

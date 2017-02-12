@@ -1,0 +1,45 @@
+[
+    {
+        "outputFile": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ldpi-v4\\values-ldpi-v4.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 51,
+                    "endOffset": 102
+                },
+                "from": {
+                    "file": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\values-ldpi\\dimens.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 59,
+                        "endColumn": 51,
+                        "endOffset": 106
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 107,
+                    "endColumn": 52,
+                    "endOffset": 155
+                },
+                "from": {
+                    "file": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\values-ldpi\\dimens.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 114,
+                        "endColumn": 52,
+                        "endOffset": 162
+                    }
+                }
+            }
+        ]
+    }
+]

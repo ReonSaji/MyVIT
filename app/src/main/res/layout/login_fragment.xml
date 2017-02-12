@@ -98,6 +98,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:visibility="gone"
                     android:weightSum="100">
 
                     <EditText
@@ -176,20 +177,19 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
+                    android:visibility="gone"
                     android:background="@color/new_gray">
 
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/phoneno_col"
+                    android:id="@+id/pass_col"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/login_box_bg_both"
-                    android:ems="14"
-                    android:hint="Parent's Mobile Number"
-                    android:maxEms="14"
-                    android:maxLength="14"
+                    android:hint="Password"
+                    android:inputType="textPassword"
                     android:paddingBottom="7dp"
                     android:paddingLeft="10dp"
                     android:textStyle="bold"

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.wearable.view.BoxInsetLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/violet_pd_translucent"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:padding="15dp">
+
+
+    <android.support.wearable.view.CircledImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_appicon"
+        android:layout_gravity="center"
+        app:circle_color="@color/violet_translucent"
+        app:circle_border_cap="butt"
+        app:circle_radius="56dp"/>
+
+</android.support.wearable.view.BoxInsetLayout>

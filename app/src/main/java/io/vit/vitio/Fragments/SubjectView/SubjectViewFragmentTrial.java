@@ -45,16 +45,16 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-import io.vit.vitio.AttendanceActivity;
-import io.vit.vitio.CoursePageActivity;
+import io.vit.vitio.Activities.AttendanceActivity;
+import io.vit.vitio.Activities.CoursePageActivity;
 import io.vit.vitio.Extras.CustomFloatingActionsMenu;
 import io.vit.vitio.Extras.Themes.MyTheme;
-import io.vit.vitio.HomeActivity;
+import io.vit.vitio.Activities.HomeActivity;
 import io.vit.vitio.Instances.Course;
 import io.vit.vitio.Instances.Timing;
 import io.vit.vitio.Managers.DataHandler;
 import io.vit.vitio.Managers.Parsers.ParseTimeTable;
-import io.vit.vitio.MarksActivity;
+import io.vit.vitio.Activities.MarksActivity;
 import io.vit.vitio.R;
 
 /**

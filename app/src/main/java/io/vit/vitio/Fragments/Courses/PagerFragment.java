@@ -22,7 +22,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -35,12 +34,11 @@ import android.widget.TextView;
 import java.util.List;
 
 import io.vit.vitio.Extras.Themes.MyTheme;
-import io.vit.vitio.Fragments.SubjectView.SubjectViewFragmentTrial;
 import io.vit.vitio.Instances.Course;
 import io.vit.vitio.Managers.DataHandler;
 import io.vit.vitio.Managers.Parsers.ParseTimeTable;
 import io.vit.vitio.R;
-import io.vit.vitio.SubjectViewActivity;
+import io.vit.vitio.Activities.SubjectViewActivity;
 
 /**
  * Created by shalini on 28-06-2015.

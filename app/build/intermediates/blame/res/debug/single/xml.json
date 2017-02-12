@@ -2,5 +2,9 @@
     {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\xml\\preferences_headers.xml",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\xml\\preferences_headers.xml"
+    },
+    {
+        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\xml\\widget.xml",
+        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\xml\\widget.xml"
     }
 ]

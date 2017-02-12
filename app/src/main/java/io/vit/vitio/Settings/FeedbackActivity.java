@@ -19,6 +19,7 @@ package io.vit.vitio.Settings;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
@@ -68,7 +69,7 @@ public class FeedbackActivity extends AppCompatActivity implements View.OnClickL
 
     private void setToolbar() {
 
-        toolbar.setBackgroundColor(getResources().getColor(R.color.darkgray));
+        //toolbar.setBackgroundColor(getResources().getColor(R.color.darkgray));
         setSupportActionBar(toolbar);
         SpannableString s = new SpannableString("FEEDBACK");
         myTheme.refreshTheme();
@@ -82,7 +83,8 @@ public class FeedbackActivity extends AppCompatActivity implements View.OnClickL
 
             }
         });
-        changeStatusBarColor(getResources().getColor(R.color.darkergray));
+        toolbar.setTitleTextColor(ContextCompat.getColor(this,myTheme.getMyThemeMainColor()));
+        changeStatusBarColor(myTheme.getStatusColorTypedArray().getColor(0,-1));
     }
 
     public void changeStatusBarColor(int color) {

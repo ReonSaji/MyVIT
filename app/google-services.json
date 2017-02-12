@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "11605097156",
+    "project_id": "myvit-1375"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11605097156:android:e3cc67266201e081",
+        "android_client_info": {
+          "package_name": "io.vit.vitio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "11605097156-g6jm8tgi5vb14t93f05fdr08f2ml39ja.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.vit.vitio",
+            "certificate_hash": "06B3FB884A5D3659EBB56AEEEC9EF1234FC0B991"
+          }
+        },
+        {
+          "client_id": "11605097156-d4vh0fh817erh8okoh05cngf3ua7v0gl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkK-_Tz75pnO8apuC9BlRzTQDQRxNoN_Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

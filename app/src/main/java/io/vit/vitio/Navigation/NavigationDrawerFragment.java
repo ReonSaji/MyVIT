@@ -18,7 +18,10 @@ package io.vit.vitio.Navigation;
 
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -29,6 +32,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,13 +41,14 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
-
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import io.vit.vitio.CoursePageActivity;
+import io.vit.vitio.Activities.CoursePageActivity;
+import io.vit.vitio.Extras.ReturnParcel;
 import io.vit.vitio.Extras.Themes.MyTheme;
 import io.vit.vitio.Fragments.CampusMapFragment;
 import io.vit.vitio.Fragments.Courses.CoursesFragment;
@@ -51,9 +56,9 @@ import io.vit.vitio.Fragments.Profile.ProfileFragment;
 import io.vit.vitio.Fragments.Spotlight.SpotlightFragment;
 import io.vit.vitio.Fragments.TimeTable.TimeTableFragment;
 import io.vit.vitio.Fragments.Today.TodayFragment;
-import io.vit.vitio.HomeActivity;
+import io.vit.vitio.Activities.HomeActivity;
 import io.vit.vitio.Instances.Course;
-import io.vit.vitio.Managers.AppController;
+import io.vit.vitio.Managers.ConnectAPI;
 import io.vit.vitio.Managers.DataHandler;
 import io.vit.vitio.R;
 import io.vit.vitio.Settings.FeedbackActivity;
@@ -63,12 +68,16 @@ import io.vit.vitio.Settings.SettingsActivity;
  * Created by shalini on 23-02-2015.
  */
 public class NavigationDrawerFragment extends Fragment implements NavigationDrawerAdapter.ClickListener, View.OnClickListener {
+
+
+    private static final double IMAGE_MAX_SIZE = 192;
+
     private DrawerLayout drawerLayout;
     private RecyclerView recyclerView;
     private NavigationDrawerAdapter adapter;
     private Toolbar toolbar;
-    private TextView headerRegNo, headerSchool, subheaderPer, subheaderleft, navFooterLeftText,name;
-    private LinearLayout subheadAttLeft, subheadAttRight, navFooterSettings,profileHeader;
+    private TextView headerRegNo, headerSchool, subheaderPer, subheaderleft, navFooterLeftText, name;
+    private LinearLayout subheadAttLeft, subheadAttRight, navFooterSettings, profileHeader;
     private FrameLayout navFooterLeft;
     private HomeActivity home;
     private ActionBarDrawerToggle drawerToggle;
@@ -80,6 +89,8 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     private MyTheme myTheme;
     private DataHandler dataHandler;
     private int CURRENT_FRAGMENT = 0;
+    private CircleImageView profileImage;
+    private String imagePath=null;
 
     public NavigationDrawerFragment() {
 
@@ -112,11 +123,66 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         return rootView;
     }
 
+    private void init(ViewGroup rootView) {
+        myTheme = new MyTheme(getActivity());
+        tf = myTheme.getMyThemeTypeface();
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.drawer_recycler_view);
+        headerRegNo = (TextView) rootView.findViewById(R.id.header_reg_no);
+        headerSchool = (TextView) rootView.findViewById(R.id.header_school);
+        subheaderPer = (TextView) rootView.findViewById(R.id.subheader_per);
+        name = (TextView) rootView.findViewById(R.id.name);
+        subheaderleft = (TextView) rootView.findViewById(R.id.subheader_head_left);
+        navFooterLeft = (FrameLayout) rootView.findViewById(R.id.nav_footer1);
+        navFooterLeftText = (TextView) rootView.findViewById(R.id.nav_footer_left_text);
+        //subheadAttLeft = (LinearLayout) rootView.findViewById(R.id.subheader_per_left);
+        //subheadAttRight = (LinearLayout) rootView.findViewById(R.id.subheader_per_right);
+        navFooterSettings = (LinearLayout) rootView.findViewById(R.id.nav_footer2);
+        profileHeader = (LinearLayout) rootView.findViewById(R.id.header);
+        fl = (LinearLayout) rootView.findViewById(R.id.drawer_frame);
+        adapter = new NavigationDrawerAdapter(getActivity(), getData());
+        dataHandler = DataHandler.getInstance(getActivity());
+        profileImage = (CircleImageView) rootView.findViewById(R.id.profile_image);
+    }
+
     private void setUserData(ViewGroup rootView) {
         try {
-            AppController.getInstance().getImageLoader().get("https://academics.vit.ac.in/student/view_photo_2.asp?rgno="+dataHandler.getRegNo(),ImageLoader.getImageListener((CircleImageView)rootView.findViewById(R.id.profile_image),R.drawable.done_for_day
-            ,R.drawable.weekend));
+            if (dataHandler.getProfileImagePath() != null) {
+                imagePath=dataHandler.getProfileImagePath();
+                setProfileImage(dataHandler.getProfileImagePath());
+            } else {
+                if (dataHandler.getProfileImageEncoded() == null) {
+                    ConnectAPI connectAPI = new ConnectAPI(getActivity());
+                    connectAPI.setOnRequestListener(new ConnectAPI.RequestListener() {
+                        @Override
+                        public void onRequestInitiated(int code) {
+                            if (code == ConnectAPI.PROFILE_IMAGE_CODE)
+                                profileImage.setImageResource(R.drawable.done_for_day);
+                        }
 
+                        @Override
+                        public void onRequestCompleted(ReturnParcel parcel, int code) {
+                            if (code == ConnectAPI.PROFILE_IMAGE_CODE) {
+                                String data = (String) parcel.getRETURN_PARCEL_OBJECT();
+                                byte[] decoded = Base64.decode(data.substring(1, data.length() - 1), Base64.DEFAULT);
+                                Bitmap bitmap = BitmapFactory.decodeByteArray(decoded, 0, decoded.length);
+                                profileImage.setImageBitmap(bitmap);
+                            }
+                        }
+
+                        @Override
+                        public void onErrorRequest(ReturnParcel parcel, int code) {
+                            profileImage.setImageResource(R.drawable.weekend);
+                        }
+                    });
+                    connectAPI.loginAndFetchProfileImage();
+
+                } else {
+                    String data = dataHandler.getProfileImageEncoded();
+                    byte[] decoded = Base64.decode(data.substring(1, data.length() - 1), Base64.DEFAULT);
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(decoded, 0, decoded.length);
+                    profileImage.setImageBitmap(bitmap);
+                }
+            }
             headerRegNo.setText(dataHandler.getRegNo());
             headerSchool.setText(dataHandler.getSchool());
             name.setText(dataHandler.getName());
@@ -141,26 +207,6 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private void init(ViewGroup rootView) {
-        myTheme=new MyTheme(getActivity());
-        tf = myTheme.getMyThemeTypeface();
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.drawer_recycler_view);
-        headerRegNo = (TextView) rootView.findViewById(R.id.header_reg_no);
-        headerSchool = (TextView) rootView.findViewById(R.id.header_school);
-        subheaderPer = (TextView) rootView.findViewById(R.id.subheader_per);
-        name = (TextView) rootView.findViewById(R.id.name);
-        subheaderleft = (TextView) rootView.findViewById(R.id.subheader_head_left);
-        navFooterLeft = (FrameLayout) rootView.findViewById(R.id.nav_footer1);
-        navFooterLeftText = (TextView) rootView.findViewById(R.id.nav_footer_left_text);
-        //subheadAttLeft = (LinearLayout) rootView.findViewById(R.id.subheader_per_left);
-        //subheadAttRight = (LinearLayout) rootView.findViewById(R.id.subheader_per_right);
-        navFooterSettings = (LinearLayout) rootView.findViewById(R.id.nav_footer2);
-        profileHeader = (LinearLayout) rootView.findViewById(R.id.header);
-        fl = (LinearLayout) rootView.findViewById(R.id.drawer_frame);
-        adapter = new NavigationDrawerAdapter(getActivity(), getData());
-        dataHandler = DataHandler.getInstance(getActivity());
     }
 
 
@@ -229,6 +275,15 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         //drawerLayout.setScrimColor(Color.TRANSPARENT);
     }
 
+    public void updateProfileImage(){
+        if(imagePath!=null){
+            if(!imagePath.equals(dataHandler.getProfileImagePath())){
+                setProfileImage(dataHandler.getProfileImagePath());
+                imagePath=dataHandler.getProfileImagePath();
+            }
+        }
+    }
+
     @Override
     public void onRecyclerItemClick(View v, int position) {
         // if (lastPosition != position) {
@@ -240,7 +295,8 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
                 drawerLayout.closeDrawers();
                 Fragment today = new TodayFragment();
                 ft.replace(R.id.main_fragment_holder, today);
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                if (Build.VERSION.SDK_INT >= 21)
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 ft.addToBackStack(null);
                 ft.commit();
                 home.setToolbarFormat(0);
@@ -252,7 +308,8 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
                 drawerLayout.closeDrawers();
                 Fragment courses = new CoursesFragment();
                 ft.replace(R.id.main_fragment_holder, courses);
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                if (Build.VERSION.SDK_INT >= 21)
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 ft.addToBackStack(null);
                 ft.commit();
                 home.setToolbarFormat(1);
@@ -263,7 +320,8 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
                 drawerLayout.closeDrawers();
                 Fragment tt = new TimeTableFragment();
                 ft.replace(R.id.main_fragment_holder, tt);
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                if (Build.VERSION.SDK_INT >= 21)
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 ft.addToBackStack(null);
                 ft.commit();
                 home.setToolbarFormat(2);
@@ -293,7 +351,8 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
                 drawerLayout.closeDrawers();
                 Fragment campus = new CampusMapFragment();
                 ft.replace(R.id.main_fragment_holder, campus);
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                if (Build.VERSION.SDK_INT >= 21)
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 ft.addToBackStack(null);
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -308,7 +367,8 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
                 drawerLayout.closeDrawers();
                 Fragment spotlight = new SpotlightFragment();
                 ft.replace(R.id.main_fragment_holder, spotlight);
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                if (Build.VERSION.SDK_INT >= 21)
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 ft.addToBackStack(null);
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -357,7 +417,8 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
                 drawerLayout.closeDrawers();
                 Fragment profile = new ProfileFragment();
                 ft.replace(R.id.main_fragment_holder, profile);
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                if (Build.VERSION.SDK_INT >= 21)
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 ft.addToBackStack(null);
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -376,7 +437,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         super.onResume();
         recyclerView.setAdapter(adapter);
         myTheme.refreshTheme();
-        tf=myTheme.getMyThemeTypeface();
+        tf = myTheme.getMyThemeTypeface();
     }
 
     /*public class SwapFragment extends AsyncTask<Fragment,Void,Void>{
@@ -405,4 +466,50 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
             home.changeStatusBarColor(CURRENT_FRAGMENT);
         }
     }*/
+    private void setProfileImage(final String picturePath) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final Bitmap bitmap;
+                try {
+                    bitmap = decodeFile(new File(picturePath));
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            profileImage.setImageBitmap(bitmap);
+                        }
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }).start();
     }
+    private Bitmap decodeFile(File f) throws Exception{
+        Bitmap b = null;
+
+        //Decode image size
+        BitmapFactory.Options o = new BitmapFactory.Options();
+        o.inJustDecodeBounds = true;
+
+        FileInputStream fis = new FileInputStream(f);
+        BitmapFactory.decodeStream(fis, null, o);
+        fis.close();
+
+        int scale = 1;
+        if (o.outHeight > IMAGE_MAX_SIZE || o.outWidth > IMAGE_MAX_SIZE) {
+            scale = (int)Math.pow(2, (int) Math.ceil(Math.log(IMAGE_MAX_SIZE /
+                    (double) Math.max(o.outHeight, o.outWidth)) / Math.log(0.5)));
+        }
+
+        //Decode with inSampleSize
+        BitmapFactory.Options o2 = new BitmapFactory.Options();
+        o2.inSampleSize = scale;
+        fis = new FileInputStream(f);
+        b = BitmapFactory.decodeStream(fis, null, o2);
+        fis.close();
+
+        return b;
+    }
+}

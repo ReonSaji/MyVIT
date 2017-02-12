@@ -1,0 +1,14 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="@color/violet_translucent"
+        android:name="Ellipse 1"
+        android:pathData="m12 0c6.627 0 12 5.373 12 12c0 6.627 -5.373 12 -12 12c-6.627 0 -12 -5.373 -12 -12c0 -6.627 5.373 -12 12 -12z" />
+    <path
+        android:fillColor="#fff"
+        android:name="T"
+        android:pathData="m11.721 18.188h1.47v-10.025h3.442v-1.236h-8.337v1.236h3.425v10.025z" />
+</vector>

@@ -16,6 +16,7 @@
 
 package io.vit.vitio.Settings;
 
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.view.View;
+import android.widget.TextView;
 
 import io.vit.vitio.Extras.TypeFaceSpan;
 import io.vit.vitio.R;
@@ -33,11 +35,33 @@ import io.vit.vitio.R;
 public class AboutActivity extends AppCompatActivity{
 
 
+    private TextView head,content1,content2,title1,title2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.prefs_about_fragment);
-        changeStatusBarColor(getResources().getColor(R.color.light_blue_pd));
+        changeStatusBarColor(getResources().getColor(R.color.black));
+        init();
+        setFonts();
+    }
+
+    private void init() {
+
+        head=(TextView)findViewById(R.id.head);
+        content1=(TextView)findViewById(R.id.content1);
+        content2=(TextView)findViewById(R.id.content2);
+        title1=(TextView)findViewById(R.id.title1);
+        title2=(TextView)findViewById(R.id.title2);
+    }
+
+    private void setFonts() {
+        Typeface typeFace=Typeface.createFromAsset(getAssets(),"fonts/segoe-bold.ttf");
+        head.setTypeface(typeFace);
+        content1.setTypeface(typeFace);
+        content2.setTypeface(typeFace);
+        title2.setTypeface(typeFace);
+        title1.setTypeface(typeFace);
     }
 
     public void changeStatusBarColor(int color) {

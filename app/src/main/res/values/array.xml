@@ -23,9 +23,6 @@
         <item>@drawable/ic_nav_map_stand</item>
         <item>@drawable/ic_nav_spotlight_stand</item>
         <item>@drawable/ic_nav_materials_stand</item>
-        <item>@drawable/ic_nav_exam_stand</item>
-        <item>@drawable/ic_nav_exam_stand</item>
-        <item>@drawable/ic_nav_exam_stand</item>
     </array>
 
 
@@ -36,9 +33,6 @@
         <item>@drawable/ic_nav_map_classic</item>
         <item>@drawable/ic_nav_spotlight_classic</item>
         <item>@drawable/ic_nav_materials_classic</item>
-        <item>@drawable/ic_nav_exam_classic</item>
-        <item>@drawable/ic_nav_exam_classic</item>
-        <item>@drawable/ic_nav_exam_classic</item>
     </array>
 
     <array name="drawer_icons_indigo">
@@ -48,9 +42,6 @@
         <item>@drawable/ic_nav_map_indigo</item>
         <item>@drawable/ic_nav_spotlight_indigo</item>
         <item>@drawable/ic_nav_materials_indigo</item>
-        <item>@drawable/ic_nav_exam_indigo</item>
-        <item>@drawable/ic_nav_exam_indigo</item>
-        <item>@drawable/ic_nav_exam_indigo</item>
     </array>
 
     <array name="drawer_icons_mono">
@@ -60,9 +51,6 @@
         <item>@drawable/ic_nav_map_mono</item>
         <item>@drawable/ic_nav_spotlight_mono</item>
         <item>@drawable/ic_nav_materials_mono</item>
-        <item>@drawable/ic_nav_exam_mono</item>
-        <item>@drawable/ic_nav_exam_mono</item>
-        <item>@drawable/ic_nav_exam_mono</item>
     </array>
 
     <array name="onboarding_icons">
@@ -70,8 +58,8 @@
         <item>@drawable/onboarding_two</item>
         <item>@drawable/onboarding_three</item>
         <item>@drawable/onboarding_four</item>
-        <item>@drawable/onboarding_four</item>
-        <item>@drawable/onboarding_four</item>
+       <!-- <item>@drawable/onboarding_four</item>
+        <item>@drawable/onboarding_four</item>-->
     </array>
 
 
@@ -99,9 +87,18 @@
     </array>
 
 
+    <array name="theme_bg">
+        <item>@color/violet_translucent</item>
+        <item>@color/gray_translucent</item>
+        <item>@color/indigo_translucent</item>
+        <item>@color/mono_translucent</item>
+    </array>
 
 
-     <array name="toolbar_colors_classic">
+
+
+
+    <array name="toolbar_colors_classic">
          <item>@color/gray</item>
          <item>@color/gray</item>
          <item>@color/gray</item>

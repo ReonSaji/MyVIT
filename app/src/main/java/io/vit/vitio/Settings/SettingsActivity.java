@@ -16,41 +16,34 @@
 
 package io.vit.vitio.Settings;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.app.Fragment;
-import android.support.v4.app.NavUtils;
+import android.preference.SwitchPreference;
+import android.provider.MediaStore;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-
-import java.util.List;
+import android.widget.Toast;
 
 import io.vit.vitio.Extras.Themes.MyTheme;
-import io.vit.vitio.Extras.TypeFaceSpan;
-import io.vit.vitio.HomeActivity;
+import io.vit.vitio.Activities.HomeActivity;
 import io.vit.vitio.Managers.DataHandler;
 import io.vit.vitio.R;
-import io.vit.vitio.StartScreens.FragmentHolder;
+import io.vit.vitio.Activities.OnboardingActivity;
 
 /**
  * Created by shalini on 11-07-2015.
@@ -78,7 +71,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void setToolbar() {
 
-        toolbar.setBackgroundColor(getResources().getColor(R.color.darkgray));
+        //toolbar.setBackgroundColor(getResources().getColor(R.color.darkgray));
         setSupportActionBar(toolbar);
         SpannableString s = new SpannableString("SETTINGS");
         myTheme.refreshTheme();
@@ -92,7 +85,8 @@ public class SettingsActivity extends AppCompatActivity {
 
             }
         });
-        changeStatusBarColor(getResources().getColor(R.color.darkergray));
+        toolbar.setTitleTextColor(ContextCompat.getColor(this,myTheme.getMyThemeMainColor()));
+        changeStatusBarColor(myTheme.getStatusColorTypedArray().getColor(0,-1));
     }
 
     /**
@@ -126,7 +120,7 @@ public class SettingsActivity extends AppCompatActivity {
                             alertDialog.dismiss();
                             DataHandler dataHandler = DataHandler.getInstance(getActivity());
                             dataHandler.clearAllData();
-                            Intent intent = new Intent(getActivity(), FragmentHolder.class);
+                            Intent intent = new Intent(getActivity(), OnboardingActivity.class);
                             intent.putExtra("return", "logout");
                             getActivity().finish();
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -146,14 +140,14 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             });
 
-            findPreference("comingsoon").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+          /*  findPreference("comingsoon").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     startActivity(new Intent(getActivity(), ComingSoonActivity.class));
 
                     return true;
                 }
-            });
+            });*/
 
 
             findPreference("about").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -178,6 +172,39 @@ public class SettingsActivity extends AppCompatActivity {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     startActivity(new Intent(getActivity(), FeedbackActivity.class));
+
+                    return true;
+                }
+            });
+
+            if(DataHandler.getInstance(getActivity()).getProfileImagePath()==null){
+                ((SwitchPreference)findPreference("profile_image")).setChecked(true);
+            }
+
+            ((SwitchPreference)findPreference("profile_image")).setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(final Preference preference, Object newValue) {
+                    if(((SwitchPreference)preference).isChecked()){
+                        AlertDialog.Builder builder=new AlertDialog.Builder(getActivity())
+                                .setMessage("You need to set a custom profile image. Do you wish to continue?")
+                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                        startActivityForResult(Intent.createChooser(intent, "Complete action using"), 0);
+                                    }
+                                })
+                                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        ((SwitchPreference) preference).setChecked(true);
+                                    }
+                                })
+                                .setCancelable(false);
+                        builder.create().show();
+                    }else{
+                        DataHandler.getInstance(getActivity()).saveProfileImagePath(null);
+                    }
 
                     return true;
                 }
@@ -227,7 +254,25 @@ public class SettingsActivity extends AppCompatActivity {
 
         }
 
-
+        @Override
+        public void onActivityResult(int requestCode, int resultCode, Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+            if (requestCode == 0 && resultCode == RESULT_OK) {
+                Uri selectedImageUri = data.getData();
+                String[] fileColumns = {MediaStore.Images.Media.DATA};
+                Cursor cursor = getActivity().getContentResolver().query(selectedImageUri, fileColumns, null, null, null);
+                cursor.moveToFirst();
+                int cIndex = cursor.getColumnIndex(fileColumns[0]);
+                String picturePath = cursor.getString(cIndex);
+                cursor.close();
+                if (picturePath != null) {
+                    DataHandler.getInstance(getActivity()).saveProfileImagePath(picturePath);
+                    Toast.makeText(getActivity(),"Profile image set",Toast.LENGTH_SHORT).show();
+                }
+            }else if(requestCode==0&&resultCode==RESULT_CANCELED){
+                ((SwitchPreference)findPreference("profile_image")).setChecked(true);
+            }
+        }
     }
 
 
@@ -241,7 +286,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        toolbar.setBackgroundColor(getResources().getColor(R.color.darkgray));
+        //toolbar.setBackgroundColor(getResources().getColor(R.color.darkgray));
         SpannableString s = new SpannableString("SETTINGS");
         s.setSpan(myTheme.getMyThemeTypeFaceSpan(), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         getSupportActionBar().setTitle(s);

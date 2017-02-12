@@ -1,13 +1,5 @@
 [
     {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_appicon.png",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_appicon.png"
-    },
-    {
-        "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_icon.png",
-        "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_icon.png"
-    },
-    {
         "merged": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher.png",
         "source": "E:\\Prince\\mac\\Desktop\\VITIO\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     }

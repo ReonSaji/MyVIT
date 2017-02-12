@@ -37,12 +37,13 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:gravity="center"
             android:layout_weight="20">
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_att_short_red"
+                android:layout_height="40dp"
                 android:id="@+id/subject_att_indicator"/>
+
         </LinearLayout>
         <FrameLayout
             android:layout_width="0dp"
@@ -96,8 +97,9 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_weight="20"
-            android:gravity="center"
+            android:gravity="bottom"
             android:id="@+id/right_content_info">
+
 
             <TextView
                 android:id="@+id/subject_per"
@@ -109,15 +111,17 @@
                 android:textColor="@color/new_gray"/>
 
 
-
             <TextView
                 android:id="@+id/subject_venue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
                 android:textSize="@dimen/general_medium2_thin"
                 android:textStyle="bold"
                 android:text="SJT701"
                 android:layout_marginTop="5dp"
+                android:maxLines="1"
+                android:ellipsize="marquee"
                 android:textColor="@color/gray"/>
         </LinearLayout>
 

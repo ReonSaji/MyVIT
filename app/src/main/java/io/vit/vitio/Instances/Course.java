@@ -16,11 +16,20 @@
 
 package io.vit.vitio.Instances;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
 
+import io.vit.vitio.Managers.Parsers.ParseCourses;
 import io.vit.vitio.R;
+
+import static io.vit.vitio.Managers.ConnectDatabase.COLUMNS;
 
 /**
  * Created by shalini on 21-06-2015.
@@ -60,7 +69,6 @@ public class Course {
     public boolean isSeminar=false;
 
     public Course() {
-
     }
 
     public Course(JSONObject object) {
@@ -258,7 +266,7 @@ public class Course {
     }
 
     public String getBuilding() {
-        String school=getCOURSE_VENUE().replaceAll("[0-9]*","").trim();
+        String school=getCOURSE_VENUE().replaceAll("G{0,}[0-9]+","").trim();
         return school;
 
     }
@@ -284,5 +292,57 @@ public class Course {
             return R.drawable.cdmm_mod;
         }
 
+    }
+
+    public ContentValues getContentValues() throws JSONException {
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMNS[0], getCLASS_NUMBER());
+        values.put(COLUMNS[1], getCOURSE_TITLE());
+        values.put(COLUMNS[2], getCOURSE_SLOT());
+        values.put(COLUMNS[3], getCOURSE_TYPE());
+        values.put(COLUMNS[4], getCOURSE_TYPE_SHORT());
+        Log.d("type", getCOURSE_TYPE_SHORT());
+        values.put(COLUMNS[5], getCOURSE_LTPC().toString());
+        values.put(COLUMNS[6], getCOURSE_CODE());
+        values.put(COLUMNS[7], getCOURSE_MODE());
+        values.put(COLUMNS[8], getCOURSE_OPTION());
+        values.put(COLUMNS[9], getCOURSE_VENUE());
+        values.put(COLUMNS[10], getCOURSE_FACULTY().toString());
+        values.put(COLUMNS[11], getCOURSE_REGISTRATIONSTATUS());
+        values.put(COLUMNS[12], getCOURSE_BILL_DATE());
+        values.put(COLUMNS[13], getCOURSE_BILL_NUMBER());
+        values.put(COLUMNS[14], getCOURSE_PROJECT_TITLE());
+        values.put(COLUMNS[15], getCOURSE_JSON().toString());
+        values.put(COLUMNS[16], getCOURSE_ATTENDANCE().getJson().toString());
+        values.put(COLUMNS[17], getCOURSE_JSON().getJSONArray("timings").toString());
+        values.put(COLUMNS[18], getCOURSE_JSON().getJSONObject("marks").toString());
+        return values;
+    }
+
+    public static Course fromCursor(Cursor cursor) throws JSONException {
+
+        Course course=new Course();
+        course.setCLASS_NUMBER(cursor.getString(0));
+        course.setCOURSE_TITLE(cursor.getString(1));
+        course.setCOURSE_SLOT(cursor.getString(2));
+        course.setCOURSE_TYPE(cursor.getString(3));
+        course.setCOURSE_TYPE_SHORT(cursor.getString(4));
+        course.setCOURSE_LTPC(cursor.getString(5));
+        course.setCOURSE_CODE(cursor.getString(6));
+        course.setCOURSE_MODE(cursor.getString(7));
+        course.setCOURSE_OPTION(cursor.getString(8));
+        course.setCOURSE_VENUE(cursor.getString(9));
+        course.setCOURSE_FACULTY(cursor.getString(10));
+        course.setCOURSE_REGISTRATIONSTATUS(cursor.getString(11));
+        course.setCOURSE_BILL_DATE(cursor.getString(12));
+        course.setCOURSE_BILL_NUMBER(cursor.getString(13));
+        course.setCOURSE_PROJECT_TITLE(cursor.getString(14));
+        course.setJson(new JSONObject(cursor.getString(15)));
+        course.setCOURSE_ATTENDANCE(ParseCourses.getAttendance(new JSONObject(cursor.getString(16))));
+        course.setCOURSE_TIMING(ParseCourses.getTimings(new JSONArray(cursor.getString(17))));
+        course.setCOURSE_MARKS(ParseCourses.getCouseMarks(new JSONObject(cursor.getString(18))));
+
+        return course;
     }
 }

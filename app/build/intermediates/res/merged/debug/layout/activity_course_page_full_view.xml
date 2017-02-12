@@ -55,8 +55,7 @@
                     android:layout_height="200dp"
                     android:padding="5dp"
                     android:background="@drawable/round_light_gray"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/sample_faculty" />
+                    android:adjustViewBounds="true" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

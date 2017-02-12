@@ -26,6 +26,12 @@
             android:title="Logout"
             android:summary="Erases all data and restarts the app" />
 
+        <SwitchPreference
+            android:key="profile_image"
+            android:title="Set profile image to default"
+            android:summary="Will load image from your student login portal"/>
+
+
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -53,11 +59,11 @@
     <PreferenceCategory
         android:title="About">
 
-        <Preference
+       <!-- <Preference
             android:key="comingsoon"
             android:title="Coming Soon!">
         </Preference>
-
+        -->
         <Preference
             android:key="about"
             android:title="About Us">
@@ -74,7 +80,7 @@
         <Preference
             android:key="build"
             android:title="Build Version"
-            android:summary="1.2.1">
+            android:summary="2.0.0">
 
         </Preference>
 

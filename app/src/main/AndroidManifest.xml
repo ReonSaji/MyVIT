@@ -1,4 +1,4 @@
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2015 GDG VIT Vellore.
   ~ This program is free software: you can redistribute it and/or modify
   ~     it under the terms of the GNU General Public License as published by
@@ -12,27 +12,41 @@
   ~
   ~     You should have received a copy of the GNU General Public License
   ~     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-  -->
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="io.vit.vitio">
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="io.vit.vitio">
-
-
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-    <application android:allowBackup="true" android:label="@string/app_name"
-        android:icon="@mipmap/ic_appicon" android:theme="@style/AppTheme"
-        android:name=".Managers.AppController">
+    <permission
+        android:name="io.vit.vitio.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
 
+    <uses-permission android:name="io.vit.vitio.permission.C2D_MESSAGE" />
+
+    <!-- This app has permission to register and receive data message. -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+
+
+    <application
+        android:name=".Managers.AppController"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
 
         <activity
-            android:name=".HomeActivity"
+            android:name=".Activities.HomeActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -42,18 +56,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".StartScreens.FragmentHolder"
+            android:name=".Activities.OnboardingActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="io.vit.vitio.FRAGMENTHOLDER" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".MarksActivity"
+            android:name=".Activities.MarksActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -64,7 +77,7 @@
         </activity>
 
         <activity
-            android:name=".AttendanceActivity"
+            android:name=".Activities.AttendanceActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -73,19 +86,17 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Settings.SettingsActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".HomeActivity">
+            android:parentActivityName=".Activities.HomeActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="io.vit.vitio.SETTINGSACTIVITY" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Settings.AboutActivity"
             android:label="@string/app_name"
@@ -97,7 +108,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Settings.SourcesActivity"
             android:label="@string/app_name"
@@ -108,7 +118,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Settings.FeedbackActivity"
             android:label="@string/app_name"
@@ -119,9 +128,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".SampleActivity"
+            android:name=".Activities.SampleActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -130,7 +138,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Settings.ComingSoonActivity"
             android:label="@string/app_name"
@@ -143,7 +150,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CoursePageActivity"
+            android:name=".Activities.CoursePageActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -152,10 +159,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
         <activity
-            android:name=".SubjectViewActivity"
+            android:name=".Activities.SubjectViewActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -164,9 +169,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".FacultyActivity"
+            android:name=".Activities.FacultyActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="io.vit.vitio.FACULTYACTIVITY" />
@@ -174,19 +178,71 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <!-- <receiver
+
+        <service android:name=".Managers.CoursePageDownloadService" />
+
+        <provider
+            android:name=".Managers.ConnectContentProvider"
+            android:authorities="io.vit.vitio.provider"
+            android:exported="false" />
+
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="io.vit.vitio" />
+            </intent-filter>
+        </receiver>
+        <service
+            android:name=".Managers.MyGcmListenerService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".Managers.RegistrationIntentService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name=".Widget.MainWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"></action>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/widget"/>
+        </receiver>
+
+
+
+        <service android:name=".Managers.StackWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"
+            android:exported="false" />
+        <!--
+         <receiver
              android:name="com.google.android.gcm.GCMBroadcastReceiver"
              android:permission="com.google.android.c2dm.permission.SEND" >
          <intent-filter>
 
               Receives the actual messages.
-             <action android:name="com.google.android.c2dm.intent.RECEIVE" />-->
-            <!-- Receives the registration id.
+             <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        -->
+        <!--
+        Receives the registration id.
             <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
             <category android:name="com.androidexample.gcm" />
         </intent-filter>
-        </receiver>-->
+        </receiver>
+        -->
+
+        <service android:name=".Managers.SendDataToWearableService"/>
 
     </application>
 

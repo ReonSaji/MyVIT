@@ -83,7 +83,7 @@
             android:src="@drawable/circle" />
 
 
-        <ImageView
+        <!--<ImageView
             android:id="@+id/c6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="13dp"
-            android:src="@drawable/circle" />
+            android:src="@drawable/circle" />-->
     </LinearLayout>
 
 

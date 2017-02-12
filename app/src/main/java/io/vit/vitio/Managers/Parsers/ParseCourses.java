@@ -23,11 +23,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
+import io.vit.vitio.Instances.AcademicHistory;
 import io.vit.vitio.Instances.Attendance;
 import io.vit.vitio.Instances.Course;
 import io.vit.vitio.Instances.Day;
+import io.vit.vitio.Instances.Faculty;
+import io.vit.vitio.Instances.Ltpc;
 import io.vit.vitio.Instances.Mark;
 import io.vit.vitio.Instances.Timing;
 
@@ -129,24 +134,32 @@ public class ParseCourses extends ParseResponse {
         List<Mark> marks = new ArrayList<>();
         try {
             JSONArray ass = markjson.getJSONArray("assessments");
-            Mark mark1 = new Mark(Mark.MARKS_CAT1, ass.getJSONObject(0).getString("scored_marks"), ass.getJSONObject(0).getString(Mark.MARKS_STATUS));
-            Mark mark2 = new Mark(Mark.MARKS_CAT2, ass.getJSONObject(1).getString("scored_marks"), ass.getJSONObject(1).getString(Mark.MARKS_STATUS));
-            Mark mark3 = new Mark(Mark.MARKS_QUIZ1, ass.getJSONObject(2).getString("scored_marks"), ass.getJSONObject(2).getString(Mark.MARKS_STATUS));
-            Mark mark4 = new Mark(Mark.MARKS_QUIZ2, ass.getJSONObject(3).getString("scored_marks"), ass.getJSONObject(3).getString(Mark.MARKS_STATUS));
-            Mark mark5 = new Mark(Mark.MARKS_QUIZ3, ass.getJSONObject(4).getString("scored_marks"), ass.getJSONObject(4).getString(Mark.MARKS_STATUS));
-            Mark mark6 = new Mark(Mark.MARKS_ASSIGNMENT, ass.getJSONObject(5).getString("scored_marks"), ass.getJSONObject(5).getString(Mark.MARKS_STATUS));
-            Log.i(TAG, "getCouseMarks: "+mark1.getMARK());
-            Log.i(TAG, "getCouseMarks: "+mark2.getMARK());
-            Log.i(TAG, "getCouseMarks: "+mark3.getMARK());
-            Log.i(TAG, "getCouseMarks: "+mark4.getMARK());
-            Log.i(TAG, "getCouseMarks: "+mark5.getMARK());
-            Log.i(TAG, "getCouseMarks: "+mark6.getMARK());
-            marks.add(mark1);
-            marks.add(mark2);
-            marks.add(mark3);
-            marks.add(mark4);
-            marks.add(mark5);
-            marks.add(mark6);
+            if(ass.length()==1){
+                Mark mark=new Mark(Mark.MARKS_LAB,ass.getJSONObject(0).getString("scored_marks"),ass.getJSONObject(0).has("status")?ass.getJSONObject(0).getString(Mark.MARKS_STATUS):null);
+                marks.add(mark);
+            }else {
+                Mark mark1 = new Mark(Mark.MARKS_CAT1, ass.getJSONObject(0).getString("scored_marks"), ass.getJSONObject(0).has("status") ? ass.getJSONObject(0).getString(Mark.MARKS_STATUS) : null);
+                Mark mark2 = new Mark(Mark.MARKS_CAT2, ass.getJSONObject(1).getString("scored_marks"), ass.getJSONObject(1).has("status") ? ass.getJSONObject(1).getString(Mark.MARKS_STATUS) : null);
+                Mark mark3 = new Mark(Mark.MARKS_QUIZ1, ass.getJSONObject(2).getString("scored_marks"), ass.getJSONObject(2).has("status") ? ass.getJSONObject(2).getString(Mark.MARKS_STATUS) : null);
+                Mark mark4 = new Mark(Mark.MARKS_QUIZ2, ass.getJSONObject(3).getString("scored_marks"), ass.getJSONObject(3).has("status") ? ass.getJSONObject(3).getString(Mark.MARKS_STATUS) : null);
+                Mark mark5 = new Mark(Mark.MARKS_QUIZ3, ass.getJSONObject(4).getString("scored_marks"), ass.getJSONObject(4).has("status") ? ass.getJSONObject(4).getString(Mark.MARKS_STATUS) : null);
+                Mark mark6 = new Mark(Mark.MARKS_ASSIGNMENT, ass.getJSONObject(5).getString("scored_marks"), ass.getJSONObject(5).has("status") ? ass.getJSONObject(5).getString(Mark.MARKS_STATUS) : null);
+                Mark mark7 = new Mark(Mark.MARKS_FINAL_ASSESSMENT, ass.getJSONObject(6).getString("scored_marks"), ass.getJSONObject(6).has("status") ? ass.getJSONObject(6).getString(Mark.MARKS_STATUS) : null);
+                Log.i(TAG, "getCouseMarks: " + mark1.getMARK());
+                Log.i(TAG, "getCouseMarks: " + mark2.getMARK());
+                Log.i(TAG, "getCouseMarks: " + mark3.getMARK());
+                Log.i(TAG, "getCouseMarks: " + mark4.getMARK());
+                Log.i(TAG, "getCouseMarks: " + mark5.getMARK());
+                Log.i(TAG, "getCouseMarks: " + mark6.getMARK());
+                Log.i(TAG, "getCouseMarks: " + mark7.getMARK());
+                marks.add(mark1);
+                marks.add(mark2);
+                marks.add(mark3);
+                marks.add(mark4);
+                marks.add(mark5);
+                marks.add(mark6);
+                marks.add(mark7);
+            }
             return marks;
 
         } catch (JSONException e) {
@@ -212,6 +225,87 @@ public class ParseCourses extends ParseResponse {
 
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Faculty parseFacultyAdvisor(String json){
+        if(json!=null) {
+            try {
+                JSONObject object=new JSONObject(json);
+                JSONObject facultyDetails = object.getJSONObject("faculty_det");
+                Faculty faculty = new Faculty();
+                faculty.setNAME(facultyDetails.getString("Name"));
+                faculty.setDESIGNATION(facultyDetails.getString("Designation"));
+                faculty.setEMAIL(facultyDetails.getString("Email-Id"));
+                faculty.setINTERCOM(facultyDetails.getString("Intercom No"));
+                faculty.setMOBILE(facultyDetails.getString("Mobile No/Phone No"));
+                faculty.setSCHOOL(facultyDetails.getString("School"));
+                faculty.setROOM(facultyDetails.getString("Room No"));
+                faculty.setPHOTO(facultyDetails.getString("photo"));
+                return faculty;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+        return null;
+    }
+
+    public static AcademicHistory parseAcademiceHistory(String json){
+        if(json!=null) {
+            try {
+                AcademicHistory academicHistory=new AcademicHistory();
+                JSONObject object=new JSONObject(json);
+                HashMap<String,String> gradesMap=new HashMap();
+                JSONObject grades = object.getJSONObject("grade summary");
+
+                if(grades!=null&&grades.length()>0){
+                    Iterator<String> iterator=grades.keys();
+                    while(iterator.hasNext()){
+                        String key=iterator.next();
+                        gradesMap.put(key,grades.getString(key));
+                    }
+                }
+
+                List<AcademicHistory.GradeHistory> list=new ArrayList<>();
+
+                JSONObject history1 = object.getJSONObject("history 1");
+
+                if(history1!=null&&history1.length()>0){
+                    Iterator<String> iterator=grades.keys();
+                    while(iterator.hasNext()){
+                        String key=iterator.next();
+                        JSONObject j=history1.getJSONObject(key);
+                        AcademicHistory.GradeHistory gradeHistory=academicHistory.new GradeHistory();
+                        Course course=new Course();
+                        course.setCOURSE_CODE(key);
+                        course.setCOURSE_TITLE(j.getString("course_title"));
+                        course.setCOURSE_TYPE(j.getString("course_type"));
+                        course.setCOURSE_LTPC(new Ltpc(Integer.valueOf(j.getString("credit")),0,0,0));
+                        gradeHistory.setCourse(course);
+                        gradeHistory.setGrade(j.getString("grade"));
+                        list.add(gradeHistory);
+                    }
+                }
+                AcademicHistory.GradesAggregate gradesAggregate=academicHistory.new GradesAggregate();
+                JSONObject history2 = object.getJSONObject("history 2");
+                if(history2!=null&&history2.length()>0){
+                    gradesAggregate.setCgpa(history2.getString("cgpa"));
+                    gradesAggregate.setCreditsEarned(history2.getString("credits earned"));
+                    gradesAggregate.setCreditsRegistered(history2.getString("credits registered"));
+                    gradesAggregate.setRank(history2.getString("rank"));
+                }
+
+                academicHistory.setGradesSummary(gradesMap);
+                academicHistory.setGradesHistory(list);
+                academicHistory.setGradesAggregate(gradesAggregate);
+                return academicHistory;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+
         }
         return null;
     }

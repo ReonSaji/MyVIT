@@ -27,6 +27,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import io.vit.vitio.R;
+
 /**
  * Created by shalini on 21-06-2015.
  */
@@ -137,6 +139,18 @@ public class Attendance {
             return (int)Math.ceil(((double) attended / total) * 100f);
         }
         return 0;
+    }
+
+    public static int getAttendanceDrawable(int p) {
+        if(p<60){
+            return R.drawable.ic_smiley4;
+        }else if(p>=60&&p<75){
+            return R.drawable.ic_smiley3;
+        }else if (p==75){
+            return R.drawable.ic_smiley2;
+        }else{
+            return R.drawable.ic_smiley1;
+        }
     }
 
     public class VClass {

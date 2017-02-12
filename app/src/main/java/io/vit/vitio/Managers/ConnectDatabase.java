@@ -39,36 +39,36 @@ public class ConnectDatabase extends SQLiteOpenHelper {
 
     // All Static variables
     // Database Version
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     // Database Name
     private static final String DATABASE_NAME = "vitioDatabase";
 
     // Contacts table name
-    private static final String TABLE_COURSES = "courses";
+    public static final String TABLE_COURSES = "courses";
 
     // Contacts Table Columns names
-    private static final String KEY_CLASNBR = "course_class_number";
-    private static final String KEY_TITLE = "course_title";
-    private static final String KEY_SLOT = "course_slot";
-    private static final String KEY_TYPE = "course_type";
-    private static final String KEY_TYPE_SHORT = "course_type_short";
-    private static final String KEY_LTPC = "course_ltpc";
-    private static final String KEY_CODE = "course_code";
-    private static final String KEY_MODE = "course_mode";
-    private static final String KEY_OPTION = "course_option";
-    private static final String KEY_VENUE = "course_venue";
-    private static final String KEY_FACULTY = "course_faculty";
-    private static final String KEY_REGISTRATIONSTATUS = "course_registrationstatus";
-    private static final String KEY_BILL_DATE = "course_date";
-    private static final String KEY_BILL_NUMBER = "course_bill_number";
-    private static final String KEY_PROJECT_TITLE = "course_project_title";
-    private static final String KEY_COURSE_JSON = "course_json";
-    private static final String KEY_ATTENDANCE = "course_attendance";
-    private static final String KEY_TIMINGS = "course_timings";
-    private static final String KEY_MARKS = "course_marks";
+    public static final String KEY_CLASNBR = "course_class_number";
+    public static final String KEY_TITLE = "course_title";
+    public static final String KEY_SLOT = "course_slot";
+    public static final String KEY_TYPE = "course_type";
+    public static final String KEY_TYPE_SHORT = "course_type_short";
+    public static final String KEY_LTPC = "course_ltpc";
+    public static final String KEY_CODE = "course_code";
+    public static final String KEY_MODE = "course_mode";
+    public static final String KEY_OPTION = "course_option";
+    public static final String KEY_VENUE = "course_venue";
+    public static final String KEY_FACULTY = "course_faculty";
+    public static final String KEY_REGISTRATIONSTATUS = "course_registrationstatus";
+    public static final String KEY_BILL_DATE = "course_date";
+    public static final String KEY_BILL_NUMBER = "course_bill_number";
+    public static final String KEY_PROJECT_TITLE = "course_project_title";
+    public static final String KEY_COURSE_JSON = "course_json";
+    public static final String KEY_ATTENDANCE = "course_attendance";
+    public static final String KEY_TIMINGS = "course_timings";
+    public static final String KEY_MARKS = "course_marks";
 
-    private static final String[] COLUMNS = {KEY_CLASNBR, KEY_TITLE, KEY_SLOT, KEY_TYPE, KEY_TYPE_SHORT,
+    public static final String[] COLUMNS = {KEY_CLASNBR, KEY_TITLE, KEY_SLOT, KEY_TYPE, KEY_TYPE_SHORT,
             KEY_LTPC, KEY_CODE, KEY_MODE, KEY_OPTION, KEY_VENUE, KEY_FACULTY, KEY_REGISTRATIONSTATUS,
             KEY_BILL_DATE, KEY_BILL_NUMBER, KEY_PROJECT_TITLE, KEY_COURSE_JSON,
             KEY_ATTENDANCE, KEY_TIMINGS, KEY_MARKS};
@@ -96,10 +96,9 @@ public class ConnectDatabase extends SQLiteOpenHelper {
             onCreate(sqLiteDatabase);
     }
 
-    public void saveCourses(List<Course> courses) {
+    /*public void saveCourses(List<Course> courses) {
         try {
             SQLiteDatabase db = this.getWritableDatabase();
-
 
             for (int i = 0; i < courses.size(); i++) {
                 Course course = courses.get(i);
@@ -137,6 +136,7 @@ public class ConnectDatabase extends SQLiteOpenHelper {
                     Log.d("insert","check()");
                     db.insert(TABLE_COURSES, null, values);
                 }
+
             }
             db.close();
         } catch (Exception e) {
@@ -269,5 +269,5 @@ public class ConnectDatabase extends SQLiteOpenHelper {
         Cursor cursor = sqLiteDatabase.rawQuery(deleteQuery, null);
         cursor.close();
         sqLiteDatabase.close();
-    }
+    }*/
 }

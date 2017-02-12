@@ -18,7 +18,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pre_load_watermark"
     android:orientation="vertical"
     android:weightSum="100">
     <ImageView
@@ -28,7 +27,7 @@
         android:layout_marginTop="15dp"
         android:layout_weight="10"
         android:gravity="center"
-        android:src="@mipmap/ic_appicon"/>
+        android:src="@mipmap/ic_launcher"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"

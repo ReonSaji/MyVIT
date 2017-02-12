@@ -25,10 +25,10 @@
     <string name="nav_footer1">FEEDBACK</string>
     <string name="draweropen">open</string>
     <string name="drawerclose">close</string>
-    <string name="sample_subcode">MMA 201</string>
-    <string name="sample_subname">Microwave theory</string>
-    <string name="sample_subtime">next in 44 mins</string>
-    <string name="sample_subplace">SJT 701</string>
+    <string name="sample_subcode">Course Code</string>
+    <string name="sample_subname">Course Name</string>
+    <string name="sample_subtime">Time</string>
+    <string name="sample_subplace">Venue</string>
     <string name="sample_subtype">Embedded Theory</string>
     <string name="sample_per">72 %</string>
     <string name="sample_slot">A1+TA1</string>
@@ -43,7 +43,9 @@
     <string name="marks_error_message">Marks not available</string>
     <string name="end_of_day_qoute">Your classes are over\nSit and relax</string>
     <string name="weekend_qoute">Come again next week</string>
-    <string name="select_course">SELECT COURSE</string>
+    <string name="select_course">Select Course</string>
+    <string name="select_slot">Select Slot</string>
+    <string name="select_faculty">Select Faculty</string>
     <string name="licenses">**com.mcxiaoke.volley\n\n
 
 Copyright (C) 2014 Xiaoke Zhang\n
@@ -83,22 +85,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. \n\n
 
-**CollegeCODE/VITacademics\n\n
-
-Copyright (C) 2014-2015  Aneesh Neelam &lt;neelam.aneesh@gmail.com&gt; \n
-Copyright (C) 2014-2015  Ayush Agarwal &lt;agarwalayush161@gmail.com&gt; \n
-Copyright (C) 2014-2015  Karthik Balakrishnan &lt;karthikb351@gmail.com&gt; \n
-Copyright (C) 2014-2015  Kishore Narendran &lt;kishore.narendran09@gmail.com&gt; \n
-Copyright (C) 2014-2015  Saurabh Joshi &lt;battlex94@gmail.com&gt; \n
-Copyright (C) 2014-2015  Sreeram Boyapati &lt;sreeram.boyapati2011@gmail.com&gt; \n
-Copyright (C) 2014-2015  Kunal Nagpal &lt;kunagpal@gmail.com&gt; \n
-GNU GENERAL PUBLIC LICENSE\n
-                       Version 3, 29 June 2007\n\n
-
- Copyright (C) 2007 Free Software Foundation, Inc. &lt;http://fsf.org/&gt; \n
- Everyone is permitted to copy and distribute verbatim copies
- of this license document, but changing it is not allowed. \n
-
 </string>
     <string name="sample_subfaculty">G Puviarasi</string>
     <string name="sub_name_transition">subjectNameTransition</string>
@@ -107,21 +93,24 @@ GNU GENERAL PUBLIC LICENSE\n
     <string name="filter_faculty">Filter Faculty</string>
     <string name="later_today">Later Today</string>
     <string name="attendance">attendance</string>
+    <string name="gcm_senderId">11605097156</string>
+    <string name="download_directory_label">Go to download directory</string>
+    <string name="about_head">With love from humans fed up of ugly websites</string>
     <string-array name="startheads">
         <item>TODAY</item>
         <item>COURSES</item>
         <item>TIMETABLE</item>
         <item>MARKS</item>
-        <item>ATTENDANCE</item>
-        <item>MAP</item>
+        <!--<item>ATTENDANCE</item>
+        <item>MAP</item>-->
     </string-array>
     <string-array name="starttexts">
         <item>Real time information of your current day classes.</item>
         <item>All your registered courses filtered with location.</item>
         <item>All days timetable with calendar.</item>
         <item>Marks, Grades and Conclusions, all at one place.</item>
-        <item>Total and day-wise attendance available. Also track your future attendance.</item>
-        <item>VIT Vellore campus map to know where-to\'s.</item>
+        <!--<item>Total and day-wise attendance available. Also track your future attendance.</item>
+        <item>VIT Vellore campus map to know where-to\'s.</item>-->
     </string-array>
     <string-array name="drawer_list_titles">
         <item>Today</item>
@@ -130,9 +119,6 @@ GNU GENERAL PUBLIC LICENSE\n
         <item>Campus Map</item>
         <item>Spotlight</item>
         <item>Course Page</item>
-        <item>Exam</item>
-        <item>Exam</item>
-        <item>Exam</item>
     </string-array>
 
     <string-array name="tabs_name_courses">

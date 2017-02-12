@@ -42,7 +42,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingTop="15dp">
+            android:paddingTop="15dp"
+            android:paddingBottom="20dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -54,9 +55,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="200dp"
                     android:padding="5dp"
+                    android:id="@+id/faculty_image"
                     android:background="@drawable/round_light_gray"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/sample_faculty" />
+                    android:adjustViewBounds="true"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"

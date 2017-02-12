@@ -98,4 +98,22 @@ public class ParseResponse {
         }
     }
 
+    public String getFacultyAdvisor(){
+        try {
+            return mResponseObject.getString("faculty_advisor");
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public String getAcademicHistory(){
+        try {
+            return mResponseObject.getString("academic_history");
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }

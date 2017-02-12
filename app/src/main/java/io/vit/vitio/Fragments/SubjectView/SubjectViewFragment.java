@@ -17,7 +17,6 @@
 package io.vit.vitio.Fragments.SubjectView;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -34,12 +33,9 @@ import android.widget.Toast;
 
 import com.melnykov.fab.FloatingActionButton;
 
-import java.util.concurrent.ThreadPoolExecutor;
-
-import io.vit.vitio.AttendanceActivity;
-import io.vit.vitio.HomeActivity;
-import io.vit.vitio.Instances.Attendance;
-import io.vit.vitio.MarksActivity;
+import io.vit.vitio.Activities.AttendanceActivity;
+import io.vit.vitio.Activities.HomeActivity;
+import io.vit.vitio.Activities.MarksActivity;
 import io.vit.vitio.Instances.Course;
 import io.vit.vitio.Managers.DataHandler;
 import io.vit.vitio.R;

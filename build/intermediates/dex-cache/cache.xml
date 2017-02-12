@@ -3,129 +3,354 @@
 
     <item
         is-multidex="false"
-        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.1.1\jars\classes.jar"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.2.0\jars\classes.jar"
         jumboMode="false"
-        optimize="false"
-        revision="23.0.1"
-        sha1="5e412e954a24c5310a459c09870e4e2081aceb03">
-        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-23.1.1_e5ff10880a0ea1df2474a09976fb28ddf857aec1.jar" />
+        optimize="true"
+        revision="25.0.0"
+        sha1="dd7676ac12aa6653718b7ea33d93ce9d6915d526">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-9.2.0_2b17a303dc4391d4cfaf03d6c9f867ab1048244d.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Prince Bansal\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jar="C:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
         jumboMode="false"
-        optimize="false"
-        revision="23.0.1"
-        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\library-2.4.0_b291fb9c5b60cea33f7cd5517c3d02a270f17a37.jar" />
+        optimize="true"
+        revision="25.0.0"
+        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\support-annotations-25.0.1_51ab30143fbff50b8779a9626e6d377c1c44e7c7.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\libs\internal_impl-25.0.1.jar"
         jumboMode="false"
-        optimize="false"
-        revision="23.0.1"
-        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
-        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1_6ededcc9b39f46fbcdd6efbd1a4d51bb6afd2a15.jar" />
+        optimize="true"
+        revision="25.0.0"
+        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_e490853e12c13841d85f4c884f284dd53a324fbf.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\palette-v7\23.1.1\jars\classes.jar"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\9.2.0\jars\classes.jar"
         jumboMode="false"
-        optimize="false"
-        revision="23.0.1"
-        sha1="a978650837318cf056bf3383ff02fe7a3b891f20">
-        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.support-palette-v7-23.1.1_21648ac5cd9307758403e83f8602730a17aff401.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="false"
-        revision="23.0.1"
-        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
-        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.1.1_efb15cf1cb8c11b626270fc78e78c18e738a4984.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.getbase\floatingactionbutton\1.10.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="false"
-        revision="23.0.1"
-        sha1="078cad8ebaa25b1eb1790bd622b3a8ae27c9cc7a">
-        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.getbase-floatingactionbutton-1.10.0_436811eff9b369cea386847ac9211ebff443e51d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="false"
-        revision="23.0.1"
-        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
-        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.1.1_50da58a2e7c21eef3ffbad2136c5f162c492fb44.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\design\23.1.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="false"
-        revision="23.0.1"
-        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
-        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.support-design-23.1.1_f8c15b416e1c623ed5897692299b50793eb73a76.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
-        jumboMode="false"
-        optimize="false"
-        revision="23.0.1"
-        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
-        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1_bd5d0ba2100ac292ce5603e7b86781cad47a2513.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\2.0.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="false"
-        revision="23.0.1"
-        sha1="031e8b3ab2df4ab43b1017f84417d7e10dfbb8d2">
-        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\de.hdodenhof-circleimageview-2.0.0_ff7f117e153dd6a75111a2b192473b6080626ba6.jar" />
+        optimize="true"
+        revision="25.0.0"
+        sha1="08cdd337d1d9247eb915f0ab365624dd7966e7fa">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-wearable-9.2.0_f70d5521582d4c9353c075b16770318a647c240f.jar" />
     </item>
     <item
         is-multidex="false"
         jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.melnykov\floatingactionbutton\1.2.0\jars\classes.jar"
         jumboMode="false"
-        optimize="false"
-        revision="23.0.1"
+        optimize="true"
+        revision="25.0.0"
         sha1="65620ba5e576dcec2c86efa440b00d042a27383b">
         <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.melnykov-floatingactionbutton-1.2.0_ad9be0844959f3aa4a81d5b54da624637f177544.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Prince Bansal\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.19\a8f23f65fc1e522ee4a1a697ee569901a46741fa\library-1.0.19.jar"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\jars\classes.jar"
         jumboMode="false"
-        optimize="false"
-        revision="23.0.1"
-        sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
-        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\library-1.0.19_05d44c1669c04596c2a3151c80a9cd94ac892e71.jar" />
+        optimize="true"
+        revision="25.0.0"
+        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.0.1_f3ddd3374fd3336fa8564a1c89cffe6d0bef67ce.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.0.1_53b8632aa9b458c43bcffa9d948a41b1a25e3ecd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.0.1_49e532e9de6a56d91368b6fcda0e5d40fadf7ecb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_0ad84300781b4bc1adb7ae20a5837b03a0d9008f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_7deae0558fa795d1c4a5ce0ff7a186d388df0c04.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="593fbaec1c3e100480a2bd72457b64b7dde6ac2d">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-tasks-9.2.0_dff646543c3f5fb84dc1331e8eefa0d4b32f52ea.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4838df6db988160b107e954e02a745370df543b6">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-analytics-9.2.0_a046362be99bb83fda7f2bed5745f62b84022b6f.jar" />
     </item>
     <item
         is-multidex="false"
         jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.github.clans\fab\1.6.2\jars\classes.jar"
         jumboMode="false"
-        optimize="false"
-        revision="23.0.1"
+        optimize="true"
+        revision="25.0.0"
         sha1="7e6a161b3796c15fe00755ce47e03067e568ecc4">
         <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.github.clans-fab-1.6.2_515049b42314dcb9eeafae5f36c6a752d7441ffe.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.0.1\jars\classes.jar"
         jumboMode="false"
-        optimize="false"
-        revision="23.0.1"
-        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
-        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.1.1_00f9cfce5f88a4c871ecb78be371bf98f3959807.jar" />
+        optimize="true"
+        revision="25.0.0"
+        sha1="297d4bcf6ed4e747a1bf7d0d094a2d911a8d3a8e">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-25.0.1_67138efbc654e2a8d5a12abeb3f4d523018eea68.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\9.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="535d4497b5fa5d451e07a043e9e220d5c25ab7c7">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-gcm-9.2.0_ce0f88c7544cb85f7aa6471069559fda09354b98.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.0.1_1935e6d491177afbd0899b6a2ff8507bef635e39.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\2.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="031e8b3ab2df4ab43b1017f84417d7e10dfbb8d2">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\de.hdodenhof-circleimageview-2.0.0_ff7f117e153dd6a75111a2b192473b6080626ba6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.0.1_613194d0e4ff81cc8ddec49557535272c6685c01.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f83b00041ecfba705603fec40363416c7de69719">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_83521d4d4afd191cbc9b9627ffe7b8556e894df2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="363f626ad5686283250cdb6073ae1bba5cb07a87">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-common-9.2.0_b1befe52d8cc2f0b055a4a71d7f74f06dfa69ce4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.getbase\floatingactionbutton\1.10.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="078cad8ebaa25b1eb1790bd622b3a8ae27c9cc7a">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.getbase-floatingactionbutton-1.10.0_436811eff9b369cea386847ac9211ebff443e51d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="30489a97b06cc3945bdbcc1770089af9e3b3b64d">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-base-9.2.0_8968583c77810cb1bcfb6fc04fce031469f8fb80.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.nantaphop\hoverTouchView\0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="607ffe67b8a7e664b95a4a1ed8eedd6bfbb4caee">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.nantaphop-hoverTouchView-0.1_f00d827f797521ed0a9249e2b8ff3506c35c7c6a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="dc4c18602ecffb3e69cda6cdc51ba4feac0f97d7">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-iid-9.2.0_869615622fbb912f07be13bfc881cccb4d79f6c9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.0.1_f4189a65bf25bd1c6a71c08b89dd2e0ba0357664.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.0.1_4db9ebf7b164616684355ac36d8f3bd7f48f0ef0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\transition\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c1b6ab157e8e12cb08b9ee82bb5e3c5d22632eb3">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.support-transition-25.0.1_8a6e5cff5d8ee1d943d34ae0b70f2a990ef1ce31.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.volley\volley\1.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.volley-volley-1.0.0_bc91459d351cbe6344ebc5b48d1168024c22aa58.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="fb15fd9774b5c51dcb39d8e6fa1b6f06bcd1cd34">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.google.firebase-firebase-analytics-impl-9.2.0_a339589e696c691b207411c7cc4ebefc88a1e8c8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.0.1_10d01d4909f3f3cc4480d122060d5c1cc71517b3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Prince Bansal\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\library-2.4.0_b291fb9c5b60cea33f7cd5517c3d02a270f17a37.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\palette-v7\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="783127c8b1d23b84cccc3dc776ca4637d4aba900">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.support-palette-v7-25.0.1_edf086eb08d6bf3b5f0f8507f7c1c6b3d2f33c9a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1108575c7dc7b7f5b378b3290ac90de81a9b8830">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-25.0.1_55d74c656f93e423de37cc5a59d605d9772012b0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\design\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3b236883e0df6002cabb01ce57d00a5b1e5de610">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.support-design-25.0.1_98e219c38239840b0fa5133adf7318d354c73e65.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.0.1_e26b586b4e1a80c00c9d414e8dc7a2efef9df968.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_a46f3265e0d0a53dba209663b3ec2a49bac86c4d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Android\sdk\build-tools\25.0.0\renderscript\lib\renderscript-v8.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="05668b8cd6c7b07f152b6a5b4c6cff620817ba0f">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\renderscript-v8_c6e59f118e3bf578fda730a58dcb2c66e8020f10.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-iid\9.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="fbb50f7f89342c915898c9376a67229e2fcee286">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-iid-9.2.0_143b945bc2481cf5c29add00b19bc5248d3974a1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\exploded-aar\jp.wasabeef\blurry\1.0.5\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="12729c881c9b6ec2ccea3c1b782bf69838ae5be3">
+        <dex dex="E:\Prince\mac\Desktop\VITIO\app\build\intermediates\pre-dexed\debug\jp.wasabeef-blurry-1.0.5_a059ffa03aa537c1a3df342c0d7856f8ed5b90a3.jar" />
     </item>
 
 </items>
